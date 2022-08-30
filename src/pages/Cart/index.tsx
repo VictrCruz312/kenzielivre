@@ -1,11 +1,14 @@
+import TransitionPage from "../../components/TransitionPage"
 import { CartStyled } from "./style"
 
 const Cart = () => {
 
     return(
-        <CartStyled>
+        <TransitionPage>
+            <CartStyled>
 
-        </CartStyled>
+            </CartStyled>
+        </TransitionPage>
     )
 }
 export default Cart

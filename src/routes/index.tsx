@@ -27,7 +27,6 @@ const Routers = () => (
             <Route path="*" element={<Navigate to="/home"/>} />
         </Routes>
     </AnimatePresence>
-    
 )
 
 export default Routers

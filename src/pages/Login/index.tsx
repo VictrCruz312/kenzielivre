@@ -1,11 +1,14 @@
+import TransitionPage from "../../components/TransitionPage"
 import { LoginStyled } from "./style"
 
 const Login = () => {
 
     return(
-        <LoginStyled>
+        <TransitionPage>
+            <LoginStyled>
 
-        </LoginStyled>
+            </LoginStyled>
+        </TransitionPage>
     )
 }
 export default Login
