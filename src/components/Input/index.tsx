@@ -1,15 +1,29 @@
 import { TextField } from "@mui/material";
-import { ReactNode } from "react";
+import React from "react";
 
 interface IPropsInput {
-  children: string;
+  placeholder: string;
+  type: string;
 }
 
-const Input = ({ children }: IPropsInput) => {
+const Input = ({ placeholder, type }: IPropsInput) => {
+  const [valueInput, setValueInput] = React.useState("");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValueInput(event.target.value);
+  };
+
   return (
-    <TextField id="standard-basic" label="Standard" variant="standard">
-      {children}
-    </TextField>
+    <>
+      <TextField
+        id="standard-basic"
+        label={placeholder}
+        variant="standard"
+        value={valueInput}
+        type={type}
+        onChange={handleChange}
+      />
+    </>
   );
 };
 export default Input;

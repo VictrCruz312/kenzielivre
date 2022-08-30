@@ -4,7 +4,9 @@ import { HomeStyled } from "./style";
 const Home = () => {
   return (
     <HomeStyled>
-      <Input>Olá dev</Input>
+      <div>
+        <Input placeholder="Nome" type="text" />
+      </div>
     </HomeStyled>
   );
 };
