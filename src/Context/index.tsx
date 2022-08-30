@@ -1,15 +1,11 @@
-import { ReactNode } from "react"
-import { AuthProvider } from "./auth"
-
+import { ReactNode } from "react";
+import { AuthProvider } from "./auth";
 
 interface IPropsContext {
-    children:ReactNode
+  children: ReactNode;
 }
 
-const Context = ( { children }:IPropsContext ) => (
-
-    <AuthProvider>
-        { children }
-    </AuthProvider>
-)
-export default Context
+const Context = ({ children }: IPropsContext) => (
+  <AuthProvider>{children}</AuthProvider>
+);
+export default Context;
