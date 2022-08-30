@@ -1,11 +1,14 @@
+import TransitionPage from "../../components/TransitionPage"
 import { HomeStyled } from "./style"
 
 const Home = () => {
 
     return(
-        <HomeStyled>
+        <TransitionPage>
+            <HomeStyled>
 
-        </HomeStyled>
+            </HomeStyled>
+        </TransitionPage>
     )
 }
 export default Home
