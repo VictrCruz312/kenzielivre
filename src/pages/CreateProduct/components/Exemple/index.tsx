@@ -1,10 +1,12 @@
-import { ExempleStyled } from "./style"
+import { CreateProductStyled } from "./style"
 
-const Exemple = () => {
+const CreateProduct = () => {
 
     return(
-        <ExempleStyled>
+        <CreateProductStyled>
             
-        </ExempleStyled>
+        </CreateProductStyled>
     )
 }
+
+export default CreateProduct
