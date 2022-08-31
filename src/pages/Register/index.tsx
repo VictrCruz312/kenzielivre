@@ -1,11 +1,14 @@
+import TransitionPage from "../../components/TransitionPage"
 import { RegisterStyled } from "./style"
 
 const Register = () => {
 
     return(
-        <RegisterStyled>
+        <TransitionPage>
+            <RegisterStyled>
 
-        </RegisterStyled>
+            </RegisterStyled>
+        </TransitionPage>
     )
 }
 export default Register

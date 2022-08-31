@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom"
 
 import { AnimatePresence } from "framer-motion"
+
 import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Home from "../pages/Home"
@@ -26,7 +27,6 @@ const Routers = () => (
             <Route path="*" element={<Navigate to="/home"/>} />
         </Routes>
     </AnimatePresence>
-    
 )
 
 export default Routers
