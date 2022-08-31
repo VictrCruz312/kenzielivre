@@ -1,12 +1,8 @@
 import { FormControl } from "@mui/material";
 import styled from "styled-components";
 
-interface IPropsFormSyled {
-  width?: string;
-}
-
-export const FormControlEdited = styled(FormControl)<IPropsFormSyled>`
-  width: ${(IPropsFormSyled) => IPropsFormSyled.width};
+export const FormControlEdited = styled(FormControl)`
+  width: 320px;
   height: 48px;
 
   @media (max-width: 425px) {
