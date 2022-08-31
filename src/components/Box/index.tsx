@@ -4,10 +4,12 @@ import { BoxStyled } from "./style";
 interface IBoxProps {
   children?: ReactNode;
   width: string;
+  minWidth?: string;
   background?: string | undefined;
   height?: string | undefined;
   backgroundMobile?: string | undefined;
   widthMobile?: string | undefined;
+  display?: string;
 }
 
 const Box = ({
@@ -17,6 +19,8 @@ const Box = ({
   background,
   height,
   backgroundMobile,
+  minWidth,
+  display,
 }: IBoxProps) => {
   // small: 39% medium: 61% large: 100%
   const valueWidth =
@@ -39,6 +43,8 @@ const Box = ({
   return (
     <BoxStyled
       width={valueWidth}
+      minWidth={minWidth}
+      display={display}
       widthMobile={widthMobile}
       height={valueHeight}
       backgroundColor={background}
