@@ -17,7 +17,10 @@ export const ContainerModalApresentacao = styled.div`
 
   .divModalApresentacao {
     width: 550px;
-    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
 
   h1 {
@@ -40,7 +43,6 @@ export const ContainerModalApresentacao = styled.div`
     letter-spacing: 0.1em;
 
     color: #ffffff;
-    margin-top: 15px;
   }
 
   @media (max-width: 1200px) {
