@@ -10,8 +10,8 @@ import { HiShoppingCart } from 'react-icons/hi';
 
 
 interface IPropsHeader {
-    onCart?:React.MouseEventHandler<HTMLButtonElement>,
-    onModal?:React.MouseEventHandler<HTMLButtonElement>,
+    onCart:React.MouseEventHandler<HTMLButtonElement>,
+    onModal:React.MouseEventHandler<HTMLButtonElement>,
     onText:( text:string ) => void,
     awayLogo?:string,
 }
