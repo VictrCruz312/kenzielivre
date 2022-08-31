@@ -1,6 +1,3 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components";
 
-export const CreateProductStyled = styled.div`
-
-
-`
+export const CreateProductStyled = styled.div``;
