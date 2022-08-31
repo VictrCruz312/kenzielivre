@@ -14,7 +14,13 @@ export const BoxStyled = styled.div<IBoxStyledProps>`
   align-items: center;
   width: ${({ width }) => width};
   max-width: ${({ width }) =>
-    width === "39%" ? "563px" : width === "61%" ? "873px" : "100%"};
+    width === "28%"
+      ? "405px"
+      : width === "39%"
+      ? "563px"
+      : width === "61%"
+      ? "873px"
+      : "100%"};
   height: ${({ height }) => (height ? height : "inherit")};
   backdrop-filter: blur(20px);
   background-color: ${({ backgroundColor, width }) =>

@@ -20,7 +20,9 @@ const Box = ({
 }: IBoxProps) => {
   // small: 39% medium: 61% large: 100%
   const valueWidth =
-    width === "small"
+    width === "minSmall"
+      ? "28%"
+      : width === "small"
       ? "39%"
       : width === "medium"
       ? "61%"
