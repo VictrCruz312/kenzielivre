@@ -23,6 +23,7 @@ export const BoxStyled = styled.div<IBoxStyledProps>`
       : width === "61%"
       ? "873px"
       : "100%"};
+  min-width: ${({ minWidth }) => (minWidth ? minWidth : 0)};
   height: ${({ height }) => (height ? height : "inherit")};
   backdrop-filter: blur(20px);
   background-color: ${({ backgroundColor, width }) =>
