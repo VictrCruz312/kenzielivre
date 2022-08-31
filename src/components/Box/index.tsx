@@ -5,10 +5,10 @@ interface IBoxProps {
   children?: ReactNode;
   width: string;
   minWidth?: string;
-  background?: string | undefined;
-  height?: string | undefined;
-  backgroundMobile?: string | undefined;
-  widthMobile?: string | undefined;
+  background?: string;
+  height?: string;
+  backgroundMobile?: string;
+  widthMobile?: string;
   display?: string;
 }
 
@@ -24,7 +24,9 @@ const Box = ({
 }: IBoxProps) => {
   // small: 39% medium: 61% large: 100%
   const valueWidth =
-    width === "small"
+    width === "minSmall"
+      ? "28%"
+      : width === "small"
       ? "39%"
       : width === "medium"
       ? "61%"
@@ -33,7 +35,9 @@ const Box = ({
       : width;
 
   const valueHeight =
-    height === "small"
+    width === "minSmall"
+      ? "28%"
+      : height === "small"
       ? "39%"
       : height === "medium"
       ? "61%"
@@ -44,11 +48,11 @@ const Box = ({
     <BoxStyled
       width={valueWidth}
       minWidth={minWidth}
-      display={display}
       widthMobile={widthMobile}
       height={valueHeight}
       backgroundColor={background}
       backgroundMobile={backgroundMobile}
+      display={display}
     >
       {children}
     </BoxStyled>
