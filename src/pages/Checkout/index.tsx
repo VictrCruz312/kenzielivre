@@ -1,11 +1,14 @@
+import TransitionPage from "../../components/TransitionPage"
 import { CheckoutStyled } from "./style"
 
 const Checkout = () => {
 
     return(
-        <CheckoutStyled>
+        <TransitionPage>
+            <CheckoutStyled>
 
-        </CheckoutStyled>
+            </CheckoutStyled>
+        </TransitionPage>
     )
 }
 export default Checkout

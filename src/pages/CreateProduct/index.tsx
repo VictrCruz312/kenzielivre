@@ -1,11 +1,14 @@
+import TransitionPage from "../../components/TransitionPage"
 import { CreateProductStyled } from "./style"
 
 const CreateProduct = () => {
 
     return(
-        <CreateProductStyled>
+        <TransitionPage>
+            <CreateProductStyled>
 
-        </CreateProductStyled>
+            </CreateProductStyled>
+        </TransitionPage>
     )
 }
 export default CreateProduct
