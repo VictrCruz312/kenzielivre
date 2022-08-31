@@ -32,6 +32,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
+        <div className="lineFooter"></div>
         <div className="containerInfos">
           <div className="terms">
             <MdGavel />
