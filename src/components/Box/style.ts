@@ -16,13 +16,21 @@ export const BoxStyled = styled.div<IBoxStyledProps>`
   align-items: center;
   width: ${({ width }) => width};
   max-width: ${({ width }) =>
-    width === "39%" ? "563px" : width === "61%" ? "873px" : "100%"};
+    width === "28%"
+      ? "405px"
+      : width === "39%"
+      ? "563px"
+      : width === "61%"
+      ? "873px"
+      : "100%"};
   height: ${({ height }) => (height ? height : "inherit")};
   backdrop-filter: blur(20px);
   background-color: ${({ backgroundColor, width }) =>
     backgroundColor
       ? backgroundColor
-      : `rgba(28, 27, 35, ${width === "100%" ? "0.60" : "0.85"})`};
+      : `rgba(28, 27, 35, ${
+          width === "100%" || width === "61%" ? "0.60" : "0.85"
+        })`};
 
   @media screen and (max-width: 563px) {
     background-color: ${({ backgroundMobile }) =>
@@ -31,5 +39,6 @@ export const BoxStyled = styled.div<IBoxStyledProps>`
     padding: 40px 10px;
     margin: 10px auto;
     border-radius: 20px;
+    min-width: 0;
   }
 `;
