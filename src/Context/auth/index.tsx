@@ -16,7 +16,7 @@ export const AuthProvider = ( { children }:IPropsAuth ) => {
         <AuthContext.Provider value={{
             
         }}>
-
+            { children }
         </AuthContext.Provider>
     )
 }
