@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled, { css } from "styled-components";
 
 export const HomeStyled = styled.div`
 
@@ -12,4 +12,5 @@ export const HomeStyled = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-`
+
+
