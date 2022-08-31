@@ -2,14 +2,16 @@ import styled from "styled-components";
 
 interface IBoxStyledProps {
   width: string;
+  minWidth: string | undefined;
   backgroundColor: string | undefined;
   height: string | undefined;
   backgroundMobile: string | undefined;
   widthMobile: string | undefined;
+  display: string | undefined;
 }
 
 export const BoxStyled = styled.div<IBoxStyledProps>`
-  display: flex;
+  display: ${({ display }) => (display ? display : "flex")};
   flex-direction: column;
   align-items: center;
   width: ${({ width }) => width};
@@ -21,12 +23,15 @@ export const BoxStyled = styled.div<IBoxStyledProps>`
       : width === "61%"
       ? "873px"
       : "100%"};
+  min-width: ${({ minWidth }) => (minWidth ? minWidth : 0)};
   height: ${({ height }) => (height ? height : "inherit")};
   backdrop-filter: blur(20px);
   background-color: ${({ backgroundColor, width }) =>
     backgroundColor
       ? backgroundColor
-      : `rgba(28, 27, 35, ${width === "100%" ? "0.60" : "0.85"})`};
+      : `rgba(28, 27, 35, ${
+          width === "100%" || width === "61%" ? "0.60" : "0.85"
+        })`};
 
   @media screen and (max-width: 563px) {
     background-color: ${({ backgroundMobile }) =>
@@ -35,5 +40,6 @@ export const BoxStyled = styled.div<IBoxStyledProps>`
     padding: 40px 10px;
     margin: 10px auto;
     border-radius: 20px;
+    min-width: 0;
   }
 `;
