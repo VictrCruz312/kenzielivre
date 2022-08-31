@@ -58,7 +58,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <h3 className="copyright">Copyright 2022 © KenzieLivre</h3>
+      <div className="copyright">
+        <h3>Copyright 2022 © KenzieLivre</h3>
+      </div>
     </FooterStyled>
   );
 };

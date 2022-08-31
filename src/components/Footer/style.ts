@@ -16,4 +16,9 @@ export const FooterStyled = styled.div`
       border-left: 2px solid red;
     }
   }
+
+  .copyright {
+    display: flex;
+    justify-content: center;
+  }
 `;
