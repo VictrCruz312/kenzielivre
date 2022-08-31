@@ -35,7 +35,7 @@ export const BoxStyled = styled.div<IBoxStyledProps>`
 
   @media screen and (max-width: 563px) {
     background-color: ${({ backgroundMobile }) =>
-      backgroundMobile ? backgroundMobile : "#3F3D56"};
+      backgroundMobile ? backgroundMobile : "rgba(63, 61, 86, 0.2);"};
     width: ${({ widthMobile }) => (widthMobile ? widthMobile : "90%")};
     padding: 40px 10px;
     margin: 10px auto;
