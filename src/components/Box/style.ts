@@ -11,6 +11,8 @@ interface IBoxStyledProps {
 }
 
 export const BoxStyled = styled.div<IBoxStyledProps>`
+  box-sizing: border-box;
+
   display: ${({ display }) => (display ? display : "flex")};
   flex-direction: column;
   align-items: center;
@@ -37,8 +39,8 @@ export const BoxStyled = styled.div<IBoxStyledProps>`
     background-color: ${({ backgroundMobile }) =>
       backgroundMobile ? backgroundMobile : "rgba(63, 61, 86, 0.2);"};
     width: ${({ widthMobile }) => (widthMobile ? widthMobile : "90%")};
-    padding: 40px 10px;
-    margin: 10px auto;
+    padding: 10px 10px;
+    margin: 0;
     border-radius: 20px;
     min-width: 0;
   }

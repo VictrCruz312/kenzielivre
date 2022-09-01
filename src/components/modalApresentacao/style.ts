@@ -45,7 +45,7 @@ export const ContainerModalApresentacao = styled.div`
     color: #ffffff;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1250px) {
     display: none;
   }
 `;

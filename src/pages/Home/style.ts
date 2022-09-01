@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
 export const HomeStyled = styled.div`
-
     box-sizing: border-box;
 
     width: 100%;
@@ -12,4 +11,6 @@ export const HomeStyled = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    background-color: #1C1B23;
 `
