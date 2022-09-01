@@ -1,14 +1,12 @@
-import TransitionPage from "../../components/TransitionPage"
+import TransitionPage from "../../components/TransitionPage";
 
-import { HomeStyled } from "./style"
+import { HomeStyled } from "./style";
 
 const Home = () => {
-    return(
-        <TransitionPage>
-            <HomeStyled>
-
-            </HomeStyled>
-        </TransitionPage>
-    )
-}
-export default Home
+  return (
+    <TransitionPage>
+      <HomeStyled></HomeStyled>
+    </TransitionPage>
+  );
+};
+export default Home;
