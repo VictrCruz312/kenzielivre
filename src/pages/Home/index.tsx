@@ -3,7 +3,6 @@ import TransitionPage from "../../components/TransitionPage"
 import { HomeStyled } from "./style"
 
 const Home = () => {
-
     return(
         <TransitionPage>
             <HomeStyled>
@@ -13,4 +12,3 @@ const Home = () => {
     )
 }
 export default Home
-
