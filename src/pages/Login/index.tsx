@@ -56,18 +56,18 @@ const Login = () => {
                 message={errors?.senha?.message}
               />
               <div className="buttonOne">
-                <ButtonAll background="deft" size="large">
+                <ButtonAll background="deft" size="large" type="submit">
                   Entrar
                 </ButtonAll>
               </div>
               <p className="form__optionsText">Não tem uma conta?</p>
               <div className="buttonTwo">
-                <ButtonAll background="transp" size="large">
+                <ButtonAll background="transp" size="large" type="button">
                   crie sua conta
                 </ButtonAll>
               </div>
               <div className="buttonTree">
-                <ButtonAll background="transp" size="large">
+                <ButtonAll background="transp" size="large" type="button">
                   Entrar sem logar
                 </ButtonAll>
               </div>
