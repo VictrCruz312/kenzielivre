@@ -8,6 +8,7 @@ interface IBoxStyledProps {
   backgroundMobile: string | undefined;
   widthMobile: string | undefined;
   display: string | undefined;
+  MediaQuery: string;
 }
 
 export const BoxStyled = styled.div<IBoxStyledProps>`
@@ -35,7 +36,7 @@ export const BoxStyled = styled.div<IBoxStyledProps>`
           width === "100%" || width === "61%" ? "0.60" : "0.85"
         })`};
 
-  @media screen and (max-width: 563px) {
+  @media screen and (max-width: ${({ MediaQuery }) => MediaQuery}) {
     background-color: ${({ backgroundMobile }) =>
       backgroundMobile ? backgroundMobile : "rgba(63, 61, 86, 0.2);"};
     width: ${({ widthMobile }) => (widthMobile ? widthMobile : "90%")};
