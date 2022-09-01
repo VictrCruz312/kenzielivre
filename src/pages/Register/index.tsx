@@ -89,11 +89,11 @@ const Register = () => {
                 label="Tipo de conta"
               />
               <Checkbox />
-              <ButtonAll type="submit" background="deft" size="large">
+              <ButtonAll background="deft" size="large" type="submit">
                 Criar conta
               </ButtonAll>
               <p className="form__optionsText">Já tem uma conta?</p>
-              <ButtonAll type="button" background="transp" size="large">
+              <ButtonAll background="transp" size="large" type="button">
                 Entrar
               </ButtonAll>
             </FormStyled>
