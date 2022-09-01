@@ -1,5 +1,4 @@
-import { style } from "@mui/system"
-import { consumers } from "stream"
+
 import styled, { css } from "styled-components"
 
 export const RegisterStyled = styled.div`
@@ -16,8 +15,8 @@ export const RegisterStyled = styled.div`
 
     padding: 131px 10px 10px 10px;
 
-    background-image: url(https://st2.depositphotos.com/6544740/9337/i/600/depositphotos_93376372-stock-photo-sunset-over-sea-pier.jpg);
-    background-repeat: no-repeat;
+    /* background-image: url(https://st2.depositphotos.com/6544740/9337/i/600/depositphotos_93376372-stock-photo-sunset-over-sea-pier.jpg);
+    background-repeat: no-repeat; */
     background-size: 100% 100%;
     background-position: center center;
 

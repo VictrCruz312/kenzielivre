@@ -7,11 +7,17 @@ import Select from "../../components/Select"
 import { useForm } from "react-hook-form"
 import Apresentation from "../../components/modalApresentacao"
 import Input from "../../components/Inputs"
-import Checkbox from "../components/Checkbox"
+import Checkbox from "./components/Checkbox"
 import { ButtonAll } from "../../components/Button"
+import TextArea from "../../components/TextArea"
+import { Button } from "@mui/material"
 const Register = () => {
 
     const { register, handleSubmit } = useForm()
+
+    const onSubmit = ( data:any ) => {
+        console.log( data )
+    }
 
     return(
         <TransitionPage>
@@ -29,7 +35,7 @@ const Register = () => {
                     widthMobile="100%"
                     height="100%"
                 >   
-                    <Form name="Criar Conta">
+                    <Form onSubmit={handleSubmit(onSubmit)} name="Criar Conta">
                         <Input
                              placeholder="Nome"
                              type="text"
@@ -67,6 +73,7 @@ const Register = () => {
                         <ButtonAll background="transp" size="small">
                             Entrar
                         </ButtonAll>
+                        <button type="submit">teste</button>
                     </Form>
                 </Box>
             </RegisterStyled>

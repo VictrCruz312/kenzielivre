@@ -4,12 +4,13 @@ import { FormStyled } from "./style"
 interface IPropsForm {
     name:string,
     children:ReactNode
+    onSubmit?:any
 }
 
-const Form = ( { name, children }:IPropsForm ) => {
+const Form = ( { name, children, onSubmit }:IPropsForm ) => {
 
     return(
-        <FormStyled>
+        <FormStyled onSubmit={onSubmit}>
             <h2 className="form__title">{name}</h2>
             {
                 children
