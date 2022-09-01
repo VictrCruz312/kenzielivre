@@ -10,6 +10,7 @@ interface IBoxProps {
   backgroundMobile?: string;
   widthMobile?: string;
   display?: string;
+  MediaQuery?: string;
 }
 
 const Box = ({
@@ -21,6 +22,7 @@ const Box = ({
   backgroundMobile,
   minWidth,
   display,
+  MediaQuery,
 }: IBoxProps) => {
   // small: 39% medium: 61% large: 100%
   const valueWidth =
@@ -44,6 +46,8 @@ const Box = ({
       : height === "large"
       ? "100%"
       : height;
+
+  const VarMediaQuery = MediaQuery ? MediaQuery : "563px";
   return (
     <BoxStyled
       width={valueWidth}
@@ -53,6 +57,7 @@ const Box = ({
       backgroundColor={background}
       backgroundMobile={backgroundMobile}
       display={display}
+      MediaQuery={VarMediaQuery}
     >
       {children}
     </BoxStyled>
