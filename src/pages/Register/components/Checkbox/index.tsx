@@ -1,8 +1,6 @@
 import { CheckboxStyled } from "./style"
 
 import * as React from 'react';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
 const CheckboxEdited = () => {
@@ -10,8 +8,8 @@ const CheckboxEdited = () => {
     const [checked, setChecked] = React.useState(true);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-    console.log(event.target.checked)
+        setChecked(event.target.checked);
+        console.log(event.target.checked)
     }
     return(
 
