@@ -8,6 +8,7 @@ export default createGlobalStyle`
     }
 
     * {
+        box-sizing: border-box;
         font-family: var(--font-Roboto);
     }
 
