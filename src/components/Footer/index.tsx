@@ -1,13 +1,15 @@
-import { FooterStyled } from "./style";
+import { FooterStyled, ListDevsStyled } from "./style";
 import { MdOutlineVerified, MdGavel } from "react-icons/md";
-import { AiFillYoutube, AiFillLinkedin, AiFillInstagram } from "react-icons/ai";
+import { AiFillYoutube, AiFillInstagram } from "react-icons/ai";
+import { GrLinkedinOption } from "react-icons/gr";
 import { BsTelephone } from "react-icons/bs";
+import { IoShieldCheckmarkOutline } from "react-icons/io5";
 
 const Footer = () => {
   return (
     <FooterStyled>
       <div className="containerFooter">
-        <div className="listDevs">
+        <ListDevsStyled>
           <h4>Desenvolvido por:</h4>
           <ul>
             <li>
@@ -31,7 +33,7 @@ const Footer = () => {
               <p>Breno Figueiredo</p>
             </li>
           </ul>
-        </div>
+        </ListDevsStyled>
         <div className="lineFooter"></div>
         <div className="containerInfos">
           <div className="terms">
@@ -39,7 +41,7 @@ const Footer = () => {
             <a href="#bottom">Termos e condições</a>
           </div>
           <div className="protection">
-            <MdGavel />
+            <IoShieldCheckmarkOutline />
             <p>proteção de ponta a ponta</p>
           </div>
           <div className="iconsRedes">
@@ -50,7 +52,7 @@ const Footer = () => {
               <AiFillInstagram className=" iconInstagram" />
             </a>
             <a href="linkedin.com">
-              <AiFillLinkedin className=" iconIn" />
+              <GrLinkedinOption className=" iconIn" />
             </a>
             <a href="#bottom">
               <BsTelephone className=" iconPhone" />
