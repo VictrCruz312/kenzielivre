@@ -8,9 +8,19 @@ interface IPropsInput {
   placeholder: string;
   type: "text" | "password";
   isText?: boolean;
+  register: any;
+  name: string;
+  message?: string | undefined;
 }
 
-const InputComponent = ({ placeholder, type, isText }: IPropsInput) => {
+const InputComponent = ({
+  placeholder,
+  type,
+  isText,
+  register,
+  name,
+  message,
+}: IPropsInput) => {
   const [mostrarSenha, setMostrarSenha] = React.useState(false);
 
   const handleClickShowPassword = () => {
@@ -19,14 +29,19 @@ const InputComponent = ({ placeholder, type, isText }: IPropsInput) => {
 
   return (
     <>
-      <FormControlEdited margin="dense" variant="standard">
+      <FormControlEdited
+        error={message ? true : false}
+        margin="dense"
+        variant="standard"
+      >
         <InputLabel htmlFor="standard-adornment-password">
-          {placeholder}
+          {message ? message : placeholder}
         </InputLabel>
         <Input
           id="standard-adornment-password"
           type={isText ? "text" : mostrarSenha ? "text" : "password"}
           size="small"
+          {...register(name)}
           endAdornment={
             type === "password" && (
               <InputAdornment position="end">
