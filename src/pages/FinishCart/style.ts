@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components";
 
 export const FinishCartStyled = styled.div`
     box-sizing: border-box;
@@ -14,3 +14,4 @@ export const FinishCartStyled = styled.div`
 
     background-color: #1C1B23;
 `
+

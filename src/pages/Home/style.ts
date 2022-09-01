@@ -14,3 +14,4 @@ export const HomeStyled = styled.div`
 
     background-color: #1C1B23;
 `
+
