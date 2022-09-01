@@ -1,15 +1,15 @@
-import Global from "./styles/global"
-import Routes from "./routes"
-import { Toaster } from "react-hot-toast"
+import Global from "./styles/global";
+import Routes from "./routes";
+import { Toaster } from "react-hot-toast";
 
-const App = ()  => {
+const App = () => {
   return (
     <>
-      <Global/>
-      <Routes/>
-      <Toaster/>
+      <Global />
+      <Routes />
+      <Toaster />
     </>
   );
-}
+};
 
-export default App
+export default App;

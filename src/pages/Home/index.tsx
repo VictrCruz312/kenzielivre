@@ -1,7 +1,16 @@
-import { ButtonAll } from "../../components/Button";
-import { HomeStyled } from "./style";
+import TransitionPage from "../../components/TransitionPage"
+
+import { HomeStyled } from "./style"
 
 const Home = () => {
-  return <HomeStyled></HomeStyled>;
-};
-export default Home;
+
+    return(
+        <TransitionPage>
+            <HomeStyled>
+
+            </HomeStyled>
+        </TransitionPage>
+    )
+}
+export default Home
+
