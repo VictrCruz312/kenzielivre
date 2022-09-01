@@ -7,12 +7,13 @@ export const FormStyled = styled.form`
 
     width: 100%;
     max-width: 320px;
-    height: auto;
+    height: 100%;
 
     margin: 40px 0px;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 
     .form__title{

@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import Apresentation from "../../components/modalApresentacao"
 import Input from "../../components/Inputs"
 import Checkbox from "../components/Checkbox"
+import { ButtonAll } from "../../components/Button"
 const Register = () => {
 
     const { register, handleSubmit } = useForm()
@@ -59,7 +60,13 @@ const Register = () => {
                             label="Tipo de conta"
                         />
                         <Checkbox/>
+                        <ButtonAll background="deft" size="small">
+                            Criar conta
+                        </ButtonAll>
                         <p className="form__optionsText">Já tem uma conta?</p>
+                        <ButtonAll background="transp" size="small">
+                            Entrar
+                        </ButtonAll>
                     </Form>
                 </Box>
             </RegisterStyled>
