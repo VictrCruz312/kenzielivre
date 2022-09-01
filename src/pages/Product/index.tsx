@@ -1,11 +1,14 @@
+import TransitionPage from "../../components/TransitionPage"
 import { ProductStyled } from "./style"
 
 const Product = () => {
 
     return(
-        <ProductStyled>
+        <TransitionPage>
+            <ProductStyled>
 
-        </ProductStyled>
+            </ProductStyled>
+        </TransitionPage>
     )
 }
 export default Product

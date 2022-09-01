@@ -1,13 +1,14 @@
-import { ButtonAll } from "../../components/Button";
-import { HomeStyled } from "./style";
+import TransitionPage from "../../components/TransitionPage"
+
+import { HomeStyled } from "./style"
 
 const Home = () => {
-  return (
-    <HomeStyled>
-      <ButtonAll type="button" background="deft" size="medium">
-        testando
-      </ButtonAll>
-    </HomeStyled>
-  );
-};
-export default Home;
+    return(
+        <TransitionPage>
+            <HomeStyled>
+
+            </HomeStyled>
+        </TransitionPage>
+    )
+}
+export default Home
