@@ -7,7 +7,7 @@ const Home = () => {
     return(
         <TransitionPage>
             <HomeStyled>
-  
+
             </HomeStyled>
         </TransitionPage>
     )
