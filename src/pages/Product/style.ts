@@ -49,11 +49,7 @@ export const DivImageProduct = styled.div`
   }
 
   .miniImage {
-    max-width: 1408px;
     width: 100%;
-
-    max-height: 148px;
-    height: 100%;
 
     background-color: #1c1b23;
     padding-left: 10px;
@@ -63,14 +59,8 @@ export const DivImageProduct = styled.div`
     display: flex;
     align-items: center;
 
-    img {
-      max-width: 97px;
-      width: 100%;
-
-      min-height: 124px;
-      height: 100%;
-      border-radius: 4px;
-      padding: 5px;
+    @media screen and (max-width: 768px) {
+      overflow-x: scroll;
     }
   }
 

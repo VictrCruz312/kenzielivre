@@ -1,5 +1,6 @@
 import Box from "../../components/Box";
 import { ButtonAll } from "../../components/Button";
+import CardExtra from "../../components/cardExtra";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
@@ -18,24 +19,21 @@ const Product = () => {
         <ContainerProduct>
           <DivImageProduct>
             <div className="miniImage">
-              <div className="borderImage">
-                <img
-                  src="https://www.fastshop.com.br//wcsstore/FastShopCAS/images/catalog/AEMLL63BZAGFT_PRD/AEMLL63BZAGFT_PRD_447_4.jpeg"
-                  alt=""
-                />
-              </div>
-              <div className="borderImage">
-                <img
-                  src="https://www.fastshop.com.br//wcsstore/FastShopCAS/images/catalog/AEMLL63BZAGFT_PRD/AEMLL63BZAGFT_PRD_447_5.jpeg"
-                  alt=""
-                />
-              </div>
-              <div className="borderImage">
-                <img
-                  src="https://www.fastshop.com.br//wcsstore/FastShopCAS/images/catalog/AEMLL63BZAGFT_PRD/AEMLL63BZAGFT_PRD_447_3.jpeg"
-                  alt=""
-                />
-              </div>
+              <CardExtra
+                type="imgExtraProduct"
+                alt="Iphone"
+                src="https://www.fastshop.com.br//wcsstore/FastShopCAS/images/catalog/AEMLL63BZAGFT_PRD/AEMLL63BZAGFT_PRD_447_4.jpeg"
+              />
+              <CardExtra
+                type="imgExtraProduct"
+                alt="Iphone"
+                src="https://www.fastshop.com.br//wcsstore/FastShopCAS/images/catalog/AEMLL63BZAGFT_PRD/AEMLL63BZAGFT_PRD_447_5.jpeg"
+              />
+              <CardExtra
+                type="imgExtraProduct"
+                alt="Iphone"
+                src="https://www.fastshop.com.br//wcsstore/FastShopCAS/images/catalog/AEMLL63BZAGFT_PRD/AEMLL63BZAGFT_PRD_447_3.jpeg"
+              />
             </div>
             <div className="mainImage">
               <img
