@@ -20,44 +20,57 @@ export const ContainerProduct = styled.div`
   max-width: 1200px;
 
   margin-top: 10px;
-  height: 636px;
+  min-height: 636px;
+  height: 100%;
 
   background-color: #1c1b23;
 
   display: flex;
 
-  @media screen and (max-width: 889px) {
+  @media screen and (max-width: 768px) {
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 20px;
   }
 `;
+
 export const DivImageProduct = styled.div`
   max-width: 877px;
   width: 100%;
+  max-height: 636px;
   height: 100%;
 
   background-color: #3f3d56;
   border-radius: 4px;
 
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
+
   .miniImage {
+    max-width: 1408px;
     width: 100%;
-    max-height: 180px;
+
+    max-height: 148px;
     height: 100%;
 
     background-color: #1c1b23;
     padding-left: 10px;
+    padding-bottom: 10px;
     gap: 10px;
-    overflow-x: scroll;
 
     display: flex;
     align-items: center;
 
     img {
-      max-width: 69px;
+      max-width: 97px;
       width: 100%;
 
-      max-height: 128px;
+      min-height: 124px;
       height: 100%;
       border-radius: 4px;
+      padding: 5px;
     }
   }
 
@@ -82,16 +95,14 @@ export const DivImageProduct = styled.div`
     align-items: center;
 
     width: 100%;
-    max-height: 456px;
+    min-height: 502px;
     height: 100%;
 
-    background-color: #3f3d56;
+    @media screen and (max-width: 768px) {
+      padding: 10px;
+      background-color: none;
 
-    @media screen and (max-width: 889px) {
-      min-width: 300px;
-      width: 100%;
-
-      max-height: 349px;
+      min-height: 442px;
       height: 100%;
     }
 
@@ -101,16 +112,18 @@ export const DivImageProduct = styled.div`
 
       max-height: 371px;
       height: 100%;
-      border-radius: 4px;
 
-      @media screen and (max-width: 889px) {
-        max-width: 256px;
+      border-radius: 4px;
+      padding: 29px 29px;
+
+      @media screen and (max-width: 768px) {
+        max-width: 286px;
         width: 100%;
 
-        max-height: 229px;
+        max-height: 259px;
         height: 100%;
 
-        /* padding: 120px 29px; */
+        padding: 0px;
       }
     }
   }
@@ -122,10 +135,6 @@ export const ProductInfo = styled.div`
   height: 100%;
 
   padding: 25px 15px;
-
-  @media screen and (max-width: 889px) {
-    padding-top: 200px;
-  }
 
   .newProduct {
     font-family: "Roboto";
@@ -292,6 +301,7 @@ export const ProductInfo = styled.div`
 
   .tableTechnical {
     width: 100%;
+    background-color: #a19fb8;
 
     table {
       width: 100%;
