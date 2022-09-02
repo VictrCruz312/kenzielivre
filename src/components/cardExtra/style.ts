@@ -5,9 +5,9 @@ export const ContainerCard = styled.div<ICardExtra>`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
 
   background-color: #3f3d56;
+  border-radius: 4px;
 
   width: ${(props) =>
     (props.type === "cardLogoEmpresa" && `${200}px`) ||
@@ -30,20 +30,31 @@ export const ContainerCard = styled.div<ICardExtra>`
   max-height: ${(props) =>
     (props.type === "cardLogoEmpresa" && `${200}px`) ||
     (props.type === "imgExtraProduct" && `${148}px`)};
+`;
 
-  children {
-    min-width: ${(props) =>
-      (props.type === "cardLogoEmpresa" && `${80}px`) ||
-      (props.type === "imgExtraProduct" && "85%")};
-    max-width: ${(props) =>
-      (props.type === "cardLogoEmpresa" && `${80}px`) ||
-      (props.type === "imgExtraProduct" && "85%")};
-    min-height: ${(props) =>
-      (props.type === "cardLogoEmpresa" && `${200}px`) ||
-      (props.type === "imgExtraProduct" && "85%")};
+export const ContainerImagem = styled.div<ICardExtra>`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    max-height: ${(props) =>
-      (props.type === "cardLogoEmpresa" && `${200}px`) ||
-      (props.type === "imgExtraProduct" && "95%")};
+  min-width: ${(props) =>
+    (props.type === "cardLogoEmpresa" && `${80}px`) ||
+    (props.type === "imgExtraProduct" && "85%")};
+  max-width: ${(props) =>
+    (props.type === "cardLogoEmpresa" && `${80}px`) ||
+    (props.type === "imgExtraProduct" && "85%")};
+
+  min-height: ${(props) =>
+    (props.type === "cardLogoEmpresa" && `${80}px`) ||
+    (props.type === "imgExtraProduct" && "85%")};
+
+  max-height: ${(props) =>
+    (props.type === "cardLogoEmpresa" && `${80}px`) ||
+    (props.type === "imgExtraProduct" && "95%")};
+
+  img {
+    width: 100%;
+    height: 100%;
   }
 `;
