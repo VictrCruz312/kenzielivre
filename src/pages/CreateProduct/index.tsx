@@ -9,7 +9,6 @@ import TextArea from "../../components/TextArea";
 import TransitionPage from "../../components/TransitionPage";
 import CheckboxEdited from "../Register/components/Checkbox";
 import {
-  Block,
   ContainterCreateProduct,
   CreateProductStyled,
   FormStyled,
@@ -41,15 +40,23 @@ const CreateProduct = () => {
       <CreateProductStyled>
         <Header onText={() => {}} />
         <ContainterCreateProduct>
-          <Block>
+
             <ModalApresentacao
               title="Que tal cadastrar um novo produto?"
               description="e poder faturar de montão!"
             />
-          </Block>
-          <Box width="small" minWidth="563px" widthMobile="100%" height="100%">
-            <FormStyled onSubmit={handleSubmit(onSubmit)}>
-              <h2 className="form__title">Criar Conta</h2>
+
+          <Box 
+            width="small" 
+            minWidth="563px" 
+            widthMobile="100%" 
+            height="large" 
+            MediaQuery="1250px"
+          >
+            <FormStyled 
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <h2 className="form__title">Criar Produto</h2>
 
               <div className="divInputs">
                 <InputComponent
