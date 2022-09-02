@@ -97,7 +97,6 @@ const Product = () => {
           </Box>
         </ContainerProduct>
       </ProductStyle>
-      <div></div>
       <Footer />
     </TransitionPage>
   );
