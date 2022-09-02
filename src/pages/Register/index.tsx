@@ -50,7 +50,7 @@ const Register = () => {
                 isText
                 name="nome"
                 register={register}
-                message={errors?.nome}
+                message={errors?.nome?.message}
               />
               <Input
                 placeholder="Sobrenome"
@@ -58,7 +58,7 @@ const Register = () => {
                 isText
                 name="sobrenome"
                 register={register}
-                message={errors.sobrenome}
+                message={errors?.sobrenome?.message}
               />
               <Input
                 placeholder="Email"
@@ -66,21 +66,21 @@ const Register = () => {
                 isText
                 name="email"
                 register={register}
-                message={errors.email}
+                message={errors.email?.message}
               />
               <Input
                 placeholder="Senha"
                 type="password"
                 name="senha"
                 register={register}
-                message={errors.senha}
+                message={errors.senha?.message}
               />
               <Input
                 placeholder="Confirmar Senha"
                 type="password"
                 name="confirmarSenha"
                 register={register}
-                message={errors.confirmarSenha}
+                message={errors.confirmarSenha?.message}
               />
               <Select
                 arrayText={["Vendedor", "Cliente"]}
@@ -89,11 +89,11 @@ const Register = () => {
                 label="Tipo de conta"
               />
               <Checkbox />
-              <ButtonAll background="deft" size="large">
+              <ButtonAll background="deft" size="large" type="submit">
                 Criar conta
               </ButtonAll>
               <p className="form__optionsText">Já tem uma conta?</p>
-              <ButtonAll background="transp" size="large">
+              <ButtonAll background="transp" size="large" type="button">
                 Entrar
               </ButtonAll>
             </FormStyled>
