@@ -59,13 +59,13 @@ const Product = () => {
               <div className="buttonsProduct">
                 <ButtonAll
                   background="deft"
-                  size="small"
+                  size="medium"
                   children="Comprar"
                   type="submit"
                 />
                 <ButtonAll
                   background="transp"
-                  size="small"
+                  size="medium"
                   children="Adicionar ao carrinho"
                   type="submit"
                 />
