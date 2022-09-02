@@ -17,8 +17,8 @@ export const Buttons = styled.div<IUserRegister>`
 
     width: ${(props) =>
       (props.size === "small" && `${280}px`) || //setado ja
-      (props.size === "medium" && "24.66%") ||
-      (props.size === "large" && "34.83%")};
+      (props.size === "medium" && "100%") ||
+      (props.size === "large" && "100%")};
     min-width: ${(props) =>
       (props.size === "small" && `${280}px`) || //setado ja
       (props.size === "medium" && `${280}px`) ||

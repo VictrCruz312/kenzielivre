@@ -26,4 +26,5 @@
     <li>backgroundMobile: exemplo: backgroundMobile: 'red'. Por padrão ele vem com backgroundMobile: '#3F3D56'</li>
     <li>minWidth: exemplo: minWidth: '100px'</li>
     <li>display: exemplo: display: 'none'. Por padrão ele vem com display: 'flex'</li>
+    <li>MediaQuery: Defina em qual tamanho de tela o Box vai receber as propriedades do mobile, exemplo: MediaQuery: '563px'. Por padrão ele vem com MediaQuery: '563px'</li>
 </ul>
