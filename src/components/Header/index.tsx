@@ -2,11 +2,15 @@ import { HeaderStyled } from "./style";
 
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
 
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiShoppingCart } from "react-icons/hi";
+import { AiOutlineCloseSquare } from "react-icons/ai";
+
+import Modal from "../Modal";
+import { useModal } from "../../Context/Modal";
 
 interface IPropsHeader {
   onCart?: React.MouseEventHandler<HTMLButtonElement>;
@@ -21,6 +25,9 @@ const Header = ({
   onText,
   awayLogo = "/home",
 }: IPropsHeader) => {
+
+  const { isModalGlobal, stateModal } = useModal()
+
   const [text, setText] = useState("");
 
   const navigate = useNavigate();
@@ -35,7 +42,8 @@ const Header = ({
   const takeTextButton = () => onText(text);
 
   return (
-    <HeaderStyled>
+   <>
+     <HeaderStyled>
       <button className="backButton global" onClick={goAway}>
         <h1 className="backButton__title global">KenzieLivre</h1>
       </button>
@@ -55,14 +63,21 @@ const Header = ({
         </button>
       </div>
       <nav className="navegation global">
-        <button className="navegation__options global" onClick={onModal}>
-          <ArticleOutlinedIcon color="primary" fontSize="medium" />
+        <button className="navegation__options global" onClick={stateModal}>
+          {
+            isModalGlobal ? 
+              <AiOutlineCloseSquare color="primary" fontSize="medium"/>
+              :
+              <ArticleOutlinedIcon color="primary" fontSize="medium" />
+          }
         </button>
-        <button className="navegation__cart global" onClick={onCart}>
+        <button className="navegation__cart global" onClick={()=>navigate("/cart")}>
           <HiShoppingCart size={24} />
         </button>
       </nav>
     </HeaderStyled>
+    {isModalGlobal&&<Modal/>}
+   </>
   );
 };
 
