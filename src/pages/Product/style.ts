@@ -54,7 +54,6 @@ export const DivImageProduct = styled.div`
     background-color: #1c1b23;
     padding-left: 10px;
     padding-bottom: 10px;
-    gap: 10px;
 
     display: flex;
     align-items: center;

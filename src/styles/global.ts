@@ -10,6 +10,18 @@ export default createGlobalStyle`
     * {
         box-sizing: border-box;
         font-family: var(--font-Roboto);
+
+  
+        ::-webkit-scrollbar{
+            width:10px;
+            background-color: #00091C;
+        }
+        ::-webkit-scrollbar-thumb{
+            width:10px;
+            border-radius: 4px;
+            background-color:rgba(63,61,86, 85%);
+        }
+    
     }
 
     /* http://meyerweb.com/eric/tools/css/reset/

@@ -5,8 +5,8 @@ interface IPropsCardProduct {
     id:number,
     src:string,
     alt:string,
-    lastValue:string,
-    currentValue:string,
+    lastValue:number,
+    currentValue:number,
     description:string
 }
 
@@ -19,8 +19,8 @@ const CardProduct = ( { id, src, alt, lastValue, currentValue, description }:IPr
             </figure>
             <Information >
                 <span>
-                    <p className="information__lastValue">{lastValue}</p>
-                    <p className="information__currentValue">{currentValue}</p>
+                    <p className="information__lastValue">R$ {lastValue}</p>
+                    <p className="information__currentValue">R$ {currentValue}</p>
                 </span>
                 <p className="information__product">{description}</p>
             </Information>
