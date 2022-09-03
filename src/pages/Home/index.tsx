@@ -20,7 +20,13 @@ const Home = () => {
           onText={( e)=>{}}
         />
         <Block>
-          <Banner/>
+          <Banner
+            arrayImage={[
+              "https://img.freepik.com/psd-premium/banner-de-midia-social-do-instagram-black-friday-para-produtos-eletronicos-em-ofertas_220664-1933.jpg?w=2000",
+              "https://img.freepik.com/psd-premium/faixa-de-midia-social-negra-sexta-feira-de-produtos-eletronicos-em-ofertas_220664-1867.jpg?w=2000"
+          ]}
+            delay={10000}
+          />
           <Category name="Ofertas da semana"/>
           <CarouselProduct 
             arrayDados={products}

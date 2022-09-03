@@ -69,6 +69,7 @@ const CarouselProduct = ( { arrayDados, type }:IPropsCarouselProduct ) => {
                     arrayDados?.map(({ imageLogo }:any) => 
 
                     <CardExtra
+                        key={uuid()} 
                         type="cardLogoEmpresa"
                         src={imageLogo}
                         alt="logo"
