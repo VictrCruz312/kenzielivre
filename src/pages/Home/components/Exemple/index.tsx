@@ -8,3 +8,5 @@ const Exemple = () => {
         </ExempleStyled>
     )
 }
+
+export default Exemple

@@ -9,6 +9,8 @@ export const ContainerCard = styled.div<ICardExtra>`
   background-color: #3f3d56;
   border-radius: 4px;
 
+  margin: 10px 20px 10px 0px;
+
   width: ${(props) =>
     (props.type === "cardLogoEmpresa" && `${200}px`) ||
     (props.type === "imgExtraProduct" && `${148}px`)};
