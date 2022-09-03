@@ -2,7 +2,7 @@ import { NavigateFunction, useNavigate } from "react-router-dom";
 import Box from "../../components/Box";
 import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
-import ProductCart from "./components/ProductCart";
+import ProductCart from "./components/productCart";
 import SumaryCart from "./components/SumaryCart";
 import { CartStyled } from "./style";
 

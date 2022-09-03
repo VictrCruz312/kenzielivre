@@ -6,6 +6,10 @@ export const Sumarystyled = styled.div`
   align-items: center;
   padding-top: 16px;
 
+  width: 563px;
+  height: 100%;
+  min-height: calc(100vh - 110px);
+
   .containerCheck {
     display: flex;
     align-items: center;
