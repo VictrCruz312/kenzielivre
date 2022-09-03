@@ -10,10 +10,14 @@ export const ModalStyled = styled.div`
     z-index: 999999;
 
     width: 100%;
-    height: calc(100vh - 110px);
+    height: auto;
 
     background-color: rgba(28, 27, 35, 0.94);
     backdrop-filter: blur(20px);
+
+    svg{
+        color:#F5F5F5;
+    }
 
     @media(min-width:890px){
         top:110px;
