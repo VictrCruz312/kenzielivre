@@ -12,7 +12,7 @@ export const CardProductStyled = styled(Link)`
     border: none;
     outline: 0;
     padding: none;
-    margin: 10px;
+    margin: 10px 20px 10px 0px;
 
     border-radius: 4px;
 
@@ -48,6 +48,8 @@ export const CardProductStyled = styled(Link)`
     .block{
         box-sizing: border-box;
         
+        border-radius: 4px 4px 0px 0px;
+
         width: 250px;
         max-width: 250px;
         height: 230px;
