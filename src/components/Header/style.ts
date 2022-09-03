@@ -158,6 +158,8 @@ export const HeaderStyled = styled.header`
         svg{
             color: #F5F5F5;
 
+            font-size: 25px;
+
             :hover{
                 color:#1976d2;
             }
