@@ -56,6 +56,16 @@ const ListEdited = () => {
         </ListItemButton>
 
         <ListItemButton
+            onClick={()=> navigate("/home/sectionProduct")}
+        >
+            <ListItemIcon>
+                <StarBorder/>
+            </ListItemIcon>
+            <ListItemText 
+            primary="Produtos" />
+        </ListItemButton>
+
+        <ListItemButton
             onClick={()=> navigate("/createProduct")}
         >
             <ListItemIcon>

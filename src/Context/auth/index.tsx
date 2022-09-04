@@ -7,7 +7,8 @@ const AuthContext = createContext<IContextAuth>({} as IContextAuth);
 
 interface IContextAuth {
   isAuth:boolean
-  login:(data: IDataLogin)=>void
+  login:(data: IDataLogin)=>void,
+  logout:()=>void,
 }
 
 interface IPropsAuth {
@@ -51,9 +52,19 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
       } )
   };
 
+  const logout = () => {
+    setIsAuth(false)
+
+    localStorage.removeItem( "@KenzieLivre:Token" )
+    localStorage.removeItem( "@KenzieLivre:User" )
+
+    toast.success( "Usuario desconectado" )
+}
+
   return <AuthContext.Provider value={{
     isAuth,
-    login
+    login,
+    logout
   }}>{children}</AuthContext.Provider>;
 };
 
