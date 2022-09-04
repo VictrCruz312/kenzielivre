@@ -9,6 +9,7 @@ interface IContextAuth {
   isAuth:boolean
   login:(data: IDataLogin)=>void,
   logout:()=>void,
+  checkAuth:()=>void
 }
 
 interface IPropsAuth {
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
 
   const [ isAuth, setIsAuth ] = useState(false)
 
-  const { userLogin } = useRequest()
+  const { userLogin, updateUser } = useRequest()
   const navigate = useNavigate()
 
   const login = (data: IDataLogin) => {
@@ -59,12 +60,37 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
     localStorage.removeItem( "@KenzieLivre:User" )
 
     toast.success( "Usuario desconectado" )
-}
+  }
+
+  const checkAuth = () => {
+
+    const user = JSON.parse( localStorage.getItem("@KenzieLivre:User") as string )
+
+    const toastId = toast.loading("Verificando credenciais")
+
+    if( user ){
+      
+      updateUser( { checkAuth:true }, user.id )
+        .then( result => {
+
+          setIsAuth(true)
+
+          toast.success("Auto login realizado", {
+            id:toastId,
+          })
+        } )
+        .catch( _ => {
+
+          toast.dismiss( toastId )
+        } )
+    }
+  }
 
   return <AuthContext.Provider value={{
     isAuth,
     login,
-    logout
+    logout,
+    checkAuth
   }}>{children}</AuthContext.Provider>;
 };
 
