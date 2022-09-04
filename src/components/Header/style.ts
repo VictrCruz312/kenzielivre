@@ -4,8 +4,10 @@ export const HeaderStyled = styled.header`
     box-sizing: border-box;
 
     transition: 200ms;
+    
+    position: relative;
 
-    z-index: 9999999;
+    z-index: 100;
 
     width: 100%;
     height: 160px;
@@ -23,7 +25,6 @@ export const HeaderStyled = styled.header`
 
         height: 110px;
 
-        top:100px;        
         align-items: center;
     }
 

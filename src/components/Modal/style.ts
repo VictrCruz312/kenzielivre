@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from "styled-components"
 
 interface IPropsModalStyled {
-    isModalGlobal:boolean
+    isleaveGlobal:boolean
 }
 
 const handleHownModal = keyframes`
@@ -37,7 +37,7 @@ export const ModalStyled = styled.div<IPropsModalStyled>`
     top:160px;
     left:0;
 
-    z-index: 999999;
+    z-index: 50;
 
     width: 100%;
     height: auto;
@@ -48,10 +48,10 @@ export const ModalStyled = styled.div<IPropsModalStyled>`
     transform: translateY(-100%);
 
 
-    ${({ isModalGlobal }) =>
+    ${({ isleaveGlobal }) =>
         
         css`
-            animation: cubic-bezier(.59,-0.42,.33,1.39) ${isModalGlobal ? handleHownModal : handleRiseModal} 0.5s;
+            animation: cubic-bezier(.59,-0.42,.33,1.39) ${isleaveGlobal ? handleHownModal : handleRiseModal} 1s;
         `
     }
     
