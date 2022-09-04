@@ -77,6 +77,7 @@ const Header = ({
       </nav>
     </HeaderStyled>
     {isModalGlobal&&<Modal/>}
+
    </>
   );
 };

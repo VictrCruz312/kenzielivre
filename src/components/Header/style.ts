@@ -5,6 +5,8 @@ export const HeaderStyled = styled.header`
 
     transition: 200ms;
 
+    z-index: 9999999;
+
     width: 100%;
     height: 160px;
 
