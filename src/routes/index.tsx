@@ -10,6 +10,7 @@ import CreateProduct from "../pages/CreateProduct";
 import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
 import FinishCart from "../pages/FinishCart";
+import SectionProduct from "../pages/SectionProduct";
 
 const Routers = () => (
   <AnimatePresence>
@@ -18,6 +19,7 @@ const Routers = () => (
       <Route path="/register" element={<Register />} />
       <Route path="/home" element={<Home />} />
       <Route path="/home:id" element={<Product />} />
+      <Route path="/home/sectionProduct" element={<SectionProduct/>} />
       <Route path="/createProduct" element={<CreateProduct />} />
       <Route path="/cart" element={<Cart/>}>
         <Route path="/cart/checkout" element={<Checkout />} />
