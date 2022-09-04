@@ -1,6 +1,7 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
+import {  } from "../../services/api";
 import Banner from "./components/Banner";
 import Block from "./components/Block";
 import CarouselProduct from "./components/CarouselProduct";
@@ -11,6 +12,9 @@ import { products } from "./products";
 import { HomeStyled } from "./style";
 
 const Home = () => {
+
+  // TakePromotionProduct(  ).then( result => console.log( result ) ).catch( error => console.log( error ))
+
   return (
     <TransitionPage>
       <HomeStyled>
