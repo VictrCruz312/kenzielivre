@@ -31,7 +31,7 @@ const Home = () => {
 
 
   },[])
-
+  
   return (
     <TransitionPage>
       <HomeStyled>

@@ -49,7 +49,7 @@ export const ProfileStyled = styled.div`
     .profile__navegation--logged{
         box-sizing: border-box;
 
-        transition: 200ms;
+        transition: 1s;
 
         width: 100%;
         max-width: 452px;
@@ -61,7 +61,7 @@ export const ProfileStyled = styled.div`
 
         box-sizing: border-box;
 
-        transition: 200ms;
+        transition: 1s;
 
         width: 100%;
         max-width: 452px;
