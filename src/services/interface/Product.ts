@@ -13,3 +13,7 @@ export interface IProduct {
     userId?: number,
     warranty?: string,
 }
+
+export interface IProductReturn extends IProduct {
+    id:number
+}

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { IProduct } from "./interface/Product"
+import { IProduct, IProductReturn } from "./interface/Product"
 
 import { IcreateUser, IReturnData, IUserReturn, IUserVendedor } from "./interface/User"
 import { IUserCredentials } from "./interface/User"
@@ -97,3 +97,24 @@ export const TakePromotionProduct = ():Promise<IProduct[]> => {
 
     // POST / Precisa de autorização
 
+export const createProduct = ( product:IProduct ):Promise<IProductReturn> => {
+    
+    return  api.post("/product", product, config() )
+                .then( ({ data }) => data )
+}       
+
+    // PATCH / Precisa de autorização / precisa ser o dono
+
+export const updateProduct = ( upadateProduct:IProduct, idProduct:number ):Promise<IProductReturn> => {
+    
+    return  api.patch(`/product/${idProduct}`, upadateProduct, config() )
+                .then( ({ data }) => data )
+}   
+
+    // PATCH / Precisa de autorização / precisa ser o dono
+
+export const deleteProduct = ( idProduct:number ):Promise<object> => {
+    
+    return  api.delete(`/product/${idProduct}`, config() )
+                .then( ({ data }) => data )
+}   
