@@ -1,4 +1,3 @@
-import { NavigateFunction, useNavigate } from "react-router-dom";
 import Box from "../../components/Box";
 import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
@@ -7,14 +6,11 @@ import SumaryCart from "./components/SumaryCart";
 import { CartStyled } from "./style";
 
 const Cart = () => {
-  const navigate: NavigateFunction = useNavigate();
 
   return (
     <TransitionPage>
       <CartStyled>
         <Header
-          onCart={() => navigate("/cart")}
-          onModal={() => navigate("/cart")}
           onText={() => "teste"}
         />
         <div className="mainCart">

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { AuthProvider } from "./auth";
 import { ModalProvider } from "./Modal";
+import { RequestProvider } from "./Request";
 
 interface IPropsContext {
   children: ReactNode;
@@ -9,7 +10,9 @@ interface IPropsContext {
 const Context = ({ children }: IPropsContext) => (
   <AuthProvider>
     <ModalProvider>
-      {children}
+      <RequestProvider>
+        {children}
+      </RequestProvider>
     </ModalProvider>
   </AuthProvider>
 );

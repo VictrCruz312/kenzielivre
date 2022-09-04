@@ -11,12 +11,11 @@ import { products } from "./products";
 import { HomeStyled } from "./style";
 
 const Home = () => {
+
   return (
     <TransitionPage>
       <HomeStyled>
         <Header
-          onCart={( e)=>{}}
-          onModal={( e)=>{}}
           onText={( e)=>{}}
         />
         <Block>
