@@ -6,6 +6,7 @@ export interface IUserCliente {
     password?:string,
     auth?:string,
     profileImage?:string
+    checkAuth?:boolean
 }
 
 export interface IUserVendedor {
@@ -16,6 +17,7 @@ export interface IUserVendedor {
     imageLogo?: string,
     auth?: string,
     profileImage?:string
+    checkAuth?:boolean
 }
 
 export type IcreateUser = IUserVendedor | IUserCliente

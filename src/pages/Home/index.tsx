@@ -11,8 +11,13 @@ import CarouselProduct from "./components/CarouselProduct";
 import Category from "./components/Category";
 
 import { HomeStyled } from "./style";
+import { useAuth } from "../../Context/auth";
 
 const Home = () => {
+
+  const { checkAuth } = useAuth()
+
+  useEffect(()=>{ checkAuth() },[])
 
   const { TakePromotionProduct, takeUsers } = useRequest()
 
