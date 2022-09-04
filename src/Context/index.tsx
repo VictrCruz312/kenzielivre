@@ -8,12 +8,12 @@ interface IPropsContext {
 }
 
 const Context = ({ children }: IPropsContext) => (
-  <AuthProvider>
-    <ModalProvider>
-      <RequestProvider>
+  <RequestProvider>
+    <AuthProvider>
+      <ModalProvider>
         {children}
-      </RequestProvider>
-    </ModalProvider>
-  </AuthProvider>
+      </ModalProvider>
+    </AuthProvider>
+  </RequestProvider>
 );
 export default Context;

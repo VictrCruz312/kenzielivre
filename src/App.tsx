@@ -7,7 +7,13 @@ const App = () => {
     <>
       <Global />
       <Routes />
-      <Toaster />
+      <Toaster 
+        toastOptions={{
+          style: {
+            background: '#363636',
+            color: '#fff',
+          }}}
+      />
     </>
   );
 };
