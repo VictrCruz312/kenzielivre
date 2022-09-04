@@ -15,8 +15,6 @@ const Home = () => {
     <TransitionPage>
       <HomeStyled>
         <Header
-          onCart={( e)=>{}}
-          onModal={( e)=>{}}
           onText={( e)=>{}}
         />
         <Block>

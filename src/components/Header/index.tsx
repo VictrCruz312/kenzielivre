@@ -2,7 +2,7 @@ import { HeaderStyled } from "./style";
 
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
 
 import { AiOutlineSearch } from "react-icons/ai";
@@ -13,20 +13,16 @@ import Modal from "../Modal";
 import { useModal } from "../../Context/Modal";
 
 interface IPropsHeader {
-  onCart?: React.MouseEventHandler<HTMLButtonElement>;
-  onModal?: React.MouseEventHandler<HTMLButtonElement>;
   onText: (text: string) => void;
   awayLogo?: string;
 }
 
 const Header = ({
-  onCart,
-  onModal,
   onText,
   awayLogo = "/home",
 }: IPropsHeader) => {
 
-  const { isModalGlobal, stateModal } = useModal()
+  const { isModalGlobal, isleaveGlobal, stateModalGlobal } = useModal()
 
   const [text, setText] = useState("");
 
@@ -63,9 +59,9 @@ const Header = ({
         </button>
       </div>
       <nav className="navegation global">
-        <button className="navegation__options global" onClick={stateModal}>
+        <button className="navegation__options global" onClick={stateModalGlobal}>
           {
-            isModalGlobal ? 
+            isleaveGlobal ? 
               <AiOutlineCloseSquare color="primary" fontSize="medium"/>
               :
               <ArticleOutlinedIcon color="primary" fontSize="medium" />
@@ -77,6 +73,7 @@ const Header = ({
       </nav>
     </HeaderStyled>
     {isModalGlobal&&<Modal/>}
+
    </>
   );
 };

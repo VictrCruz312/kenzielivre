@@ -4,7 +4,8 @@ const ModalContext = createContext<IContextModal>({} as IContextModal);
 
 interface IContextModal {
   isModalGlobal:boolean,
-  stateModal:()=>void,
+  isleaveGlobal:boolean,
+  stateModalGlobal:() => void
 }
 
 interface IPropsModal {
@@ -14,12 +15,28 @@ interface IPropsModal {
 export const ModalProvider = ({ children }: IPropsModal) => {
 
   const [ isModalGlobal, setIsModalGlobal ] = useState(false)
+  const [ isleaveGlobal, setIsLeaveGlobal] = useState(false)
 
-  const stateModal = () => {setIsModalGlobal(!isModalGlobal)}
+  const stateModalGlobal = () => {
+
+    if( isModalGlobal && isleaveGlobal){
+
+      setIsLeaveGlobal(false)
+      setTimeout(()=>{
+        setIsModalGlobal(false)
+      } ,500)
+    }
+    if( !isModalGlobal && !isleaveGlobal){
+
+      setIsLeaveGlobal(true)
+      setIsModalGlobal(true)
+    }
+  }
 
   return <ModalContext.Provider value={{
     isModalGlobal,
-    stateModal
+    isleaveGlobal,
+    stateModalGlobal
   }}>{children}</ModalContext.Provider>;
 };
 
