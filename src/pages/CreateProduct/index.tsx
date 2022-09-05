@@ -1,5 +1,8 @@
-import { useEffect } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import Box from "../../components/Box";
 import { ButtonAll } from "../../components/Button";
 import Header from "../../components/Header";
@@ -9,6 +12,8 @@ import SelectEdited from "../../components/Select";
 import TextArea from "../../components/TextArea";
 import TransitionPage from "../../components/TransitionPage";
 import { useAuth } from "../../Context/auth";
+import { createProduct } from "../../services/api";
+import { shemaCreateProduct } from "../../validation/createProduct.validations";
 import CheckboxEdited from "../Register/components/Checkbox";
 import {
   ContainterCreateProduct,
@@ -17,28 +22,52 @@ import {
 } from "./style";
 
 const CreateProduct = () => {
+  const [promotion, setPromotion] = useState(false);
+
+  const navigate = useNavigate();
+
+  const User = JSON.parse(localStorage.getItem("@KenzieLivre:User") as string);
+
   interface IDataCreateProduct {
-    marca: string;
-    modelo: string;
-    preco: string;
-    cor: string;
-    descricao: string;
-    unidades: number;
-    garantia: string;
+    Userid: number;
+    brand: string;
+    category: string;
+    color: string;
+    currentPrice: number;
+    description: string;
+    images: string[];
+    lastPrice?: number;
+    model: string;
+    promotion?: boolean;
+    quantity: number;
+    warranty: string;
   }
 
-  const { checkAuth, checkLevelAuth } = useAuth()
+  const { checkAuth, checkLevelAuth } = useAuth();
 
-  useEffect(()=>{ checkAuth(); checkLevelAuth() },[])
+  useEffect(() => {
+    checkAuth();
+    checkLevelAuth();
+  }, []);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IDataCreateProduct>();
+  } = useForm<IDataCreateProduct>({
+    resolver: yupResolver(shemaCreateProduct),
+  });
 
-  const onSubmit = (data: IDataCreateProduct) => {
-    console.log(data);
+  const handleCreateUser = ({ ...propertiesData }: IDataCreateProduct) => {
+    createProduct(propertiesData)
+      .then((_) => {
+        console.log(propertiesData);
+        toast.success("Produto cadastrado");
+        navigate("/home");
+      })
+      .catch((_) => {
+        toast.error("Produto não cadastrado");
+      });
   };
 
   return (
@@ -46,22 +75,19 @@ const CreateProduct = () => {
       <CreateProductStyled>
         <Header onText={() => {}} />
         <ContainterCreateProduct>
+          <ModalApresentacao
+            title="Que tal cadastrar um novo produto?"
+            description="e poder faturar de montão!"
+          />
 
-            <ModalApresentacao
-              title="Que tal cadastrar um novo produto?"
-              description="e poder faturar de montão!"
-            />
-
-          <Box 
-            width="small" 
-            minWidth="563px" 
-            widthMobile="100%" 
-            height="large" 
+          <Box
+            width="small"
+            minWidth="563px"
+            widthMobile="100%"
+            height="large"
             MediaQuery="1250px"
           >
-            <FormStyled 
-              onSubmit={handleSubmit(onSubmit)}
-            >
+            <FormStyled onSubmit={handleSubmit(handleCreateUser)}>
               <h2 className="form__title">Criar Produto</h2>
 
               <div className="divInputs">
@@ -69,54 +95,68 @@ const CreateProduct = () => {
                   placeholder="Marca"
                   type="text"
                   isText
-                  name="marca"
+                  name="brand"
                   register={register}
-                  message={errors?.marca?.message}
+                  message={errors?.brand?.message}
                 />
                 <InputComponent
                   placeholder="Modelo"
                   type="text"
                   isText
-                  name="modelo"
+                  name="model"
                   register={register}
-                  message={errors?.modelo?.message}
+                  message={errors?.model?.message}
                 />
                 <InputComponent
                   placeholder="Preço"
                   type="text"
                   isText
-                  name="preco"
+                  name="currentPrice"
                   register={register}
-                  message={errors.preco?.message}
+                  message={errors.currentPrice?.message}
                 />
                 <InputComponent
                   placeholder="Cor"
                   type="text"
                   isText
-                  name="cor"
+                  name="color"
                   register={register}
-                  message={errors.cor?.message}
+                  message={errors.color?.message}
                 />
                 <TextArea
                   label="Descrição"
-                  name="descricao"
+                  name="description"
                   register={register}
-                  message={errors.descricao?.message}
+                  message={errors.description?.message}
                   size="small"
+                />
+                <SelectEdited
+                  arrayText={["Eletronico", "Limpesa"]}
+                  register={register}
+                  name="category"
+                  label="Categoria"
                 />
                 <InputComponent
                   placeholder="Unidades"
                   type="text"
                   isText
-                  name="unidades"
+                  name="quantity"
                   register={register}
-                  message={errors.unidades?.message}
+                  message={errors.quantity?.message}
                 />
                 <SelectEdited
                   arrayText={["6 Meses", "1 Ano", "2 Anos", "3 Anos"]}
                   register={register}
-                  name="type"
+                  name="warranty"
                   label="Garantia"
+                />
+                <InputComponent
+                  placeholder="Imagens"
+                  type="text"
+                  isText
+                  name="images"
+                  register={register}
+                  message={errors.images?.message}
                 />
               </div>
               <div className="divInferior">
