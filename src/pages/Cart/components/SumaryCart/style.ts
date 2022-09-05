@@ -19,23 +19,43 @@ export const Sumarystyled = styled.div`
     align-items: center;
 
     .checked {
-      width: 48px;
-      height: 48px;
+      width: 30px;
+      height: 30px;
       color: #13f200;
+
+      @media screen and (min-width: 431px) {
+        width: 48px;
+        height: 48px;
+      }
     }
 
     .notChecked {
-      width: 48px;
-      height: 48px;
+      width: 30px;
+      height: 30px;
       color: #ffffff;
+
+      @media screen and (min-width: 431px) {
+        width: 48px;
+        height: 48px;
+      }
     }
 
     .arrowOne {
+      width: 30%;
       fill: #13f200;
+
+      @media screen and (min-width: 431px) {
+        width: 98px;
+      }
     }
 
     .arrowTwo {
+      width: 30%;
       fill: #ffffff;
+
+      @media screen and (min-width: 431px) {
+        width: 98px;
+      }
     }
   }
 
