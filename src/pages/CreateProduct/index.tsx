@@ -160,7 +160,9 @@ const CreateProduct = () => {
                 />
               </div>
               <div className="divInferior">
-                <CheckboxEdited />
+                <CheckboxEdited 
+                  onChange={ ( check ) => {}}
+                />
                 <div className="divButtons">
                   <ButtonAll background="transp" size="large" type="button">
                     Adicionar mais imagens

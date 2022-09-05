@@ -17,6 +17,7 @@ import {
 import toast from "react-hot-toast";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/auth";
 
 export interface IDataRegister {
   name: string;
@@ -31,8 +32,10 @@ export interface IDataRegister {
 
 const Register = () => {
   const [auth, setAuth] = React.useState("");
+  const [acceptTerm, setAcceptTerm] = React.useState(false);
 
   const { createUser } = useRequest();
+  const { login } = useAuth()
 
   const navigate = useNavigate();
 
@@ -53,8 +56,11 @@ const Register = () => {
   }: IDataRegister) => {
     createUser(propertiesData)
       .then((_) => {
-        console.log(propertiesData);
+        const { email, password } = propertiesData
         toast.success("Usuario cadastrado");
+        
+        login( { email, password } )
+
         navigate("/login");
       })
       .catch((_) => {
@@ -73,7 +79,7 @@ const Register = () => {
               description="Cadastre-se já e encontre os melhores produtos pelo menor preço."
             />
           </Block>
-          <Box width="small" minWidth="563px" widthMobile="100%" height="100%">
+          <Box width="small" minWidth="563px" widthMobile="100%" height="100%" MediaQuery="1250px">
             <FormStyled onSubmit={handleSubmit(handleCreateUser)}>
               <h2 className="form__title">Criar Conta</h2>
 
@@ -113,7 +119,7 @@ const Register = () => {
                 type="password"
                 name="confirmPassword"
                 register={register}
-                message={errors.password?.message}
+                message={errors.confirmPassword?.message}
               />
               <Select
                 arrayText={["Vendedor", "Cliente"]}
@@ -121,6 +127,7 @@ const Register = () => {
                 name="auth"
                 label="Tipo de conta"
                 onChange={(e) => setAuth(e.target.value)}
+                message={errors?.auth?.message}
               />
               <Input
                 placeholder="URL imagem do perfil"
@@ -140,11 +147,20 @@ const Register = () => {
                   type="text"
                 />
               )}
-              <Checkbox />
-              <ButtonAll background="deft" size="large" type="submit">
+              <Checkbox 
+                onChange={ ( check ) => setAcceptTerm( check ) }
+              />
+              <ButtonAll 
+                onCLick={()=> !acceptTerm&&toast.error( "Aceite os termos" ) } 
+                background="deft" 
+                size="large" 
+                type={acceptTerm ? "submit" : "button"}
+              >
                 Criar conta
               </ButtonAll>
+
               <p className="form__optionsText">Já tem uma conta?</p>
+
               <ButtonAll
                 onCLick={() => navigate("/login")}
                 background="transp"

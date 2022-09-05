@@ -31,7 +31,7 @@ const Home = () => {
       .catch( error => console.log( error ) )
 
       takeUsers()
-      .then( users => setImageLogo( users ) )
+      .then( users => setImageLogo( users.filter( user => user.imageLogo ) ) )
       .catch( error => console.log( error ) )
 
 
