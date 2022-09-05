@@ -11,6 +11,8 @@ import { Block, FormStyled } from "./style";
 import { IDataLogin, useAuth } from "../../Context/auth"
 import { useNavigate } from "react-router-dom";
 
+import { yupResolver } from "@hookform/resolvers/yup"
+import { shemaLogin } from "../../validation/login.validation";
 
 const Login = () => {
 
@@ -21,7 +23,9 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors:{ email, password } },
-  } = useForm<IDataLogin>();
+  } = useForm<IDataLogin>({
+    resolver:yupResolver(shemaLogin)
+  });
 
   return (
     <TransitionPage>
