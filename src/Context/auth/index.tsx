@@ -37,6 +37,7 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
    
         localStorage.setItem( "@KenzieLivre:Token", accessToken )
         localStorage.setItem( "@KenzieLivre:User", JSON.stringify( user ) )
+        localStorage.setItem( "@KenzieLivre:Cart", JSON.stringify( [] ) )
 
         toast.success("usuario logado", {
           id:toastId,
