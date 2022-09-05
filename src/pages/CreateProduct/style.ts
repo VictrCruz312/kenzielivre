@@ -39,8 +39,7 @@ export const ContainterCreateProduct = styled.div`
   @media screen and (max-width: 1250px) {
     justify-content: center;
   }
-  @media(min-width:890px){
-
+  @media (min-width: 890px) {
     min-height: calc(100vh - 110px);
   }
 `;
@@ -66,23 +65,22 @@ export const FormStyled = styled.form`
   }
 
   .divInputs {
-
     width: auto;
     height: 500px;
 
     overflow-y: scroll;
-    
-    ::-webkit-scrollbar{
+
+    ::-webkit-scrollbar {
       width: 10px;
     }
 
-    ::-webkit-scrollbar-thumb{
+    ::-webkit-scrollbar-thumb {
       width: 10px;
       border-radius: 4px;
-      background-color: #3F3D56;
+      background-color: #3f3d56;
     }
   }
-  .divInferior{
+  .divInferior {
     width: 100%;
   }
   .divButtons {
@@ -120,4 +118,3 @@ export const FormStyled = styled.form`
     padding: 23px;
   }
 `;
-

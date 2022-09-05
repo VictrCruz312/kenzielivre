@@ -51,7 +51,7 @@ export const RegisterStyled = styled.div`
 
       color: #f5f5f5;
 
-      @media (min-width: 563px) {
+      @media (min-width: 1250px) {
         transform: translateX(0%);
 
         left: 1%;

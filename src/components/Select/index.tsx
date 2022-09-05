@@ -9,15 +9,26 @@ interface IPropsSelect {
   register?: any;
   name: string;
   label: string;
-  onChange?:( e:any ) => void
+  onChange?: (e: any) => void;
 }
 
-const SelectEdited = ({ arrayText, register, name, label, onChange }: IPropsSelect) => {
-  
+const SelectEdited = ({
+  arrayText,
+  register,
+  name,
+  label,
+  onChange,
+}: IPropsSelect) => {
   return (
     <SelectStyled margin="dense" variant="standard">
       <InputLabel id="Select">{label}</InputLabel>
-      <Select labelId="Select" id="Select" label={label} onChange={onChange} {...register(name)}>
+      <Select
+        labelId="Select"
+        id="Select"
+        label={label}
+        {...register(name)}
+        onChange={onChange}
+      >
         {arrayText.map((text) => (
           <MenuItem key={uuid()} value={text}>
             {text}
