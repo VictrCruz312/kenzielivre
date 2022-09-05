@@ -16,7 +16,7 @@ export const CardProductStyled = styled(Link)`
 
     border-radius: 4px;
 
-    background-color: #3F3D56;
+    background-color: #FFF;
 
     display: flex;
     flex-direction: column;

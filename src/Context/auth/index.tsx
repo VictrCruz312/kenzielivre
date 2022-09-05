@@ -6,10 +6,12 @@ import { useRequest } from "../Request";
 const AuthContext = createContext<IContextAuth>({} as IContextAuth);
 
 interface IContextAuth {
-  isAuth:boolean
+  isAuth:boolean,
+  isAuthLevel:boolean,
   login:(data: IDataLogin)=>void,
   logout:()=>void,
-  checkAuth:()=>void
+  checkAuth:()=>void,
+  checkLevelAuth:()=>void,
 }
 
 interface IPropsAuth {
@@ -24,6 +26,7 @@ export interface IDataLogin {
 export const AuthProvider = ({ children }: IPropsAuth) => {
 
   const [ isAuth, setIsAuth ] = useState(false)
+  const [ isAuthLevel, setIsAuthLevel ] = useState(false)
 
   const { userLogin, updateUser } = useRequest()
   const navigate = useNavigate()
@@ -56,9 +59,11 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
 
   const logout = () => {
     setIsAuth(false)
+    setIsAuthLevel(false)
 
     localStorage.removeItem( "@KenzieLivre:Token" )
     localStorage.removeItem( "@KenzieLivre:User" )
+    localStorage.removeItem( "@KenzieLivre:Cart" )
 
     toast.success( "Usuario desconectado" )
   }
@@ -84,11 +89,36 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
     }
   }
 
+  const checkLevelAuth = () => {
+
+    const user = JSON.parse( localStorage.getItem("@KenzieLivre:User") as string )
+
+    if( user ){
+
+      if( user.auth === "Vendedor" ){
+
+        setIsAuthLevel(true)
+      }else{
+        console.log( "não autorizei" )
+
+        setIsAuthLevel(false)
+        navigate("/home")
+      }
+
+    }else{
+
+      navigate("/home")
+    }
+
+  }
+
   return <AuthContext.Provider value={{
     isAuth,
+    isAuthLevel,
     login,
     logout,
-    checkAuth
+    checkAuth,
+    checkLevelAuth
   }}>{children}</AuthContext.Provider>;
 };
 
