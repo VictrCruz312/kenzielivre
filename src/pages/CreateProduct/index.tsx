@@ -27,9 +27,9 @@ const CreateProduct = () => {
     garantia: string;
   }
 
-  const { checkAuth } = useAuth()
+  const { checkAuth, checkLevelAuth } = useAuth()
 
-  useEffect(()=>{ checkAuth() },[])
+  useEffect(()=>{ checkAuth(); checkLevelAuth() },[])
 
   const {
     register,

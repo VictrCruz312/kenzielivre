@@ -15,9 +15,9 @@ import { useAuth } from "../../Context/auth";
 
 const Home = () => {
 
-  const { checkAuth } = useAuth()
+  const { checkAuth, checkLevelAuth } = useAuth()
 
-  useEffect(()=>{ checkAuth() },[])
+  useEffect(()=>{ checkAuth(); checkLevelAuth() },[])
 
   const { TakePromotionProduct, takeUsers } = useRequest()
 
