@@ -7,10 +7,11 @@ interface IPropsCardProduct {
     alt:string,
     lastValue:number,
     currentValue:number,
-    description:string
+    description:string,
+    promotion?:boolean,
 }
 
-const CardProduct = ( { id, src, alt, lastValue, currentValue, description }:IPropsCardProduct ) => {
+const CardProduct = ( { id, src, alt, lastValue, currentValue, description, promotion }:IPropsCardProduct ) => {
 
     return(
         <CardProductStyled to={`/home/${id}`}>
@@ -19,7 +20,7 @@ const CardProduct = ( { id, src, alt, lastValue, currentValue, description }:IPr
             </figure>
             <Information >
                 <span>
-                    <p className="information__lastValue">R$ {lastValue}</p>
+                    { promotion && <p className="information__lastValue">R$ {lastValue}</p>}
                     <p className="information__currentValue">R$ {currentValue}</p>
                 </span>
                 <p className="information__product">{description}</p>

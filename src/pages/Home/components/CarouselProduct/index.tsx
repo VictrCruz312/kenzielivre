@@ -54,7 +54,7 @@ const CarouselProduct = ( { arrayDados, type }:IPropsCarouselProduct ) => {
 
                     type === "Product" ?
 
-                    arrayDados?.map(({ id, images, description, lastPrice, currentPrice }:any) => 
+                    arrayDados?.map(({ id, images, description, lastPrice, currentPrice, promotion }:any) => 
 
                     <CardProduct 
                         key={uuid()} 
@@ -64,6 +64,7 @@ const CarouselProduct = ( { arrayDados, type }:IPropsCarouselProduct ) => {
                         lastValue={lastPrice} 
                         currentValue={currentPrice} 
                         description={description} 
+                        promotion={promotion}
                     />
                     )
 
