@@ -15,7 +15,7 @@ const SectionProduct = () => {
 
     const { TakeProductPerPage } = useRequest()
 
-    const [ page, setPage ] = useState(2)
+    const [ page, setPage ] = useState(0)
     const [ products, setProducts ] = useState<IProduct[]>()
 
     useEffect(()=>{

@@ -14,7 +14,7 @@ export const CardProductStyled = styled(Link)`
     padding: none;
     margin: 10px 20px 10px 0px;
 
-    border-radius: 4px;
+    border-radius: 8px;
 
     background-color: #FFF;
 
@@ -48,7 +48,7 @@ export const CardProductStyled = styled(Link)`
     .block{
         box-sizing: border-box;
         
-        border-radius: 4px 4px 0px 0px;
+        border-radius: 8px 8px 0px 0px;
 
         width: 250px;
         max-width: 250px;
@@ -103,6 +103,18 @@ export const Information = styled.div`
     }
 
     .information__product{
+        box-sizing: border-box;
+
+        width: 100%;
+        max-width: 230px;
+        height: 45px;
+        max-height: 45px;
+
+        white-space: pre-line;
+        overflow: hidden;            
+
+        text-overflow: ellipsis;  
+
         font-size: 15px;
         font-weight: 300;
 

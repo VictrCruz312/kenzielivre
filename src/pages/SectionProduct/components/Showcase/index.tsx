@@ -12,7 +12,7 @@ const Showcase = ( { arrayProduct }:IPropsShowcase ) => {
     return(
         <ShowcaseStyled>
             {
-                arrayProduct?.map(({ id, images, description, lastPrice, currentPrice }:any) => 
+                arrayProduct?.map(({ id, images, description, lastPrice, currentPrice, promotion }:any) => 
 
                 <CardProduct 
                     key={uuid()} 
@@ -22,6 +22,7 @@ const Showcase = ( { arrayProduct }:IPropsShowcase ) => {
                     lastValue={lastPrice} 
                     currentValue={currentPrice} 
                     description={description} 
+                    promotion={promotion}
                 />
                 )
             }
