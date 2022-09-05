@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Box from "../../components/Box";
 import { ButtonAll } from "../../components/Button";
@@ -7,6 +8,7 @@ import ModalApresentacao from "../../components/modalApresentacao";
 import SelectEdited from "../../components/Select";
 import TextArea from "../../components/TextArea";
 import TransitionPage from "../../components/TransitionPage";
+import { useAuth } from "../../Context/auth";
 import CheckboxEdited from "../Register/components/Checkbox";
 import {
   ContainterCreateProduct,
@@ -24,6 +26,10 @@ const CreateProduct = () => {
     unidades: number;
     garantia: string;
   }
+
+  const { checkAuth } = useAuth()
+
+  useEffect(()=>{ checkAuth() },[])
 
   const {
     register,
