@@ -1,3 +1,4 @@
+import { Outlet, useParams } from "react-router-dom";
 import Box from "../../components/Box";
 import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
@@ -6,6 +7,7 @@ import SumaryCart from "./components/SumaryCart";
 import { CartStyled } from "./style";
 
 const Cart = () => {
+  const { checkout } = useParams();
   return (
     <TransitionPage>
       <CartStyled>
@@ -23,7 +25,7 @@ const Cart = () => {
               height="100%"
               MediaQuery="1024px"
             >
-              <SumaryCart />
+              {checkout === "checkout" ? <Outlet /> : <SumaryCart />}
             </Box>
           </div>
         </div>
