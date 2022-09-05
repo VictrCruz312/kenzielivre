@@ -113,7 +113,7 @@ const Register = () => {
                 type="password"
                 name="confirmPassword"
                 register={register}
-                message={errors.password?.message}
+                message={errors.confirmPassword?.message}
               />
               <Select
                 arrayText={["Vendedor", "Cliente"]}
