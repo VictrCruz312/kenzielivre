@@ -31,6 +31,7 @@ export interface IDataRegister {
 
 const Register = () => {
   const [auth, setAuth] = React.useState("");
+  const [acceptTerm, setAcceptTerm] = React.useState(false);
 
   const { createUser } = useRequest();
 
@@ -73,7 +74,7 @@ const Register = () => {
               description="Cadastre-se já e encontre os melhores produtos pelo menor preço."
             />
           </Block>
-          <Box width="small" minWidth="563px" widthMobile="100%" height="100%">
+          <Box width="small" minWidth="563px" widthMobile="100%" height="100%" MediaQuery="1250px">
             <FormStyled onSubmit={handleSubmit(handleCreateUser)}>
               <h2 className="form__title">Criar Conta</h2>
 
@@ -121,6 +122,7 @@ const Register = () => {
                 name="auth"
                 label="Tipo de conta"
                 onChange={(e) => setAuth(e.target.value)}
+                message={errors?.auth?.message}
               />
               <Input
                 placeholder="URL imagem do perfil"
@@ -140,11 +142,20 @@ const Register = () => {
                   type="text"
                 />
               )}
-              <Checkbox />
-              <ButtonAll background="deft" size="large" type="submit">
+              <Checkbox 
+                onChange={ ( check ) => setAcceptTerm( check ) }
+              />
+              <ButtonAll 
+                onCLick={()=> !acceptTerm&&toast.error( "Aceite os termos" ) } 
+                background="deft" 
+                size="large" 
+                type={acceptTerm ? "submit" : "button"}
+              >
                 Criar conta
               </ButtonAll>
+
               <p className="form__optionsText">Já tem uma conta?</p>
+
               <ButtonAll
                 onCLick={() => navigate("/login")}
                 background="transp"

@@ -10,6 +10,7 @@ interface IPropsSelect {
   name: string;
   label: string;
   onChange?: (e: any) => void;
+  message?:string,
 }
 
 const SelectEdited = ({
@@ -17,15 +18,16 @@ const SelectEdited = ({
   register,
   name,
   label,
+  message,
   onChange,
 }: IPropsSelect) => {
   return (
-    <SelectStyled margin="dense" variant="standard">
+    <SelectStyled error={ message ? true : false } margin="dense" variant="standard">
       <InputLabel id="Select">{label}</InputLabel>
       <Select
         labelId="Select"
         id="Select"
-        label={label}
+        label={ message ? message : label}
         {...register(name)}
         onChange={onChange}
       >

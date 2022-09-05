@@ -38,6 +38,8 @@ export const RegisterStyled = styled.div`
       left: 50%;
       top: 55px;
 
+      
+
       width: 250px;
       text-align: center;
       transform: translateX(-50%);
