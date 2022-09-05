@@ -14,10 +14,12 @@ import { MdLibraryAdd } from 'react-icons/md';
 import { AiOutlineFileSearch } from 'react-icons/ai';
 
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../../Context/auth';
 
 const ListEdited = () => {
 
     const navigate = useNavigate()
+    const { isAuth } = useAuth()
 
     const [open, setOpen] = React.useState(true);
 
@@ -65,7 +67,7 @@ const ListEdited = () => {
             primary="Produtos" />
         </ListItemButton>
 
-        <ListItemButton
+       {isAuth&&<ListItemButton
             onClick={()=> navigate("/createProduct")}
         >
             <ListItemIcon>
@@ -73,7 +75,7 @@ const ListEdited = () => {
             </ListItemIcon>
             <ListItemText 
                 primary="Criar Produto" />
-        </ListItemButton>
+        </ListItemButton>}
 
         <ListItemButton 
             onClick={openCategory}

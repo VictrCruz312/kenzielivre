@@ -13,7 +13,7 @@ interface IPropsCardProduct {
 const CardProduct = ( { id, src, alt, lastValue, currentValue, description }:IPropsCardProduct ) => {
 
     return(
-        <CardProductStyled to={`/home:${id}`}>
+        <CardProductStyled to={`/home/${id}`}>
             <figure className="block">
                 <img className="block__image" src={src} alt={alt} />
             </figure>

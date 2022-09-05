@@ -37,6 +37,7 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
    
         localStorage.setItem( "@KenzieLivre:Token", accessToken )
         localStorage.setItem( "@KenzieLivre:User", JSON.stringify( user ) )
+        localStorage.setItem( "@KenzieLivre:Cart", JSON.stringify( [] ) )
 
         toast.success("usuario logado", {
           id:toastId,
@@ -66,23 +67,20 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
 
     const user = JSON.parse( localStorage.getItem("@KenzieLivre:User") as string )
 
-    const toastId = toast.loading("Verificando credenciais")
-
     if( user ){
       
       updateUser( { checkAuth:true }, user.id )
         .then( result => {
 
           setIsAuth(true)
-
-          toast.success("Auto login realizado", {
-            id:toastId,
-          })
         } )
         .catch( _ => {
 
-          toast.dismiss( toastId )
+          navigate("/home")
         } )
+    }else{
+
+      navigate("/home")
     }
   }
 
