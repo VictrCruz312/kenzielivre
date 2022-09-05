@@ -44,30 +44,36 @@ const ProductCart = () => {
           <div className="containerImg">
             <img src="./assets/background.svg" alt={product.nome} />
           </div>
-          <div className="containerNome">
-            <p>{product.nome}</p>
-            <span>código: {product.codigo}</span>
-          </div>
-          <div className="containerCor">
-            <p>{product.color}</p>
-          </div>
-          <div className="containerAmount">
-            <p>{product.amount}</p>
-            <div className="BtnsAmount">
-              <button>
-                <AiOutlinePlus />
-              </button>
-              <button>
-                <AiOutlineMinus />
-              </button>
+          <div className="containerNameCorAmount">
+            <div className="nameAndCor">
+              <div className="containerNome">
+                <p>{product.nome}</p>
+                <span>código: {product.codigo}</span>
+              </div>
+              <div className="containerCor">
+                <p>{product.color}</p>
+              </div>
+            </div>
+            <div className="containerAmount">
+              <p>{product.amount}</p>
+              <div className="BtnsAmount">
+                <button>
+                  <AiOutlinePlus />
+                </button>
+                <button>
+                  <AiOutlineMinus />
+                </button>
+              </div>
             </div>
           </div>
-          <div className="containerPrice">
-            <p>{product.price}</p>
+          <div className="containerPriceRemove">
+            <div className="containerPrice">
+              <p>R$ {product.price.toFixed(2)}</p>
+            </div>
+            <button className="containerRemove">
+              <GrClose />
+            </button>
           </div>
-          <button className="containerRemove">
-            <GrClose />
-          </button>
         </li>
       ))}
     </ProductCartStyled>
