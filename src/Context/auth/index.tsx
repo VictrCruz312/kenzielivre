@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
 
   const login = (data: IDataLogin) => {
 
-    const toastId = toast.loading( "teste" )
+    const toastId = toast.loading( "Procurado usuario" )
 
     userLogin( data )
       .then( ({ accessToken, user }) => {

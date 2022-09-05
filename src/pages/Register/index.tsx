@@ -17,6 +17,7 @@ import {
 import toast from "react-hot-toast";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/auth";
 
 export interface IDataRegister {
   name: string;
@@ -34,6 +35,7 @@ const Register = () => {
   const [acceptTerm, setAcceptTerm] = React.useState(false);
 
   const { createUser } = useRequest();
+  const { login } = useAuth()
 
   const navigate = useNavigate();
 
@@ -54,8 +56,11 @@ const Register = () => {
   }: IDataRegister) => {
     createUser(propertiesData)
       .then((_) => {
-        console.log(propertiesData);
+        const { email, password } = propertiesData
         toast.success("Usuario cadastrado");
+        
+        login( { email, password } )
+
         navigate("/login");
       })
       .catch((_) => {
