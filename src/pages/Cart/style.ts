@@ -45,7 +45,6 @@ export const CartStyled = styled.div`
       justify-content: space-between;
       padding-top: 0;
     }
-
     .containerBox {
       @media screen and (max-width: 1024px) {
         display: flex;
