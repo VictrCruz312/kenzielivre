@@ -8,7 +8,6 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
 import { useRequest } from "../../Context/Request";
-import { deleteProduct } from "../../services/api";
 
 import {
   ContainerProduct,
@@ -20,7 +19,7 @@ import {
 const Product = () => {
   const navigate = useNavigate();
 
-  const { SearchProductId } = useRequest();
+  const { SearchProductId, deleteProduct } = useRequest();
   const { id } = useParams();
 
   const [product, setProduct] = useState<any>();
@@ -38,8 +37,6 @@ const Product = () => {
       localStorage.getItem("@KenzieLivre:Cart") as string
     );
     arrayCart.push(product);
-
-    console.log(arrayCart);
 
     localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(arrayCart));
 
