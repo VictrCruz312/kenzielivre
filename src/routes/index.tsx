@@ -11,6 +11,7 @@ import Cart from "../pages/Cart";
 import Checkout from "../pages/Cart/components/Checkout";
 import FinishCart from "../pages/FinishCart";
 import SectionProduct from "../pages/SectionProduct";
+import UpdateProduct from "../pages/UpdateProduct";
 
 const Routers = () => (
   <AnimatePresence>
@@ -19,6 +20,7 @@ const Routers = () => (
       <Route path="/register" element={<Register />} />
       <Route path="/home" element={<Home />} />
       <Route path="/home/:id" element={<Product />} />
+      <Route path="/home/updateProduct/:id" element={<UpdateProduct />} />
       <Route path="/home/sectionProduct" element={<SectionProduct />} />
       <Route path="/createProduct" element={<CreateProduct />} />
       <Route path="/cart" element={<Cart />}>
