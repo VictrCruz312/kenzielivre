@@ -9,7 +9,7 @@ import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
 import { useRequest } from "../../Context/Request";
 
-import { v4 as uuid } from "uuid"
+import { v4 as uuid } from "uuid";
 
 import {
   ContainerProduct,
@@ -22,7 +22,8 @@ import { useModal } from "../../Context/Modal";
 const Product = () => {
   const navigate = useNavigate();
 
-  const { leaveModalFunction } = useModal()
+  const { leaveModalFunction } = useModal();
+  useEffect(() => leaveModalFunction(), []);
 
   const { SearchProductId, deleteProduct } = useRequest();
   const { id } = useParams();
@@ -31,48 +32,45 @@ const Product = () => {
   const [imageMain, setImageMain] = useState<string>("");
 
   useEffect(() => {
-    leaveModalFunction()
+    leaveModalFunction();
 
     SearchProductId(Number(id))
       .then((result) => {
-        setProduct(result)
+        setProduct(result);
         // @ts-ignore ou // @ts-expect-error
-        setImageMain( result?.images[0] )
+        setImageMain(result?.images[0]);
       })
       .catch((error) => console.log(error));
   }, []);
 
   const user = JSON.parse(localStorage.getItem("@KenzieLivre:User") as string);
 
-
   const addCart = () => {
     const arrayCart = JSON.parse(
       localStorage.getItem("@KenzieLivre:Cart") as string
     );
 
-      let existe = false
+    let existe = false;
 
-      const productCart = arrayCart.map( ( productCart:any ) => {
+    const productCart = arrayCart.map((productCart: any) => {
+      if (productCart.id == product.id) {
+        productCart.productQuantity++;
 
-        if( productCart.id == product.id ){
-          
-          productCart.productQuantity++
+        existe = true;
 
-          existe = true
-
-          return productCart
-        }
-
-        return productCart
-      } )
-
-      if(!existe){
-        product.productQuantity = 1
-
-        productCart.push( product )
+        return productCart;
       }
 
-      localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(productCart));
+      return productCart;
+    });
+
+    if (!existe) {
+      product.productQuantity = 1;
+
+      productCart.push(product);
+    }
+
+    localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(productCart));
   };
 
   const addGoCart = () => {
@@ -102,13 +100,13 @@ const Product = () => {
                   type="imgExtraProduct"
                   alt={product.model}
                   src={image}
-                  takeImage={( img )=> setImageMain( img )}
+                  takeImage={(img) => setImageMain(img)}
                 />
               ))}
             </div>
             <div className="mainImage">
               <img
-                src={imageMain && imageMain }
+                src={imageMain && imageMain}
                 alt={product && product?.model}
               />
             </div>

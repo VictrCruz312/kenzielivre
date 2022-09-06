@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { MdCheckCircleOutline, MdRadioButtonUnchecked } from "react-icons/md";
 import { ButtonAll } from "../../../../components/Button";
 import TransitionPage from "../../../../components/TransitionPage";
+import { useCart } from "../../../../Context/Cart";
 import Cartao from "../Cartao";
 import Pix from "../Pix";
 import { CheckoutStyled } from "./style";
 
 const Checkout = () => {
   const [payment, setPayment] = useState<string>("cartao");
+  const { navigation } = useCart();
 
   return (
     <TransitionPage>
@@ -78,7 +80,12 @@ const Checkout = () => {
           </div>
         </div>
         <div className="buttons">
-          <ButtonAll type="button" size="large" background="greey">
+          <ButtonAll
+            onCLick={() => navigation("/cart")}
+            type="button"
+            size="large"
+            background="greey"
+          >
             Voltar
           </ButtonAll>
         </div>

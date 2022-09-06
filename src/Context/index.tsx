@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { AuthProvider } from "./auth";
+import { CartProvider } from "./Cart";
 import { ModalProvider } from "./Modal";
 import { RequestProvider } from "./Request";
 
@@ -11,7 +12,7 @@ const Context = ({ children }: IPropsContext) => (
   <RequestProvider>
     <AuthProvider>
       <ModalProvider>
-        {children}
+        <CartProvider>{children}</CartProvider>
       </ModalProvider>
     </AuthProvider>
   </RequestProvider>
