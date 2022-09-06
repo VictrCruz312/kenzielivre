@@ -27,7 +27,7 @@ export const ContainerProduct = styled.div`
 
   display: flex;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1133px) {
     flex-direction: column;
     align-items: center;
     gap: 20px;
@@ -37,11 +37,11 @@ export const ContainerProduct = styled.div`
 
 export const DivImageProduct = styled.div`
   width: 100%;
-  max-width: 877px;
+  max-width: 827px;
   height: 100%;
   max-height: 636px;
 
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 4px;
 
   @media screen and (max-width: 768px) {
@@ -50,6 +50,7 @@ export const DivImageProduct = styled.div`
 
   .miniImage {
     width: 100%;
+    overflow-x: scroll;
 
     background-color: #1c1b23;
     padding-left: 10px;
@@ -91,7 +92,6 @@ export const DivImageProduct = styled.div`
     height: 100%;
 
     @media screen and (max-width: 768px) {
-
       height: 100%;
     }
 
