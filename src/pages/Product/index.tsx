@@ -43,11 +43,32 @@ const Product = () => {
     const arrayCart = JSON.parse(
       localStorage.getItem("@KenzieLivre:Cart") as string
     );
-    arrayCart.push(product);
 
-    localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(arrayCart));
+      let existe = false
 
-    toast.success("Produto adicionado");
+      const productCart = arrayCart.map( ( productCart:any ) => {
+
+        if( productCart.id == product.id ){
+          
+          productCart.productQuantity++
+
+          existe = true
+
+          return productCart
+        }
+
+        return productCart
+      } )
+
+      if(!existe){
+        product.productQuantity = 1
+
+        productCart.push( product )
+      }
+
+      console.log( productCart )
+
+      localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(productCart));
   };
 
   const addGoCart = () => {
