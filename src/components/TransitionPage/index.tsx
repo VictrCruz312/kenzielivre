@@ -11,7 +11,7 @@ const TransitionPage = ({ children }: IPropsTransitionPage) => {
       initial={{ scaleY: 0 }}
       animate={{ scaleY: 1 }}
       exit={{ scaleY: 0 }}
-      transition={{ delay: 0, duration: 0.4 }}
+      transition={{ delay: 0, duration: 0.3 }}
     >
       {children}
     </motion.div>
