@@ -9,34 +9,28 @@ import { useEffect, useState } from "react"
 import { useRequest } from "../../Context/Request"
 import { IProduct } from "../Home/components/CarouselProduct"
 import StatePage from "./components/statePage"
-import toast from "react-hot-toast"
+
 
 const SectionProduct = () => {
 
     const { TakeProductPerPage } = useRequest()
 
-    const [ page, setPage ] = useState(0)
     const [ products, setProducts ] = useState<IProduct[]>()
 
-    useEffect(()=>{
+    const takePage = ( page:number ) => {
 
         TakeProductPerPage( page )
-            .then( product => {
+            .then( result => {
 
-                console.log( page )
+                if( result.length != 0 ){
 
-                console.log( product.length > 0 )
-
-                if(product.length > 0){
-                    setProducts( product )
-                }else{
-
-                    toast("sem mais páginas")
+                    setProducts( result )
                 }
-            } )
-            .catch( error => console.log( error ) )
 
-    },[page])
+            } )
+    }
+
+    useEffect(()=> { takePage( 1 ) } ,[])
 
     return(
         <TransitionPage>
@@ -51,7 +45,7 @@ const SectionProduct = () => {
                     />
                 </Block>
                 <StatePage
-                    setPage={setPage}    
+                    takePage={takePage}
                 />
                 <Footer/>
             </SectionProductStyled>
