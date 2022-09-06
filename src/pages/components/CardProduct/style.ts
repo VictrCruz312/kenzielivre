@@ -24,7 +24,6 @@ export const CardProductStyled = styled(Link)`
     align-items: center;
 
     opacity: 0%;
-    transform: translateY(-100%);
 
     text-decoration: none;
 
@@ -32,16 +31,11 @@ export const CardProductStyled = styled(Link)`
         box-shadow: 0px 0px 7px -2px rgba(63, 61, 86, 0.5);
     }
 
-    animation: carAnimation 1s forwards;
+    animation: carAnimation 1.5s forwards;
 
     @keyframes carAnimation {
-        70%{
-            opacity: 100%;
-            transform: translateY(20%);
-        }
         to{
             opacity: 100%;
-            transform: translateY(0%);
         }
     }
 
@@ -65,6 +59,8 @@ export const CardProductStyled = styled(Link)`
         }
     }
 `
+
+
 
 export const Information = styled.div`
     
