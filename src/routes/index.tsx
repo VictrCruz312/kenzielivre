@@ -25,8 +25,8 @@ const Routers = () => (
       <Route path="/createProduct" element={<CreateProduct />} />
       <Route path="/cart" element={<Cart />}>
         <Route path="/cart/:checkout" element={<Checkout />} />
-        <Route path="/cart/finishCart" element={<FinishCart />} />
       </Route>
+      <Route path="/cart/finishCart" element={<FinishCart />} />
       <Route path="*" element={<Navigate to="/home" />} />
     </Routes>
   </AnimatePresence>
