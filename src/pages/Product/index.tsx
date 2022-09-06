@@ -49,9 +49,12 @@ const Product = () => {
   };
 
   const deleteProductFunction = () => {
-    deleteProduct(product.id);
-    toast.success("Produto deletado");
-    navigate("/home");
+    deleteProduct(product.id)
+      .then((res) => {
+        toast.success("Produto deletado");
+        navigate("/home");
+      })
+      .catch((err) => toast.error("Erro ao deletar o produto"));
   };
 
   return (
