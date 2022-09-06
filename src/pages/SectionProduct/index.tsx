@@ -9,9 +9,12 @@ import { useEffect, useState } from "react"
 import { useRequest } from "../../Context/Request"
 import { IProduct } from "../Home/components/CarouselProduct"
 import StatePage from "./components/statePage"
+import { useModal } from "../../Context/Modal"
 
 
 const SectionProduct = () => {
+
+    const { leaveModalFunction } = useModal()
 
     const { TakeProductPerPage } = useRequest()
 
@@ -30,7 +33,7 @@ const SectionProduct = () => {
             } )
     }
 
-    useEffect(()=> { takePage( 1 ) } ,[])
+    useEffect(()=> { takePage( 1 ); leaveModalFunction() } ,[])
 
     return(
         <TransitionPage>

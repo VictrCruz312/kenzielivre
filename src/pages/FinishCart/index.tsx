@@ -9,6 +9,8 @@ import { FinishCartStyled, ContainerForm, FormStyled } from "./style";
 import { useForm } from "react-hook-form";
 import InputComponent from "../../components/Inputs";
 import TextArea from "../../components/TextArea";
+import { useEffect } from "react";
+import { useModal } from "../../Context/Modal";
 
 interface IEndereco {
   cep: string;
@@ -25,6 +27,10 @@ export interface IEnvioEndereco {
 }
 
 const FinishCart = () => {
+
+  const { leaveModalFunction } = useModal()
+  useEffect(()=>leaveModalFunction(),[])
+
   const {
     register,
     handleSubmit,
