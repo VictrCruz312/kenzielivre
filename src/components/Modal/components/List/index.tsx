@@ -21,7 +21,7 @@ const ListEdited = () => {
     const navigate = useNavigate()
     const { isAuth, isAuthLevel } = useAuth()
 
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
 
     const openCategory = () => {
         setOpen(!open);
@@ -94,9 +94,43 @@ const ListEdited = () => {
                         <ListItemIcon>
                             <StarBorder />
                         </ListItemIcon>
-                    <ListItemText primary="Eletronicos" />
+                    <ListItemText primary="Tecnologia" />
                 </ListItemButton>
 
+                <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+                        <ListItemIcon>
+                            <StarBorder />
+                        </ListItemIcon>
+                    <ListItemText primary="Limpeza" />
+                </ListItemButton>
+
+                <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+                        <ListItemIcon>
+                            <StarBorder />
+                        </ListItemIcon>
+                    <ListItemText primary="Moda" />
+                </ListItemButton>
+
+                <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+                        <ListItemIcon>
+                            <StarBorder />
+                        </ListItemIcon>
+                    <ListItemText primary="Moveis" />
+                </ListItemButton>
+
+                <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+                        <ListItemIcon>
+                            <StarBorder />
+                        </ListItemIcon>
+                    <ListItemText primary="Ferramentas" />
+                </ListItemButton>
+
+                <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+                        <ListItemIcon>
+                            <StarBorder />
+                        </ListItemIcon>
+                    <ListItemText primary="Eletromesticos" />
+                </ListItemButton>
             </List>
         </Collapse>
       </List>

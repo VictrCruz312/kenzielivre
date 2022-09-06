@@ -37,7 +37,7 @@ export const ModalStyled = styled.div<IPropsModalStyled>`
     top:160px;
     left:0;
 
-    z-index: 50;
+    z-index:99999;
 
     width: 100%;
     height: auto;
@@ -46,7 +46,7 @@ export const ModalStyled = styled.div<IPropsModalStyled>`
     backdrop-filter: blur(20px);
     
     transform: translateY(-100%);
-
+    
 
     ${({ isleaveGlobal }) =>
         
