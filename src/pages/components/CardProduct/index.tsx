@@ -28,10 +28,10 @@ const CardProduct = ({
       <Information>
         <span>
           {promotion && (
-            <p className="information__lastValue">R$ {lastValue.toFixed(2)}</p>
+            <p className="information__lastValue">R$ {Number(lastValue)?.toFixed(2)}</p>
           )}
           <p className="information__currentValue">
-            R$ {currentValue.toFixed(2)}
+            R$ {Number(currentValue).toFixed(2) }
           </p>
         </span>
         <p className="information__product">{description}</p>
