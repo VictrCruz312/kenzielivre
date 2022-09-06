@@ -153,7 +153,12 @@ const Register = () => {
                   type="text"
                 />
               )}
-              <Checkbox onChange={(check) => setAcceptTerm(check)} />
+              <Checkbox
+                onChange={(check) => setAcceptTerm(check)}
+                name="teste"
+                register={() => {}}
+                message={undefined}
+              />
               <ButtonAll
                 onCLick={() => !acceptTerm && toast.error("Aceite os termos")}
                 background="deft"
