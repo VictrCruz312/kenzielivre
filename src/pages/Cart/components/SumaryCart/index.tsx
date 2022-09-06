@@ -21,7 +21,7 @@ const SumaryCart = () => {
             fill="white"
           />
         </svg>
-        <MdRadioButtonUnchecked className="notChecked" />
+        <MdCheckCircleOutline className="notChecked" />
         <svg
           width="98"
           className="arrowTwo"

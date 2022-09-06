@@ -38,7 +38,7 @@ export const CartStyled = styled.div`
     padding-top: 24px;
 
     @media screen and (min-width: 1024px) {
-      background-image: url("./assets/backgroundCart.svg");
+      background-image: url("../assets/backgroundCart.svg");
       background-repeat: no-repeat;
       background-position: center center;
       flex-direction: row;
@@ -59,6 +59,7 @@ export const CartStyled = styled.div`
       display: flex;
       justify-content: center;
       width: 100%;
+      height: 100%;
       @media screen and (max-width: 1024px) {
         width: 100%;
         max-width: 563px;
