@@ -36,9 +36,8 @@ const Home = () => {
       .then( users => setImageLogo( users.filter( user => user.imageLogo ) ) )
       .catch( error => console.log( error ) )
 
-
   },[])
-  
+
   return (
     <TransitionPage>
       <HomeStyled>
