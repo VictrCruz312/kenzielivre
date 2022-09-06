@@ -23,7 +23,11 @@ export const shemaRegisterVendedor = yup.object().shape({
   password: yup
     .string()
     .required("Senha obrigatoria")
-    .min(6, "No minimo 6 caracteres"),
+    .min(6, "No minimo 6 caracteres")
+    .matches(/[A-Z]/, "Deve conter ao menos 1 letra maiúscula")
+    .matches(/([a-z])/, "Deve conter ao menos 1 letra minúscula")
+    .matches(/(\d)/, "Deve conter ao menos 1 número")
+    .matches(/(\W)|_/, "Deve conter ao menos 1 caracter especial"),
   confirmPassword: yup
     .string()
     .required("Confirmar senha")
