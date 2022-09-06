@@ -21,10 +21,10 @@ export const CartaoStyled = styled.div`
     }
 
     .buttonFormCartao {
-      padding-top: 60px;
+      padding-top: 50px;
 
       @media screen and (min-width: 563px) {
-        padding-top: 40px;
+        padding-top: 20px;
       }
     }
   }

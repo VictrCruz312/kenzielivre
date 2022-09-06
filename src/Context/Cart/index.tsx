@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import { ICartaoForm } from "../../pages/Cart/components/Cartao";
 
 interface IContextCart {
   removeProduct: (idProduct: number) => void;
@@ -8,6 +9,8 @@ interface IContextCart {
   cartRemove: () => void;
   totalCart: () => number;
   setListCart: React.Dispatch<React.SetStateAction<IProductCart[]>>;
+  saveCartao: (data: ICartaoForm) => void;
+  cartao: ICartaoForm | {};
 }
 
 interface IPropsCart {
@@ -36,6 +39,7 @@ export const CartProvider = ({ children }: IPropsCart) => {
   const [listCart, setListCart] = useState<Array<IProductCart>>(
     JSON.parse(localStorage.getItem("@KenzieLivre:Cart") as string)
   );
+  const [cartao, setCartao] = useState<ICartaoForm | {}>({});
 
   const removeProduct = (idProduct: number) => {
     const newList = listCart.filter((product) => product.id !== idProduct);
@@ -60,6 +64,10 @@ export const CartProvider = ({ children }: IPropsCart) => {
     }, 0);
   };
 
+  const saveCartao = (cartao: ICartaoForm) => {
+    setCartao(cartao);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -69,6 +77,8 @@ export const CartProvider = ({ children }: IPropsCart) => {
         cartRemove,
         totalCart,
         setListCart,
+        cartao,
+        saveCartao,
       }}
     >
       {children}
