@@ -9,6 +9,8 @@ import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
 import { useRequest } from "../../Context/Request";
 
+import { v4 as uuid } from "uuid"
+
 import {
   ContainerProduct,
   DivImageProduct,
@@ -31,6 +33,7 @@ const Product = () => {
   }, []);
 
   const user = JSON.parse(localStorage.getItem("@KenzieLivre:User") as string);
+  console.log( user )
 
   const addCart = () => {
     const arrayCart = JSON.parse(
@@ -66,6 +69,7 @@ const Product = () => {
             <div className="miniImage">
               {product?.images?.map((image: any) => (
                 <CardExtra
+                  key={uuid()}
                   type="imgExtraProduct"
                   alt={product.model}
                   src={image}
@@ -113,7 +117,7 @@ const Product = () => {
                   children="Adicionar ao carrinho"
                   type="submit"
                 />
-                {product?.userId === user.id && (
+                {product?.userId === user?.id && (
                   <ButtonAll
                     onCLick={() => navigate(`/updateProduct/${product.id}`)}
                     background="transp"
@@ -122,7 +126,7 @@ const Product = () => {
                     type="submit"
                   />
                 )}
-                {product?.userId === user.id && (
+                {product?.userId === user?.id && (
                   <ButtonAll
                     onCLick={deleteProductFunction}
                     background="transp"
