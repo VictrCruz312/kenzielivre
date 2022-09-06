@@ -17,9 +17,13 @@ import {
   ProductInfo,
   ProductStyle,
 } from "./style";
+import { useModal } from "../../Context/Modal";
 
 const Product = () => {
   const navigate = useNavigate();
+
+  const { leaveModalFunction } = useModal()
+  useEffect(()=>leaveModalFunction(),[])
 
   const { SearchProductId, deleteProduct } = useRequest();
   const { id } = useParams();

@@ -1,12 +1,17 @@
+import { useEffect } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import Box from "../../components/Box";
 import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
+import { useModal } from "../../Context/Modal";
 import ProductCart from "./components/productCart";
 import SumaryCart from "./components/SumaryCart";
 import { CartStyled } from "./style";
 
 const Cart = () => {
+  const { leaveModalFunction } = useModal()
+  useEffect(()=>leaveModalFunction(),[])
+
   const { checkout } = useParams();
   return (
     <TransitionPage>
