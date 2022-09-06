@@ -9,6 +9,7 @@ export const CheckoutStyled = styled.div`
   width: 100%;
   height: 100%;
   min-height: calc(100vh - 110px);
+  max-height: calc(100vh - 110px);
 
   @media screen and (min-width: 563px) {
     width: 563px;

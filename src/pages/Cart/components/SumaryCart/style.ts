@@ -9,6 +9,7 @@ export const Sumarystyled = styled.div`
   width: 100%;
   height: 100%;
   min-height: calc(100vh - 110px);
+  max-height: calc(100vh - 110px);
 
   @media screen and (min-width: 563px) {
     width: 563px;
@@ -42,7 +43,7 @@ export const Sumarystyled = styled.div`
 
     .arrowOne {
       width: 30%;
-      fill: #13f200;
+      fill: #ffffff;
 
       @media screen and (min-width: 431px) {
         width: 98px;
@@ -177,6 +178,11 @@ export const Sumarystyled = styled.div`
     flex-direction: column;
     gap: 21px;
 
+    padding-top: 50px;
     padding-bottom: 10px;
+
+    @media screen and (min-width: 563px) {
+      padding-top: 0;
+    }
   }
 `;
