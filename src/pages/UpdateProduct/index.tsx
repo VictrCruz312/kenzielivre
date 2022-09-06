@@ -1,8 +1,7 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Box from "../../components/Box";
 import { ButtonAll } from "../../components/Button";
@@ -16,19 +15,17 @@ import CheckboxEdited from "../Register/components/Checkbox";
 
 import { useAuth } from "../../Context/auth";
 
-import { createProduct } from "../../services/api";
-
-import { shemaCreateProduct, shemaCreateProductCheck } from "../../validation/createProduct.validations";
+import { updateProduct } from "../../services/api";
 
 import {
-  ContainterCreateProduct,
-  CreateProductStyled,
+  ContainterUpdateProduct,
+  UpdateProductStyled,
   FormStyled,
 } from "./style";
 
 import { v4 as uuid } from "uuid"
 
-interface IDataCreateProduct {
+interface IDataUpdateProduct {
   Userid: number;
   brand: string;
   category: string;
@@ -43,7 +40,7 @@ interface IDataCreateProduct {
   warranty: string;
 }
 
-const CreateProduct = () => {
+const UpdateProduct = () => {
 
   useEffect(() => { checkAuth(); checkLevelAuth() }, []);
 
@@ -53,54 +50,56 @@ const CreateProduct = () => {
   const { checkAuth, checkLevelAuth } = useAuth();
   const navigate = useNavigate();
 
+  const { id } = useParams()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IDataCreateProduct>({
-    resolver: promotion ? 
-      yupResolver(shemaCreateProductCheck) :
-      yupResolver(shemaCreateProduct)
-  });
+  } = useForm<IDataUpdateProduct>();
 
-  const handleCreateProduct = ( propertiesData: IDataCreateProduct) => {
-
-    const user = JSON.parse( localStorage.getItem("@KenzieLivre:User") as string )
+  const handleUpdateProduct = ( propertiesData: IDataUpdateProduct) => {
 
     let arrFiltradoImage = []
     let objFinaly = {}
 
     for(let i in propertiesData ){
-      if(  i.includes( "image" ) ){
+      // @ts-ignore ou // @ts-expect-error
+      if(  i.includes( "image" ) && propertiesData[i] !== "" ){
         // @ts-ignore ou // @ts-expect-error
         arrFiltradoImage.push( propertiesData[i]  )
-      }else{
+      }
+        // @ts-ignore ou // @ts-expect-error
+      if(propertiesData[i] !== ""){
         // @ts-ignore ou // @ts-expect-error
         objFinaly[i] = propertiesData[i]
       }
     }
-    // @ts-ignore ou // @ts-expect-error
-    objFinaly.images = arrFiltradoImage
-    // @ts-ignore ou // @ts-expect-error
-    objFinaly.userId = user.id
+    
+    if( arrFiltradoImage.length != 0 ){
+      // @ts-ignore ou // @ts-expect-error
+      objFinaly.images = arrFiltradoImage
+    }
 
-    createProduct(objFinaly)
+    console.log( objFinaly )
+
+    updateProduct(objFinaly, Number( id )  )
       .then((_) => {
-        toast.success("Produto cadastrado");
+        toast.success("Produto atualizado");
         navigate("/home");
       })
       .catch((_) => {
-        toast.error("Produto não cadastrado");
+        toast.error("Produto não atualizado");
       });
   };
 
   return (
     <TransitionPage>
-      <CreateProductStyled>
+      <UpdateProductStyled>
         <Header onText={() => {}} />
-        <ContainterCreateProduct>
+        <ContainterUpdateProduct>
           <ModalApresentacao
-            title="Que tal cadastrar um novo produto?"
+            title="Mudar é pode ser uma boa ideia, um valor mais baixo talvez?"
             description="e poder faturar de montão!"
           />
 
@@ -111,8 +110,8 @@ const CreateProduct = () => {
             height="large"
             MediaQuery="1250px"
           >
-            <FormStyled onSubmit={handleSubmit(handleCreateProduct)}>
-              <h2 className="form__title">Criar Produto</h2>
+            <FormStyled onSubmit={handleSubmit(handleUpdateProduct)}>
+              <h2 className="form__title">Atualizar produto</h2>
 
               <div className="divInputs">
                 <InputComponent
@@ -213,16 +212,16 @@ const CreateProduct = () => {
                     Adicionar mais imagens
                   </ButtonAll>
                   <ButtonAll background="deft" size="large" type="submit">
-                    Criar anuncio
+                    Atualizar anuncio
                   </ButtonAll>
                 </div>
               </div>
             </FormStyled>
           </Box>
-        </ContainterCreateProduct>
-      </CreateProductStyled>
+        </ContainterUpdateProduct>
+      </UpdateProductStyled>
     </TransitionPage>
   );
 };
 
-export default CreateProduct;
+export default UpdateProduct;

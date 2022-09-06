@@ -7,27 +7,16 @@ export interface IButton {
   background: "transp" | "deft" | "greey";
   size: "small" | "medium" | "large";
   children: string;
-  onSubmit?: (props: any) => void;
+  onCLick?:()=>void
 }
 
 //size => small (278px) / medium (320px) / large (452px)
 //background => transp (button transparente) / deft (button padrão(blue)) / greenn (button cinza(btn do cart))
 
-export const ButtonAll = ({
-  type,
-  background,
-  children,
-  size,
-  onSubmit,
-}: IButton) => {
+export const ButtonAll = ({ type, background, children, size, onCLick }: IButton) => {
   return (
-    <Buttons
-      type={type}
-      background={background}
-      size={size}
-      onSubmit={onSubmit}
-    >
-      <Button type={type} size={size} onSubmit={onSubmit}>
+    <Buttons type={type} background={background} size={size}>
+      <Button onClick={onCLick} type={type} size={size}>
         {children}
       </Button>
     </Buttons>

@@ -7,19 +7,22 @@ import { BiRightArrowCircle } from 'react-icons/bi';
 import { v4 as uuid } from "uuid"
 import { useRef } from "react";
 import CardExtra from "../../../../components/cardExtra";
+import { IUserReturn } from "../../../../services/interface/User";
 
-interface IProduct {
-    userId: number,
-    brand: string,
-    model: string,
-    lastValue:number
-    currentValue: number,
-    color: string,
-    description: string,
-    quantity: number,
-    warranty: string,
-    images: string[]
-    id: number
+export interface IProduct {
+    brand?: string,
+    category?: string,
+    color?: string,
+    currentPrice?: number,
+    description?: string,
+    id?: number,
+    images?: string[],
+    lastPrice?: number,
+    model?: string,
+    promotion?: boolean,
+    quantity?: number,
+    userId?: number,
+    warranty?: string,
 }
 
 export interface ICardExtra {
@@ -27,7 +30,7 @@ export interface ICardExtra {
 }
 
 interface IPropsCarouselProduct {
-    arrayDados:IProduct[] | ICardExtra[]
+    arrayDados?:IProduct[] | IUserReturn[]
     type:"Product" | "Logo"
 }
 
@@ -51,16 +54,17 @@ const CarouselProduct = ( { arrayDados, type }:IPropsCarouselProduct ) => {
 
                     type === "Product" ?
 
-                    arrayDados?.map(({ id, images, description, lastValue, currentValue }:any) => 
+                    arrayDados?.map(({ id, images, description, lastPrice, currentPrice, promotion }:any) => 
 
                     <CardProduct 
                         key={uuid()} 
                         id={id} 
                         src={images[0]} 
                         alt={description} 
-                        lastValue={lastValue} 
-                        currentValue={currentValue} 
+                        lastValue={lastPrice} 
+                        currentValue={currentPrice} 
                         description={description} 
+                        promotion={promotion}
                     />
                     )
 

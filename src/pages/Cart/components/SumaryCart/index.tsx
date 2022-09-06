@@ -10,6 +10,7 @@ const SumaryCart = () => {
         <svg
           width="98"
           height="16"
+          className="arrowOne"
           viewBox="0 0 98 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -23,6 +24,7 @@ const SumaryCart = () => {
         <MdRadioButtonUnchecked className="notChecked" />
         <svg
           width="98"
+          className="arrowTwo"
           height="16"
           viewBox="0 0 98 16"
           fill="none"

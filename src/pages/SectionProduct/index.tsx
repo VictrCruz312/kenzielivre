@@ -5,15 +5,44 @@ import TransitionPage from "../../components/TransitionPage"
 import Block from "./components/Block"
 import { SectionProductStyled } from "./style"
 import Showcase from "./components/Showcase"
-import { products } from "../Home/products"
+import { useEffect, useState } from "react"
+import { useRequest } from "../../Context/Request"
+import { IProduct } from "../Home/components/CarouselProduct"
+import StatePage from "./components/statePage"
+import toast from "react-hot-toast"
 
 const SectionProduct = () => {
+
+    const { TakeProductPerPage } = useRequest()
+
+    const [ page, setPage ] = useState(0)
+    const [ products, setProducts ] = useState<IProduct[]>()
+
+    useEffect(()=>{
+
+        TakeProductPerPage( page )
+            .then( product => {
+
+                console.log( page )
+
+                console.log( product.length > 0 )
+
+                if(product.length > 0){
+                    setProducts( product )
+                }else{
+
+                    toast("sem mais páginas")
+                }
+            } )
+            .catch( error => console.log( error ) )
+
+    },[page])
 
     return(
         <TransitionPage>
             <SectionProductStyled>
                 <Header
-                    onText={( e)=>{}}
+                    onText={( e )=>{}}
                 />
                 <Block>
                     <Navigate/>
@@ -21,6 +50,9 @@ const SectionProduct = () => {
                         arrayProduct={products}
                     />
                 </Block>
+                <StatePage
+                    setPage={setPage}    
+                />
                 <Footer/>
             </SectionProductStyled>
         </TransitionPage>

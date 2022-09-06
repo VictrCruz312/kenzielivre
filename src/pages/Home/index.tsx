@@ -1,17 +1,42 @@
+import { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
+import { useRequest } from "../../Context/Request";
+import { IProduct } from "./components/CarouselProduct";
+import { IUserReturn } from "../../services/interface/User";
 import Banner from "./components/Banner";
 import Block from "./components/Block";
 import CarouselProduct from "./components/CarouselProduct";
 import Category from "./components/Category";
-import { arrayLogo } from "./logo";
-import { products } from "./products";
 
 import { HomeStyled } from "./style";
+import { useAuth } from "../../Context/auth";
 
 const Home = () => {
 
+  const { checkAuth, checkLevelAuth } = useAuth()
+
+  useEffect(()=>{ checkAuth(); checkLevelAuth() },[])
+
+  const { TakePromotionProduct, takeUsers } = useRequest()
+
+  const [ promotionProduct, setPromotionProduct ] = useState<IProduct[]>()
+  const [ imagelogo, setImageLogo ] = useState<IUserReturn[]>()
+
+  useEffect(()=>{
+
+    TakePromotionProduct()
+      .then( products => setPromotionProduct( products ) )
+      .catch( error => console.log( error ) )
+
+      takeUsers()
+      .then( users => setImageLogo( users.filter( user => user.imageLogo ) ) )
+      .catch( error => console.log( error ) )
+
+
+  },[])
+  
   return (
     <TransitionPage>
       <HomeStyled>
@@ -28,12 +53,12 @@ const Home = () => {
           />
           <Category name="Ofertas da semana"/>
           <CarouselProduct 
-            arrayDados={products}
+            arrayDados={promotionProduct}
             type="Product"  
           />
           <Category name="Lojas cadastradas"/>
           <CarouselProduct 
-            arrayDados={arrayLogo}
+            arrayDados={imagelogo}
             type="Logo"  
           />
         </Block>

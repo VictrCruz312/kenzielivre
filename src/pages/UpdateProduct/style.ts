@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const CreateProductStyled = styled.div`
+export const UpdateProductStyled = styled.div`
   box-sizing: border-box;
 
   width: 100%;
@@ -15,7 +15,7 @@ export const CreateProductStyled = styled.div`
   background-color: #1c1b23;
 `;
 
-export const ContainterCreateProduct = styled.div`
+export const ContainterUpdateProduct = styled.div`
   background-color: transparent;
 
   width: 100%;
@@ -92,6 +92,8 @@ export const FormStyled = styled.form`
   }
 
   .form__title {
+    width: 100%;
+
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;

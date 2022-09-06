@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Sumarystyled = styled.div`
+export const CheckoutStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,98 +85,46 @@ export const Sumarystyled = styled.div`
     color: #ffffff;
 
     width: 100%;
-    padding: 0 10px 44px 10px;
-    padding-bottom: 44px;
+    margin-bottom: 40px;
     border-bottom: 3px solid #ffffff;
 
     @media screen and (min-width: 563px) {
       font-size: 30px;
       line-height: 35px;
       width: 452px;
-      padding: 0 0 44px 0;
     }
   }
 
-  .containerSumary {
+  .containerPayments {
     display: flex;
     flex-direction: column;
-    gap: 27px;
-
-    margin: 18px 0 32px 0;
-    width: 100%;
+    gap: 20px;
+    align-self: flex-start;
+    padding-left: 10%;
 
     font-weight: 900;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: 24px;
+    line-height: 28px;
     letter-spacing: 0.1em;
     color: #ffffff;
 
-    @media screen and (min-width: 563px) {
-      font-size: 26px;
-      line-height: 30px;
-      width: 463px;
-    }
-
-    .values {
-      font-size: 16px;
-      line-height: 19px;
-
-      @media screen and (min-width: 563px) {
-        font-size: 23px;
-        line-height: 27px;
-      }
-    }
-
-    .lineSumary {
+    .checkbox {
       display: flex;
-      width: 100%;
-      padding: 0 10px;
-      justify-content: space-between;
+      gap: 11px;
       align-items: center;
 
-      @media screen and (min-width: 563px) {
-        width: 452px;
-      }
-
-      .totalName {
-        font-size: 29px;
-        line-height: 34px;
-
-        @media screen and (min-width: 563px) {
-        }
-      }
-
-      .totalValue {
-        font-size: 18px;
-        line-height: 21px;
-
-        @media screen and (min-width: 563px) {
-          font-size: 26px;
-          line-height: 30px;
-        }
-      }
-    }
-    .lineSumaryTotal {
-      display: flex;
-      width: 100%;
-      padding: 0 10px;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 3px solid #ffffff;
-
-      @media screen and (min-width: 563px) {
-        width: 452px;
-        padding: 11px;
+      input {
+        width: 48px;
+        height: 48px;
       }
     }
   }
 
   .buttons {
     width: 100%;
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
     gap: 21px;
-
-    padding-bottom: 10px;
   }
 `;

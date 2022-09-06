@@ -8,22 +8,24 @@ import Apresentation from "../../components/modalApresentacao";
 import Input from "../../components/Inputs";
 import { ButtonAll } from "../../components/Button";
 import { Block, FormStyled } from "./style";
+import { IDataLogin, useAuth } from "../../Context/auth"
+import { useNavigate } from "react-router-dom";
 
-interface IDataLogin {
-  email: string;
-  senha: string;
-}
+import { yupResolver } from "@hookform/resolvers/yup"
+import { shemaLogin } from "../../validation/login.validation";
 
 const Login = () => {
+
+  const navigate = useNavigate()
+  const { login } = useAuth()
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<IDataLogin>();
-
-  const onSubmit = (data: IDataLogin) => {
-    console.log(data);
-  };
+    formState: { errors:{ email, password } },
+  } = useForm<IDataLogin>({
+    resolver:yupResolver(shemaLogin)
+  });
 
   return (
     <TransitionPage>
@@ -36,8 +38,8 @@ const Login = () => {
               description="Para poder aproveitar ao maximo seu tempo aqui."
             />
           </Block>
-          <Box width="small" minWidth="563px" widthMobile="100%">
-            <FormStyled onSubmit={handleSubmit(onSubmit)}>
+          <Box width="small" minWidth="563px" widthMobile="100%" MediaQuery="1250px">
+            <FormStyled onSubmit={handleSubmit(login)}>
               <h2 className="form__title">Entrar</h2>
 
               <Input
@@ -46,14 +48,14 @@ const Login = () => {
                 isText
                 name="email"
                 register={register}
-                message={errors?.email?.message}
+                message={email?.message}
               />
               <Input
                 placeholder="Senha"
                 type="password"
-                name="senha"
+                name="password"
                 register={register}
-                message={errors?.senha?.message}
+                message={password?.message}
               />
               <div className="buttonOne">
                 <ButtonAll background="deft" size="large" type="submit">
@@ -62,12 +64,12 @@ const Login = () => {
               </div>
               <p className="form__optionsText">Não tem uma conta?</p>
               <div className="buttonTwo">
-                <ButtonAll background="transp" size="large" type="button">
+                <ButtonAll onCLick={()=> navigate("/register")} background="transp" size="large" type="button">
                   crie sua conta
                 </ButtonAll>
               </div>
               <div className="buttonTree">
-                <ButtonAll background="transp" size="large" type="button">
+                <ButtonAll onCLick={()=> navigate("/home")} background="transp" size="large" type="button">
                   Entrar sem logar
                 </ButtonAll>
               </div>
