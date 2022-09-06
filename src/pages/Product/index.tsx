@@ -33,6 +33,8 @@ const Product = () => {
 
   },[])
 
+  const user = JSON.parse( localStorage.getItem("@KenzieLivre:User") as string )
+
   const addCart = () => {
 
     const arrayCart = JSON.parse( localStorage.getItem( "@KenzieLivre:Cart" ) as string )
@@ -105,6 +107,20 @@ const Product = () => {
                   children="Adicionar ao carrinho"
                   type="submit"
                 />
+                {product?.userId === user.id&&<ButtonAll
+                  onCLick={()=>navigate(`/updateProduct/${product.id}`)}
+                  background="transp"
+                  size="medium"
+                  children="Atualizar Produto"
+                  type="submit"
+                />}
+                {product?.userId === user.id&&<ButtonAll
+                  onCLick={()=>{}}
+                  background="transp"
+                  size="medium"
+                  children="Excluir Produto"
+                  type="submit"
+                />}
               </div>
               <div className="technicalProduct">
                 <h2 className="heTechnical">Características</h2>
