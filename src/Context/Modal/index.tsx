@@ -33,6 +33,8 @@ export const ModalProvider = ({ children }: IPropsModal) => {
     }
   }
 
+  
+
   return <ModalContext.Provider value={{
     isModalGlobal,
     isleaveGlobal,
