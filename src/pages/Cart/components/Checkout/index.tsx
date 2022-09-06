@@ -78,9 +78,6 @@ const Checkout = () => {
           </div>
         </div>
         <div className="buttons">
-          <ButtonAll type="button" size="large" background="deft">
-            Avançar para finalização
-          </ButtonAll>
           <ButtonAll type="button" size="large" background="greey">
             Voltar
           </ButtonAll>

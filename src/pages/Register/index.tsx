@@ -35,7 +35,7 @@ const Register = () => {
   const [acceptTerm, setAcceptTerm] = React.useState(false);
 
   const { createUser } = useRequest();
-  const { login } = useAuth()
+  const { login } = useAuth();
 
   const navigate = useNavigate();
 
@@ -56,10 +56,10 @@ const Register = () => {
   }: IDataRegister) => {
     createUser(propertiesData)
       .then((_) => {
-        const { email, password } = propertiesData
+        const { email, password } = propertiesData;
         toast.success("Usuario cadastrado");
-        
-        login( { email, password } )
+
+        login({ email, password });
 
         navigate("/login");
       })
@@ -79,7 +79,13 @@ const Register = () => {
               description="Cadastre-se já e encontre os melhores produtos pelo menor preço."
             />
           </Block>
-          <Box width="small" minWidth="563px" widthMobile="100%" height="100%" MediaQuery="1250px">
+          <Box
+            width="small"
+            minWidth="563px"
+            widthMobile="100%"
+            height="100%"
+            MediaQuery="1250px"
+          >
             <FormStyled onSubmit={handleSubmit(handleCreateUser)}>
               <h2 className="form__title">Criar Conta</h2>
 
@@ -147,13 +153,11 @@ const Register = () => {
                   type="text"
                 />
               )}
-              <Checkbox 
-                onChange={ ( check ) => setAcceptTerm( check ) }
-              />
-              <ButtonAll 
-                onCLick={()=> !acceptTerm&&toast.error( "Aceite os termos" ) } 
-                background="deft" 
-                size="large" 
+              <Checkbox onChange={(check) => setAcceptTerm(check)} />
+              <ButtonAll
+                onCLick={() => !acceptTerm && toast.error("Aceite os termos")}
+                background="deft"
+                size="large"
                 type={acceptTerm ? "submit" : "button"}
               >
                 Criar conta
