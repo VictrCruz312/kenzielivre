@@ -1,81 +1,76 @@
 import { ProductCartStyled } from "./style";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
+import { useCart } from "../../../../Context/Cart";
+
+interface IProductCart {
+  brand: string;
+  category: string;
+  color: string;
+  currentPrice: number;
+  description: string;
+  id: number;
+  images: Array<string>;
+  lastPrice: number;
+  model: string;
+  promotion: Boolean;
+  quantity: number;
+  userId: number;
+  warranty: string;
+}
 
 const ProductCart = () => {
-  const listCart = [
-    {
-      img: undefined,
-      nome: "T-shirt",
-      codigo: "000001",
-      amount: 2,
-      price: 2937,
-      color: "red",
-    },
-    {
-      img: undefined,
-      nome: "T-shirt",
-      codigo: "000002",
-      amount: 2,
-      price: 2937,
-      color: "red",
-    },
-    {
-      img: undefined,
-      nome: "T-shirt",
-      codigo: "000003",
-      amount: 2,
-      price: 2937,
-      color: "red",
-    },
-    {
-      img: undefined,
-      nome: "T-shirt",
-      codigo: "000004",
-      amount: 2,
-      price: 2937,
-      color: "red",
-    },
-  ];
+  const { listCart, removeProduct } = useCart();
+
   return (
     <ProductCartStyled>
-      {listCart.map((product) => (
-        <li className="product" key={product.codigo}>
-          <div className="containerImg">
-            <img src="./assets/background.svg" alt={product.nome} />
-          </div>
-          <div className="containerNameCorAmount">
-            <div className="nameAndCor">
-              <div className="containerNome">
-                <p>{product.nome}</p>
-                <span>código: {product.codigo}</span>
+      {listCart.length > 0 ? (
+        listCart.map((product: IProductCart) => (
+          <li className="product" key={product.id}>
+            <div className="containerImg">
+              <img src={product.images[1]} alt={product.brand} />
+            </div>
+            <div className="containerNameCorAmount">
+              <div className="nameAndCor">
+                <div className="containerNome">
+                  <p>{product.brand}</p>
+                  <span>código: {product.id}</span>
+                </div>
+                <div className="containerCor">
+                  <p>{product.color}</p>
+                </div>
               </div>
-              <div className="containerCor">
-                <p>{product.color}</p>
+              <div className="containerAmount">
+                <p>{product.quantity}</p>
+                <div className="BtnsAmount">
+                  <button>
+                    <AiOutlinePlus />
+                  </button>
+                  <button>
+                    <AiOutlineMinus />
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="containerAmount">
-              <p>{product.amount}</p>
-              <div className="BtnsAmount">
-                <button>
-                  <AiOutlinePlus />
-                </button>
-                <button>
-                  <AiOutlineMinus />
-                </button>
+            <div className="containerPriceRemove">
+              <div className="containerPrice">
+                <p>
+                  R${" "}
+                  {product.promotion ? product.currentPrice : product.lastPrice}
+                </p>
               </div>
+              <button
+                onClick={() => removeProduct(product.id)}
+                className="containerRemove"
+              >
+                <GrClose />
+              </button>
             </div>
-          </div>
-          <div className="containerPriceRemove">
-            <div className="containerPrice">
-              <p>R$ {product.price.toFixed(2)}</p>
-            </div>
-            <button className="containerRemove">
-              <GrClose />
-            </button>
-          </div>
-        </li>
-      ))}
+          </li>
+        ))
+      ) : (
+        <span>carrinho vazio</span>
+      )}
     </ProductCartStyled>
   );
 };
