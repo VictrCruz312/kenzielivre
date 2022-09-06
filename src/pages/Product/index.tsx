@@ -79,7 +79,7 @@ const Product = () => {
               />
             </div>
           </DivImageProduct>
-          <Box width="615px" MediaQuery="768px">
+          <Box width="615px" MediaQuery="1133px">
             <ProductInfo>
               <div className="topInfo">
                 <p className="newProduct">Novo</p>
