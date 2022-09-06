@@ -1,8 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+
 import Box from "../../components/Box";
 import { ButtonAll } from "../../components/Button";
 import Header from "../../components/Header";
@@ -11,57 +12,80 @@ import ModalApresentacao from "../../components/modalApresentacao";
 import SelectEdited from "../../components/Select";
 import TextArea from "../../components/TextArea";
 import TransitionPage from "../../components/TransitionPage";
-import { useAuth } from "../../Context/auth";
-import { createProduct } from "../../services/api";
-import { shemaCreateProduct } from "../../validation/createProduct.validations";
 import CheckboxEdited from "../Register/components/Checkbox";
+
+import { useAuth } from "../../Context/auth";
+
+import { createProduct } from "../../services/api";
+
+import { shemaCreateProduct, shemaCreateProductCheck } from "../../validation/createProduct.validations";
+
 import {
   ContainterCreateProduct,
   CreateProductStyled,
   FormStyled,
 } from "./style";
 
+import { v4 as uuid } from "uuid"
+
+interface IDataCreateProduct {
+  Userid: number;
+  brand: string;
+  category: string;
+  color: string;
+  currentPrice: number;
+  description: string;
+  images: string[];
+  lastPrice?: number;
+  model: string;
+  promotion?: boolean;
+  quantity: number;
+  warranty: string;
+}
+
 const CreateProduct = () => {
+
+  useEffect(() => { checkAuth(); checkLevelAuth() }, []);
+
   const [promotion, setPromotion] = useState(false);
-
-  const navigate = useNavigate();
-
-  const User = JSON.parse(localStorage.getItem("@KenzieLivre:User") as string);
-
-  interface IDataCreateProduct {
-    Userid: number;
-    brand: string;
-    category: string;
-    color: string;
-    currentPrice: number;
-    description: string;
-    images: string[];
-    lastPrice?: number;
-    model: string;
-    promotion?: boolean;
-    quantity: number;
-    warranty: string;
-  }
-
+  const [ quantityImage, setQuantityImage ] = React.useState([1,])
+  
   const { checkAuth, checkLevelAuth } = useAuth();
-
-  useEffect(() => {
-    checkAuth();
-    checkLevelAuth();
-  }, []);
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IDataCreateProduct>({
-    resolver: yupResolver(shemaCreateProduct),
+    resolver: promotion ? 
+      yupResolver(shemaCreateProductCheck) :
+      yupResolver(shemaCreateProduct)
   });
 
-  const handleCreateUser = ({ ...propertiesData }: IDataCreateProduct) => {
-    createProduct(propertiesData)
+  const handleCreateProduct = ( propertiesData: IDataCreateProduct) => {
+
+    const user = JSON.parse( localStorage.getItem("@KenzieLivre:User") as string )
+
+    let arrFiltradoImage = []
+    let objFinaly = {}
+
+    for(let i in propertiesData ){
+      if(  i.includes( "image" ) ){
+        // @ts-ignore ou // @ts-expect-error
+        arrFiltradoImage.push( propertiesData[i]  )
+      }else{
+        // @ts-ignore ou // @ts-expect-error
+        objFinaly[i] = propertiesData[i]
+      }
+    }
+    // @ts-ignore ou // @ts-expect-error
+    objFinaly.images = arrFiltradoImage
+    // @ts-ignore ou // @ts-expect-error
+    objFinaly.userId = user.id
+
+    createProduct(objFinaly)
       .then((_) => {
-        console.log(propertiesData);
         toast.success("Produto cadastrado");
         navigate("/home");
       })
@@ -87,7 +111,7 @@ const CreateProduct = () => {
             height="large"
             MediaQuery="1250px"
           >
-            <FormStyled onSubmit={handleSubmit(handleCreateUser)}>
+            <FormStyled onSubmit={handleSubmit(handleCreateProduct)}>
               <h2 className="form__title">Criar Produto</h2>
 
               <div className="divInputs">
@@ -107,8 +131,16 @@ const CreateProduct = () => {
                   register={register}
                   message={errors?.model?.message}
                 />
+                {promotion&&<InputComponent
+                  placeholder="Preço anterior"
+                  type="text"
+                  isText
+                  name="lastPrice"
+                  register={register}
+                  message={errors.currentPrice?.message}
+                />}
                 <InputComponent
-                  placeholder="Preço"
+                  placeholder="Preço atual"
                   type="text"
                   isText
                   name="currentPrice"
@@ -135,6 +167,7 @@ const CreateProduct = () => {
                   register={register}
                   name="category"
                   label="Categoria"
+                  message={errors?.category?.message}
                 />
                 <InputComponent
                   placeholder="Unidades"
@@ -149,22 +182,34 @@ const CreateProduct = () => {
                   register={register}
                   name="warranty"
                   label="Garantia"
+                  message={errors.warranty?.message}
                 />
-                <InputComponent
-                  placeholder="Imagens"
-                  type="text"
-                  isText
-                  name="images"
-                  register={register}
-                  message={errors.images?.message}
-                />
+                {
+                   quantityImage.map( ( value:number, indice )=> 
+                    
+                    <InputComponent
+                      key={uuid()}
+                      placeholder="Imagens"
+                      type="text"
+                      isText
+                      name={`image${indice}`}
+                      register={register}
+                      message={errors.images?.message}
+                    />
+                    
+                    )
+                }
               </div>
               <div className="divInferior">
                 <CheckboxEdited 
-                  onChange={ ( check ) => {}}
+                  nameDescription="Promoção"
+                  onChange={ ( check ) => setPromotion( check )}
+                  name="promotion"
+                  register={register}
+                  message={errors?.promotion?.message}
                 />
                 <div className="divButtons">
-                  <ButtonAll background="transp" size="large" type="button">
+                  <ButtonAll onCLick={()=>{  setQuantityImage(()=>[...quantityImage, 1]) }} background="transp" size="large" type="button">
                     Adicionar mais imagens
                   </ButtonAll>
                   <ButtonAll background="deft" size="large" type="submit">
