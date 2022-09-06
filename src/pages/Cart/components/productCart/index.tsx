@@ -41,7 +41,7 @@ const ProductCart = () => {
                 </div>
               </div>
               <div className="containerAmount">
-                <p>{product.quantity}</p>
+                <p>{1}</p>
                 <div className="BtnsAmount">
                   <button>
                     <AiOutlinePlus />

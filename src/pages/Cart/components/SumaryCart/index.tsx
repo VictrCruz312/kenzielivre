@@ -4,7 +4,7 @@ import { MdCheckCircleOutline, MdRadioButtonUnchecked } from "react-icons/md";
 import { useCart } from "../../../../Context/Cart";
 
 const SumaryCart = () => {
-  const { navigation, cartRemove } = useCart();
+  const { navigation, cartRemove, totalCart } = useCart();
 
   return (
     <Sumarystyled>
@@ -46,7 +46,7 @@ const SumaryCart = () => {
       <div className="containerSumary">
         <div className="lineSumary">
           <p>Sub total:</p>
-          <p className="values">R$ {}</p>
+          <p className="values">R$ {totalCart().toFixed(2)}</p>
         </div>
         <div className="lineSumary">
           <p>Taxa:</p>
@@ -58,7 +58,7 @@ const SumaryCart = () => {
         </div>
         <div className="lineSumaryTotal">
           <p className="totalName">Preço total:</p>
-          <p className="totalValue">R$2999.0</p>
+          <p className="totalValue">R$ {totalCart().toFixed(2)}</p>
         </div>
       </div>
       <div className="buttons">

@@ -6,6 +6,8 @@ interface IContextCart {
   listCart: IProductCart[];
   navigation: NavigateFunction;
   cartRemove: () => void;
+  totalCart: () => number;
+  setListCart: React.Dispatch<React.SetStateAction<IProductCart[]>>;
 }
 
 interface IPropsCart {
@@ -48,9 +50,26 @@ export const CartProvider = ({ children }: IPropsCart) => {
     setListCart([]);
   };
 
+  const totalCart = () => {
+    return listCart.reduce((value, product) => {
+      let price = "";
+      product.promotion
+        ? (price += product.currentPrice)
+        : (price += product.lastPrice);
+      return parseInt(price) + value;
+    }, 0);
+  };
+
   return (
     <CartContext.Provider
-      value={{ removeProduct, listCart, navigation, cartRemove }}
+      value={{
+        removeProduct,
+        listCart,
+        navigation,
+        cartRemove,
+        totalCart,
+        setListCart,
+      }}
     >
       {children}
     </CartContext.Provider>
