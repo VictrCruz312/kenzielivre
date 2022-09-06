@@ -23,20 +23,10 @@ export const CardProductStyled = styled(Link)`
     justify-content: space-between;
     align-items: center;
 
-    opacity: 0%;
-
     text-decoration: none;
 
     :hover{
         box-shadow: 0px 0px 7px -2px rgba(63, 61, 86, 0.5);
-    }
-
-    animation: carAnimation 1.5s forwards;
-
-    @keyframes carAnimation {
-        to{
-            opacity: 100%;
-        }
     }
 
     .block{
