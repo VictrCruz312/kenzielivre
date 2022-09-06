@@ -18,7 +18,6 @@ const TransitionPage = ({ children }: IPropsTransitionPage) => {
         delay: 0.5,
         ease: [0, 0.71, 0.2, 1.01]
       }}
-      
     >
       {children}
     </motion.div>
