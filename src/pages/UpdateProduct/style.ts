@@ -31,7 +31,7 @@ export const ContainterUpdateProduct = styled.div`
   @media screen and (min-width: 1250px) {
     padding: 0px;
 
-    background-image: url("./assets/backgroundCreateProduct.svg");
+    background-image: url("../assets/backgroundCreateProduct.svg");
     background-repeat: no-repeat;
     background-position: center;
   }

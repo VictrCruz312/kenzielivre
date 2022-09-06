@@ -12,12 +12,14 @@ import Category from "./components/Category";
 
 import { HomeStyled } from "./style";
 import { useAuth } from "../../Context/auth";
+import { useModal } from "../../Context/Modal";
 
 const Home = () => {
 
   const { checkAuth, checkLevelAuth } = useAuth()
+  const { leaveModalFunction } = useModal()
 
-  useEffect(()=>{ checkAuth(); checkLevelAuth() },[])
+  useEffect(()=>{ checkAuth(); checkLevelAuth(); leaveModalFunction() },[])
 
   const { TakePromotionProduct, takeUsers } = useRequest()
 

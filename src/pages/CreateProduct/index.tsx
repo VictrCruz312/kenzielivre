@@ -27,6 +27,7 @@ import {
 } from "./style";
 
 import { v4 as uuid } from "uuid"
+import { useModal } from "../../Context/Modal";
 
 interface IDataCreateProduct {
   Userid: number;
@@ -45,7 +46,8 @@ interface IDataCreateProduct {
 
 const CreateProduct = () => {
 
-  useEffect(() => { checkAuth(); checkLevelAuth() }, []);
+  const { leaveModalFunction } = useModal()
+  useEffect(() => { checkAuth(); checkLevelAuth(); leaveModalFunction() }, []);
 
   const [promotion, setPromotion] = useState(false);
   const [ quantityImage, setQuantityImage ] = React.useState([1,])
