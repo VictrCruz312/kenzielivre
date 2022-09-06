@@ -3,11 +3,16 @@ import { PixStyled } from "./style";
 
 const Pix = () => {
   return (
-    <PixStyled>
-      <ButtonAll size="medium" type="button" background="deft">
-        Gerar código PIX
+    <>
+      <PixStyled>
+        <ButtonAll size="medium" type="button" background="deft">
+          Gerar código PIX
+        </ButtonAll>
+      </PixStyled>
+      <ButtonAll size="large" background="deft" type="button">
+        Avançar para finalização
       </ButtonAll>
-    </PixStyled>
+    </>
   );
 };
 export default Pix;

@@ -9,6 +9,7 @@ export const CheckoutStyled = styled.div`
   width: 100%;
   height: 100%;
   min-height: calc(100vh - 110px);
+  max-height: calc(100vh - 110px);
 
   @media screen and (min-width: 563px) {
     width: 563px;
@@ -98,15 +99,29 @@ export const CheckoutStyled = styled.div`
   .containerPayments {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     align-self: flex-start;
-    padding-left: 10%;
+    padding: 0;
+    width: 100%;
 
     font-weight: 900;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 21px;
     letter-spacing: 0.1em;
     color: #ffffff;
+
+    @media screen and (min-width: 563px) {
+      padding: 0 10%;
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      padding: 0 10%;
+      font-size: 24px;
+      line-height: 28px;
+      gap: 20px;
+    }
 
     .checkbox {
       display: flex;
@@ -114,15 +129,20 @@ export const CheckoutStyled = styled.div`
       align-items: center;
 
       input {
-        width: 48px;
-        height: 48px;
+        width: 30px;
+        height: 30px;
+
+        @media screen and (min-width: 563px) {
+          width: 48px;
+          height: 48px;
+        }
       }
     }
   }
 
   .buttons {
     width: 100%;
-    padding-top: 80px;
+    padding-top: 21px;
     display: flex;
     flex-direction: column;
     gap: 21px;

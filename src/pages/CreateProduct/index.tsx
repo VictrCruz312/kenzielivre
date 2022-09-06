@@ -163,7 +163,7 @@ const CreateProduct = () => {
                   size="small"
                 />
                 <SelectEdited
-                  arrayText={["Eletronico", "Limpesa"]}
+                  arrayText={["Tecnologia", "Limpeza", "Moda", "Moveis", "Ferramentas", "Eletromesticos", "Brinquedos"]}
                   register={register}
                   name="category"
                   label="Categoria"

@@ -17,40 +17,45 @@ import {
 } from "./style";
 
 const Product = () => {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const { SearchProductId, deleteProduct } = useRequest();
+  const { id } = useParams();
 
-  const { SearchProductId } = useRequest()
-  const { id } = useParams()
+  const [product, setProduct] = useState<any>();
 
-  const [ product, setProduct ] = useState<any>()
+  useEffect(() => {
+    SearchProductId(Number(id))
+      .then((result) => setProduct(result))
+      .catch((error) => console.log(error));
+  }, []);
 
-  useEffect(()=>{
-
-    SearchProductId( Number( id ) )
-      .then( result => setProduct( result ) )
-      .catch( error => console.log( error ) )
-
-  },[])
-
-  const user = JSON.parse( localStorage.getItem("@KenzieLivre:User") as string )
+  const user = JSON.parse(localStorage.getItem("@KenzieLivre:User") as string);
 
   const addCart = () => {
+    const arrayCart = JSON.parse(
+      localStorage.getItem("@KenzieLivre:Cart") as string
+    );
+    arrayCart.push(product);
 
-    const arrayCart = JSON.parse( localStorage.getItem( "@KenzieLivre:Cart" ) as string )
-    arrayCart.push( product )
+    localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(arrayCart));
 
-    console.log( arrayCart )
-
-    localStorage.setItem( "@KenzieLivre:Cart", JSON.stringify( arrayCart ) )
-
-    toast.success("Produto adicionado")
-  }
+    toast.success("Produto adicionado");
+  };
 
   const addGoCart = () => {
-    addCart()
-    navigate("/cart")
-  }
+    addCart();
+    navigate("/cart");
+  };
+
+  const deleteProductFunction = () => {
+    deleteProduct(product.id)
+      .then((res) => {
+        toast.success("Produto deletado");
+        navigate("/home");
+      })
+      .catch((err) => toast.error("Erro ao deletar o produto"));
+  };
 
   return (
     <TransitionPage>
@@ -59,20 +64,17 @@ const Product = () => {
         <ContainerProduct>
           <DivImageProduct>
             <div className="miniImage">
-              {
-                product?.images?.map( ( image:any )=> 
-                  <CardExtra
-                    type="imgExtraProduct"
-                    alt={ product.model }
-                    src={image}
-                  />
-                  
-                )
-              }
+              {product?.images?.map((image: any) => (
+                <CardExtra
+                  type="imgExtraProduct"
+                  alt={product.model}
+                  src={image}
+                />
+              ))}
             </div>
             <div className="mainImage">
               <img
-                src={product && product?.images[0] }
+                src={product && product?.images[0]}
                 alt={product && product?.model}
               />
             </div>
@@ -82,14 +84,18 @@ const Product = () => {
               <div className="topInfo">
                 <p className="newProduct">Novo</p>
                 <h2 className="titleProduct">
-                  { product && product?.description }
+                  {product && product?.description}
                 </h2>
-                <p className="priceProduct">R$ { product && product?.currentPrice }</p>
+                <p className="priceProduct">
+                  R$ {product && product?.currentPrice}
+                </p>
                 <p className="stockProduct">
-                  {product && product?.quantity ? "Estoque disponivel" : "Estoque indisponivel"}
-                  </p>
+                  {product && product?.quantity
+                    ? "Estoque disponivel"
+                    : "Estoque indisponivel"}
+                </p>
                 <p className="quantityProduct">
-                  Quantidade: <p> { product && product?.quantity } unidade</p>
+                  Quantidade: <p> {product && product?.quantity} unidade</p>
                 </p>
               </div>
               <div className="buttonsProduct">
@@ -107,20 +113,24 @@ const Product = () => {
                   children="Adicionar ao carrinho"
                   type="submit"
                 />
-                {product?.userId === user.id&&<ButtonAll
-                  onCLick={()=>navigate(`/updateProduct/${product.id}`)}
-                  background="transp"
-                  size="medium"
-                  children="Atualizar Produto"
-                  type="submit"
-                />}
-                {product?.userId === user.id&&<ButtonAll
-                  onCLick={()=>{}}
-                  background="transp"
-                  size="medium"
-                  children="Excluir Produto"
-                  type="submit"
-                />}
+                {product?.userId === user.id && (
+                  <ButtonAll
+                    onCLick={() => navigate(`/updateProduct/${product.id}`)}
+                    background="transp"
+                    size="medium"
+                    children="Atualizar Produto"
+                    type="submit"
+                  />
+                )}
+                {product?.userId === user.id && (
+                  <ButtonAll
+                    onCLick={deleteProductFunction}
+                    background="transp"
+                    size="medium"
+                    children="Excluir Produto"
+                    type="submit"
+                  />
+                )}
               </div>
               <div className="technicalProduct">
                 <h2 className="heTechnical">Características</h2>
@@ -128,19 +138,21 @@ const Product = () => {
                   <table>
                     <tr>
                       <th className="thDark">Marca</th>
-                      <td className="tdDark">{product && product?.brand }</td>
+                      <td className="tdDark">{product && product?.brand}</td>
                     </tr>
                     <tr>
                       <th className="thLight">Modelo</th>
-                      <td className="tdLight">{product && product?.model }</td>
+                      <td className="tdLight">{product && product?.model}</td>
                     </tr>
                     <tr>
                       <th className="thDark">Cor</th>
-                      <td className="tdDark">{product && product?.color }</td>
+                      <td className="tdDark">{product && product?.color}</td>
                     </tr>
                     <tr>
                       <th className="thLight">Garantia</th>
-                      <td className="tdLight">{product && product?.warranty }</td>
+                      <td className="tdLight">
+                        {product && product?.warranty}
+                      </td>
                     </tr>
                   </table>
                 </div>
