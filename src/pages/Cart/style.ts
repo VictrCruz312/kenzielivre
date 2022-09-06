@@ -7,18 +7,18 @@ export const CartStyled = styled.div`
   max-width: 100vw;
 
   height: 100%;
-  min-height:calc(100vh - 110px);
+  min-height: calc(100vh - 110px);
 
   overflow: scroll hidden;
 
-  ::-webkit-scrollbar{
+  ::-webkit-scrollbar {
     width: 10px;
     background-color: none;
   }
 
-  ::-webkit-scrollbar-thumb{
+  ::-webkit-scrollbar-thumb {
     width: 10px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
     border-radius: 4px;
   }
 
@@ -31,9 +31,8 @@ export const CartStyled = styled.div`
 
     display: flex;
 
-    background-image: url("./assets/backgroundCart.svg");
+    background-image: url("../assets/backgroundCart.svg");
     background-repeat: no-repeat;
     background-position: center center;
-
   }
 `;

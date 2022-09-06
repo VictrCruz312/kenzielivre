@@ -19,16 +19,15 @@ const Routers = () => (
       <Route path="/register" element={<Register />} />
       <Route path="/home" element={<Home />} />
       <Route path="/home:id" element={<Product />} />
-      <Route path="/home/sectionProduct" element={<SectionProduct/>} />
+      <Route path="/home/sectionProduct" element={<SectionProduct />} />
       <Route path="/createProduct" element={<CreateProduct />} />
-      <Route path="/cart" element={<Cart/>}>
+      <Route path="/cart" element={<Cart />}>
         <Route path="/cart/checkout" element={<Checkout />} />
-        <Route path="/cart/finishCart" element={<FinishCart />} />
       </Route>
+      <Route path="/cart/finishCart" element={<FinishCart />} />
       <Route path="*" element={<Navigate to="/home" />} />
     </Routes>
   </AnimatePresence>
 );
 
 export default Routers;
-
