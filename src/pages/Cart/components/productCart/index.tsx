@@ -1,26 +1,10 @@
 import { ProductCartStyled } from "./style";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
-import { useCart } from "../../../../Context/Cart";
-
-interface IProductCart {
-  brand: string;
-  category: string;
-  color: string;
-  currentPrice: number;
-  description: string;
-  id: number;
-  images: Array<string>;
-  lastPrice: number;
-  model: string;
-  promotion: Boolean;
-  quantity: number;
-  userId: number;
-  warranty: string;
-}
+import { IProductCart, useCart } from "../../../../Context/Cart";
 
 const ProductCart = () => {
-  const { listCart, removeProduct } = useCart();
+  const { listCart, removeProduct, plusQuantity, minusQuantity } = useCart();
 
   return (
     <ProductCartStyled>
@@ -41,12 +25,12 @@ const ProductCart = () => {
                 </div>
               </div>
               <div className="containerAmount">
-                <p>{1}</p>
+                <p>{product.productQuantity}</p>
                 <div className="BtnsAmount">
-                  <button>
+                  <button onClick={() => plusQuantity(product.id)}>
                     <AiOutlinePlus />
                   </button>
-                  <button>
+                  <button onClick={() => minusQuantity(product.id)}>
                     <AiOutlineMinus />
                   </button>
                 </div>

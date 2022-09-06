@@ -11,13 +11,15 @@ interface IContextCart {
   setListCart: React.Dispatch<React.SetStateAction<IProductCart[]>>;
   saveCartao: (data: ICartaoForm) => void;
   cartao: ICartaoForm | {};
+  plusQuantity: (id: number) => void;
+  minusQuantity: (id: number) => void;
 }
 
 interface IPropsCart {
   children: ReactNode;
 }
 
-interface IProductCart {
+export interface IProductCart {
   brand: string;
   category: string;
   color: string;
@@ -31,6 +33,7 @@ interface IProductCart {
   quantity: number;
   userId: number;
   warranty: string;
+  productQuantity: number;
 }
 
 const CartContext = createContext<IContextCart>({} as IContextCart);
@@ -60,12 +63,45 @@ export const CartProvider = ({ children }: IPropsCart) => {
       product.promotion
         ? (price += product.currentPrice)
         : (price += product.lastPrice);
-      return parseInt(price) + value;
+      return parseInt(price) * product.productQuantity + value;
     }, 0);
   };
 
   const saveCartao = (cartao: ICartaoForm) => {
     setCartao(cartao);
+  };
+
+  const plusQuantity = (id: number) => {
+    const newList = listCart.map((product) => {
+      const quantity = "" + product.quantity;
+      if (parseInt(quantity) === product.productQuantity) {
+        return product;
+      } else if (product.id === id) {
+        product.productQuantity += 1;
+        return product;
+      } else {
+        return product;
+      }
+    });
+    setListCart(newList);
+    localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(newList));
+  };
+
+  const minusQuantity = (id: number) => {
+    const newList = listCart.map((product) => {
+      if (product.id === id) {
+        if (product.productQuantity < 1) {
+          return product;
+        } else {
+          product.productQuantity -= 1;
+        }
+        return product;
+      } else {
+        return product;
+      }
+    });
+    setListCart(newList);
+    localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(newList));
   };
 
   return (
@@ -79,6 +115,8 @@ export const CartProvider = ({ children }: IPropsCart) => {
         setListCart,
         cartao,
         saveCartao,
+        plusQuantity,
+        minusQuantity,
       }}
     >
       {children}

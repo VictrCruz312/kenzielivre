@@ -9,7 +9,7 @@ import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
 import { useRequest } from "../../Context/Request";
 
-import { v4 as uuid } from "uuid"
+import { v4 as uuid } from "uuid";
 
 import {
   ContainerProduct,
@@ -22,8 +22,8 @@ import { useModal } from "../../Context/Modal";
 const Product = () => {
   const navigate = useNavigate();
 
-  const { leaveModalFunction } = useModal()
-  useEffect(()=>leaveModalFunction(),[])
+  const { leaveModalFunction } = useModal();
+  useEffect(() => leaveModalFunction(), []);
 
   const { SearchProductId, deleteProduct } = useRequest();
   const { id } = useParams();
@@ -37,38 +37,33 @@ const Product = () => {
   }, []);
 
   const user = JSON.parse(localStorage.getItem("@KenzieLivre:User") as string);
-  console.log( user )
 
   const addCart = () => {
     const arrayCart = JSON.parse(
       localStorage.getItem("@KenzieLivre:Cart") as string
     );
 
-      let existe = false
+    let existe = false;
 
-      const productCart = arrayCart.map( ( productCart:any ) => {
+    const productCart = arrayCart.map((productCart: any) => {
+      if (productCart.id == product.id) {
+        productCart.productQuantity++;
 
-        if( productCart.id == product.id ){
-          
-          productCart.productQuantity++
+        existe = true;
 
-          existe = true
-
-          return productCart
-        }
-
-        return productCart
-      } )
-
-      if(!existe){
-        product.productQuantity = 1
-
-        productCart.push( product )
+        return productCart;
       }
 
-      console.log( productCart )
+      return productCart;
+    });
 
-      localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(productCart));
+    if (!existe) {
+      product.productQuantity = 1;
+
+      productCart.push(product);
+    }
+
+    localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(productCart));
   };
 
   const addGoCart = () => {
