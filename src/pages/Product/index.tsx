@@ -29,10 +29,17 @@ const Product = () => {
   const { id } = useParams();
 
   const [product, setProduct] = useState<any>();
+  const [imageMain, setImageMain] = useState<string>("");
 
   useEffect(() => {
+    leaveModalFunction();
+
     SearchProductId(Number(id))
-      .then((result) => setProduct(result))
+      .then((result) => {
+        setProduct(result);
+        // @ts-ignore ou // @ts-expect-error
+        setImageMain(result?.images[0]);
+      })
       .catch((error) => console.log(error));
   }, []);
 
@@ -93,12 +100,13 @@ const Product = () => {
                   type="imgExtraProduct"
                   alt={product.model}
                   src={image}
+                  takeImage={(img) => setImageMain(img)}
                 />
               ))}
             </div>
             <div className="mainImage">
               <img
-                src={product && product?.images[0]}
+                src={imageMain && imageMain}
                 alt={product && product?.model}
               />
             </div>

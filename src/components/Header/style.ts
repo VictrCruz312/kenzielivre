@@ -7,7 +7,7 @@ export const HeaderStyled = styled.header`
     
     position: relative;
 
-    z-index: 100;
+    z-index: 99999999;
 
     width: 100%;
     height: 160px;
