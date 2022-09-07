@@ -23,6 +23,8 @@ import {
   createProduct,
   updateProduct,
   deleteProduct,
+  takeProductFilterPage,
+  createPurchases
 } from "../../services/api";
 
 const RequestContext = createContext<IContextRequest>({} as IContextRequest);
@@ -47,6 +49,8 @@ interface IContextRequest {
     idProduct: number
   ) => Promise<IProductReturn>;
   deleteProduct: (idProduct: number) => Promise<object>;
+  takeProductFilterPage:(key:string, page:number, value:string) => Promise<IProduct[]>
+  createPurchases:( objFinishCart:any )=>Promise<any>
 }
 
 interface IPropsRequest {
@@ -70,6 +74,8 @@ export const RequestProvider = ({ children }: IPropsRequest) => {
         createProduct,
         updateProduct,
         deleteProduct,
+        takeProductFilterPage,
+        createPurchases,
       }}
     >
       {children}
