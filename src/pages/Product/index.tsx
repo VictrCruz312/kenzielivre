@@ -121,10 +121,10 @@ const Product = () => {
               <div className="topInfo">
                 <p className="newProduct">Novo</p>
                 <h2 className="titleProduct">
-                  {product && (product?.description) }
+                  {product && product?.description}
                 </h2>
                 <p className="priceProduct">
-                  R$ {product && Number(product?.currentPrice).toFixed(2) }
+                  R$ {product && Number(product?.currentPrice).toFixed(2)}
                 </p>
                 <p className="stockProduct">
                   {product && product?.quantity > 0
