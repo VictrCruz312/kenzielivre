@@ -12,6 +12,7 @@ import TextArea from "../../components/TextArea";
 import { useEffect } from "react";
 import { useModal } from "../../Context/Modal";
 import { useAuth } from "../../Context/auth";
+import { useCart } from "../../Context/Cart";
 
 interface IEndereco {
   cep: string;
@@ -28,6 +29,8 @@ export interface IEnvioEndereco {
 }
 
 const FinishCart = () => {
+
+  const { listCart, cartao, pix } = useCart();
 
   const { checkAuth } = useAuth()
 
@@ -50,7 +53,11 @@ const FinishCart = () => {
       complemento: data.complemento || undefined,
       observação: data.observacao || undefined,
     };
-    console.log(novoEndereco);
+    const finishCart = {
+      address:novoEndereco,
+      
+    }
+    console.log(novoEndereco, listCart, cartao, pix);
   };
 
   return (

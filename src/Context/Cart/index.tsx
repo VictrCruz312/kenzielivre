@@ -13,6 +13,8 @@ interface IContextCart {
   cartao: ICartaoForm | {};
   plusQuantity: (id: number) => void;
   minusQuantity: (id: number) => void;
+  setPix:( value:boolean ) => void
+  pix:boolean
 }
 
 interface IPropsCart {
@@ -41,7 +43,8 @@ const CartContext = createContext<IContextCart>({} as IContextCart);
 export const CartProvider = ({ children }: IPropsCart) => {
   const [listCart, setListCart] = useState<Array<IProductCart>>([]);
   const [cartao, setCartao] = useState<ICartaoForm | {}>({});
-
+  const [pix, setPix] = useState<boolean>(false)
+  
   const removeProduct = (idProduct: number) => {
     const newList = listCart.filter((product) => product.id !== idProduct);
     setListCart(newList);
@@ -115,6 +118,8 @@ export const CartProvider = ({ children }: IPropsCart) => {
         saveCartao,
         plusQuantity,
         minusQuantity,
+        setPix,
+        pix
       }}
     >
       {children}
