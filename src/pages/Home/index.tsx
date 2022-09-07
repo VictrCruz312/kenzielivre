@@ -16,6 +16,10 @@ import { useModal } from "../../Context/Modal";
 
 const Home = () => {
 
+  if( !JSON.parse(localStorage.getItem("@KenzieLivre:Cart") as string) ){
+    localStorage.setItem( "@KenzieLivre:Cart", JSON.stringify( [] ) )
+  }
+
   const { checkAuth, checkLevelAuth } = useAuth()
   const { leaveModalFunction } = useModal()
 

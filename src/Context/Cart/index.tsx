@@ -39,9 +39,7 @@ export interface IProductCart {
 const CartContext = createContext<IContextCart>({} as IContextCart);
 
 export const CartProvider = ({ children }: IPropsCart) => {
-  const [listCart, setListCart] = useState<Array<IProductCart>>(
-    JSON.parse(localStorage.getItem("@KenzieLivre:Cart") as string)
-  );
+  const [listCart, setListCart] = useState<Array<IProductCart>>([]);
   const [cartao, setCartao] = useState<ICartaoForm | {}>({});
 
   const removeProduct = (idProduct: number) => {

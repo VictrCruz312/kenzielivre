@@ -11,6 +11,7 @@ import InputComponent from "../../components/Inputs";
 import TextArea from "../../components/TextArea";
 import { useEffect } from "react";
 import { useModal } from "../../Context/Modal";
+import { useAuth } from "../../Context/auth";
 
 interface IEndereco {
   cep: string;
@@ -28,8 +29,10 @@ export interface IEnvioEndereco {
 
 const FinishCart = () => {
 
+  const { checkAuth } = useAuth()
+
   const { leaveModalFunction } = useModal()
-  useEffect(()=>leaveModalFunction(),[])
+  useEffect(()=>{leaveModalFunction(); checkAuth( "Logue para poder comprar", "/login" )},[])
 
   const {
     register,
