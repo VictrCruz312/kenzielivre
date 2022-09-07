@@ -70,6 +70,8 @@ const Product = () => {
       productCart.push(product);
     }
 
+    toast.success("Adicionado ao carrinho")
+
     localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(productCart));
   };
 

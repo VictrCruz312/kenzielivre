@@ -84,7 +84,7 @@ export const HeaderStyled = styled.header`
         top:100px;
 
         @media(min-width:890px){
-            position:sticky;
+            position:relative;
             top:0;
 
             max-width: 380px;
