@@ -39,6 +39,8 @@ export const CardProductStyled = styled(Link)`
         height: 230px;
         max-height: 230px;
 
+        padding: 15px;
+
         display: flex;
         justify-content: center;
         align-items: center;

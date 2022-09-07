@@ -2,22 +2,18 @@ import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface IPropsTransitionPage {
-  children: ReactNode;
+  children: ReactNode,
+  loading:boolean,
 }
 
 const TransitionPage = ({ children }: IPropsTransitionPage) => {
 
-
   return (
     <motion.div
-      className="box"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{
-        duration: 0.4,
-        delay: 0.5,
-        ease: [0, 0.71, 0.2, 1.01]
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{opacity:1}}
+      transition={{ delay:0.7 }}
     >
       {children}
     </motion.div>
