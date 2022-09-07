@@ -1,8 +1,10 @@
-import { IEnvioEndereco } from "../../index";
 import { ButtonAll } from "../../../../components/Button";
 import { ContainerCartFinal } from "./style";
+import { useCart } from "../../../../Context/Cart";
 
 const DetailCartFinal = () => {
+  const { totalCart } = useCart();
+
   return (
     <ContainerCartFinal>
       <h2>Finalizar compra</h2>
@@ -10,12 +12,12 @@ const DetailCartFinal = () => {
       <div className="detail">
         <div className="secaoCartDesconto">
           <p className="desconto">Desconto</p>
-          <p className="valorDesconto">R$ 2999.0</p>
+          <p className="valorDesconto">R$ 0</p>
         </div>
         <div className="division"></div>
         <div className="secaoCartTotal">
           <p className="total">Total a pagar</p>
-          <p className="valorTotal">R$ 2999.0</p>
+          <p className="valorTotal">R$ {totalCart()}</p>
         </div>
       </div>
 

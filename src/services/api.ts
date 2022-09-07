@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IProduct, IProductReturn } from "./interface/Product";
+import { IPurchase } from "./interface/purchase";
 
 import {
   IcreateUser,

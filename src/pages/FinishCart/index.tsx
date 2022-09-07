@@ -13,6 +13,9 @@ import { useEffect } from "react";
 import { useModal } from "../../Context/Modal";
 import { useAuth } from "../../Context/auth";
 import { useCart } from "../../Context/Cart";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schemaResidence } from "../../validation/residence.validation";
+import { savePurchases } from "../../services/api";
 
 interface IEndereco {
   cep: string;
@@ -29,19 +32,23 @@ export interface IEnvioEndereco {
 }
 
 const FinishCart = () => {
-
   const { listCart, cartao, pix } = useCart();
 
-  const { checkAuth } = useAuth()
+  const { checkAuth } = useAuth();
 
-  const { leaveModalFunction } = useModal()
-  useEffect(()=>{leaveModalFunction(); checkAuth( "Logue para poder comprar", "/login" )},[])
+  const { leaveModalFunction } = useModal();
+  useEffect(() => {
+    leaveModalFunction();
+    checkAuth("Logue para poder comprar", "/login");
+  }, []);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IEndereco>();
+  } = useForm<IEndereco>({
+    resolver: yupResolver(schemaResidence),
+  });
 
   const enviarEndereco = (data: IEndereco) => {
     const novoEndereco = {
@@ -53,11 +60,17 @@ const FinishCart = () => {
       complemento: data.complemento || undefined,
       observação: data.observacao || undefined,
     };
+    const user = JSON.parse(
+      localStorage.getItem("@KenzieLivre:User") as string
+    );
+
     const finishCart = {
-      address:novoEndereco,
-      
-    }
-    console.log(novoEndereco, listCart, cartao, pix);
+      address: novoEndereco,
+      purchase: listCart,
+      userId: user.id,
+      payment: Object.keys(cartao).length === 0 ? pix : cartao,
+    };
+    createPurchases({ finishCart });
   };
 
   return (
