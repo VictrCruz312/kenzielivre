@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 
 interface IPropsTransitionPage {
   children: ReactNode,
-  loading:boolean,
 }
 
 const TransitionPage = ({ children }: IPropsTransitionPage) => {
