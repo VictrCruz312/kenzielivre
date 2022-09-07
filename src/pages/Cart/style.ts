@@ -7,30 +7,19 @@ export const CartStyled = styled.div`
   max-width: 100vw;
 
   height: 100%;
-  min-height: calc(100vh - 110px);
 
-  overflow: scroll hidden;
-
-  ::-webkit-scrollbar {
-    width: 10px;
-    background-color: none;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    width: 10px;
-    background-color: #f5f5f5;
-    border-radius: 4px;
-  }
+  overflow: hidden;
 
   @media screen and (min-width: 1024px) {
     background: rgba(28, 27, 35, 0.85);
   }
 
   .mainCart {
+    box-sizing: border-box;
+
     width: 100%;
     height: 100%;
     min-height: calc(100vh - 110px);
-    min-width: 100%;
 
     display: flex;
     align-items: center;

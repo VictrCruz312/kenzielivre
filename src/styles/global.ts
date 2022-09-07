@@ -11,10 +11,9 @@ export default createGlobalStyle`
         box-sizing: border-box;
         font-family: var(--font-Roboto);
 
-  
         ::-webkit-scrollbar{
             width:10px;
-            background-color: #00091C;
+            background-color: transparent;
         }
         ::-webkit-scrollbar-thumb{
             width:10px;

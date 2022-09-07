@@ -6,17 +6,22 @@ export const ProductCartStyled = styled.ul`
   align-items: center;
   gap: 21px;
 
+  padding: 10px;
+
   width: 100%;
   min-width: 300px;
   height: 100%;
-  min-height: calc(100vh - 110px);
-  padding-top: 20px;
+  max-height: calc(100vh - 110px);
 
-  @media screen and (min-width: 1024px) {
-    padding-top: 77px;
+  overflow: hidden scroll;
+
+  @media(min-width:1200px){
+    padding: 20px;
   }
 
   .product {
+    box-sizing:border-box;
+
     display: flex;
     justify-content: space-between;
     gap: 15px;

@@ -46,6 +46,9 @@ const Product = () => {
   const user = JSON.parse(localStorage.getItem("@KenzieLivre:User") as string);
 
   const addCart = () => {
+
+    toast.success("Adicionado ao carrinho")
+
     const arrayCart = JSON.parse(
       localStorage.getItem("@KenzieLivre:Cart") as string
     );
@@ -70,7 +73,7 @@ const Product = () => {
       productCart.push(product);
     }
 
-    toast.success("Adicionado ao carrinho")
+    
 
     localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(productCart));
   };
