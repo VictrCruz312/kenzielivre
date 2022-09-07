@@ -5,7 +5,6 @@ export const CartStyled = styled.div`
 
   width: 100vw;
   max-width: 100vw;
-
   height: 100%;
 
   overflow: hidden;
@@ -40,7 +39,7 @@ export const CartStyled = styled.div`
         justify-content: center;
         width: 100%;
         max-width: 563px;
-        height: 680px;
+        /* height: 680px; */
       }
     }
 

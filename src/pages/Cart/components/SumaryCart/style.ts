@@ -180,11 +180,10 @@ export const Sumarystyled = styled.div`
     flex-direction: column;
     gap: 21px;
 
-    padding-top: 50px;
-    padding-bottom: 10px;
+    padding: 50px 10% 10px 10%;
 
     @media screen and (min-width: 563px) {
-      padding-top: 0;
+      padding: 0 10% 10px 10%;
     }
   }
 `;
