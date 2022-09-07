@@ -5,7 +5,7 @@ import { IProductCart, useCart } from "../../../../Context/Cart";
 
 const ProductCart = () => {
   const { listCart, removeProduct, plusQuantity, minusQuantity } = useCart();
-
+  console.log(listCart);
   return (
     <ProductCartStyled>
       {listCart.length > 0 ? (
