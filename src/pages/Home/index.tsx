@@ -51,10 +51,13 @@ const Home = () => {
         <Block>
           <Banner
             arrayImage={[
-              "https://img.freepik.com/psd-premium/banner-de-midia-social-do-instagram-black-friday-para-produtos-eletronicos-em-ofertas_220664-1933.jpg?w=2000",
-              "https://img.freepik.com/psd-premium/faixa-de-midia-social-negra-sexta-feira-de-produtos-eletronicos-em-ofertas_220664-1867.jpg?w=2000"
+              "https://http2.mlstatic.com/D_NQ_613450-MLA51443136055_092022-OO.webp",
+              "https://http2.mlstatic.com/D_NQ_670369-MLA51444529319_092022-OO.webp",
+              "https://http2.mlstatic.com/D_NQ_790935-MLA51428930314_092022-OO.webp",
+              "https://http2.mlstatic.com/D_NQ_636640-MLA51442935581_092022-OO.webp",
+              "https://http2.mlstatic.com/D_NQ_717370-MLA51442498686_092022-OO.webp"
           ]}
-            delay={10000}
+            delay={15000}
           />
           <Category name="Ofertas da semana"/>
           <CarouselProduct 
