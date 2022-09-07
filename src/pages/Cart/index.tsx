@@ -14,12 +14,14 @@ const Cart = () => {
   useEffect(() => {
     leaveModalFunction();
   }, []);
-  
+
   const { checkout } = useParams();
-  const { setListCart, cartRemove, setPix } = useCart();
+  const { setListCart, setPix } = useCart();
   useEffect(() => {
-    cartRemove()
-    setPix(false)
+    setPix(false);
+    console.log(
+      JSON.parse(localStorage.getItem("@KenzieLivre:Cart") as string)
+    );
     setListCart(
       JSON.parse(localStorage.getItem("@KenzieLivre:Cart") as string)
     );
