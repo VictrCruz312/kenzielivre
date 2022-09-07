@@ -3,12 +3,12 @@ import { useCart } from "../../../../Context/Cart";
 import { PixStyled } from "./style";
 
 const Pix = () => {
-  const { navigation } = useCart();
+  const { navigation, setPix } = useCart();
 
   return (
     <>
       <PixStyled>
-        <ButtonAll size="medium" type="button" background="deft">
+        <ButtonAll size="medium" type="button" background="deft" onCLick={()=>setPix(true)}>
           Gerar código PIX
         </ButtonAll>
       </PixStyled>
