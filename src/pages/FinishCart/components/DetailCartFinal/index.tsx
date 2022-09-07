@@ -3,7 +3,7 @@ import { ContainerCartFinal } from "./style";
 import { useCart } from "../../../../Context/Cart";
 
 const DetailCartFinal = () => {
-  const { totalCart } = useCart();
+  const { totalCart, navigation } = useCart();
 
   return (
     <ContainerCartFinal>
@@ -25,7 +25,12 @@ const DetailCartFinal = () => {
         <ButtonAll type="submit" background="deft" size="large">
           Finalizar compra
         </ButtonAll>
-        <ButtonAll type="button" background="greey" size="large">
+        <ButtonAll
+          onCLick={() => navigation("/cart/checkout")}
+          type="button"
+          background="greey"
+          size="large"
+        >
           Voltar
         </ButtonAll>
       </div>

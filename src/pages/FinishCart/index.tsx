@@ -15,9 +15,10 @@ import { useAuth } from "../../Context/auth";
 import { useCart } from "../../Context/Cart";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaResidence } from "../../validation/residence.validation";
-import { savePurchases } from "../../services/api";
+import { createPurchases } from "../../services/api";
+import { IPurchase } from "../../services/interface/purchase";
 
-interface IEndereco {
+export interface IEndereco {
   cep: string;
   estado: string;
   cidade: string;
@@ -32,7 +33,7 @@ export interface IEnvioEndereco {
 }
 
 const FinishCart = () => {
-  const { listCart, cartao, pix } = useCart();
+  const { listCart, cartao, pix, navigation, cartRemove } = useCart();
 
   const { checkAuth } = useAuth();
 
@@ -55,7 +56,7 @@ const FinishCart = () => {
       cep: data.cep,
       estado: data.estado,
       cidade: data.cidade,
-      endereço: data.endereco,
+      endereco: data.endereco,
       numero: data.numero,
       complemento: data.complemento || undefined,
       observação: data.observacao || undefined,
@@ -64,13 +65,16 @@ const FinishCart = () => {
       localStorage.getItem("@KenzieLivre:User") as string
     );
 
-    const finishCart = {
+    const finishCart: IPurchase = {
       address: novoEndereco,
       purchase: listCart,
       userId: user.id,
       payment: Object.keys(cartao).length === 0 ? pix : cartao,
     };
-    createPurchases({ finishCart });
+    createPurchases(finishCart).then(() => {
+      navigation("/home");
+      cartRemove();
+    });
   };
 
   return (

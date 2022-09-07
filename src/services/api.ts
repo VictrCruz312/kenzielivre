@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IEndereco } from "../pages/FinishCart";
 import { IProduct, IProductReturn } from "./interface/Product";
 import { IPurchase } from "./interface/purchase";
 
@@ -107,13 +108,18 @@ export const deleteProduct = (idProduct: number): Promise<object> => {
   return api.delete(`/product/${idProduct}`, config()).then(({ data }) => data);
 };
 
+export const takeProductFilterPage = (
+  key: string,
+  page: number,
+  value: string
+): Promise<IProduct[]> => {
+  return api(`/product?${key}_like=${value}&_page=${page}&_limit=10`).then(
+    ({ data }) => data
+  );
+};
 
-export const takeProductFilterPage = ( key:string, page:number, value:string ):Promise<IProduct[]> => {
-
-  return api(`/product?${key}_like=${value}&_page=${page}&_limit=10`).then(({ data }) => data );
-}
-
-export const createPurchases = ( objFinishCart:any ):Promise<any> => {
-
-  return api.post(`/purchases`, objFinishCart, config() ).then(({ data }) => data );
-}
+export const createPurchases = (objFinishCart: IPurchase): Promise<any> => {
+  return api
+    .post(`/purchases`, objFinishCart, config())
+    .then(({ data }) => data);
+};
