@@ -10,7 +10,7 @@ interface IContextAuth {
   isAuthLevel:boolean,
   login:(data: IDataLogin)=>void,
   logout:()=>void,
-  checkAuth:()=>void,
+  checkAuth:( message?:string, route?:string )=>void,
   checkLevelAuth:()=>void,
 }
 
@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
     toast.success( "Usuario desconectado" )
   }
 
-  const checkAuth = () => {
+  const checkAuth = ( message?:string, route:string = "/home" ) => {
 
     const user = JSON.parse( localStorage.getItem("@KenzieLivre:User") as string )
 
@@ -81,11 +81,19 @@ export const AuthProvider = ({ children }: IPropsAuth) => {
         } )
         .catch( _ => {
 
-          navigate("/home")
+          if( message ){
+            toast.error( message )
+          }
+
+          navigate(route)
         } )
     }else{
 
-      navigate("/home")
+      if( message ){
+        toast.error( message )
+      }
+
+      navigate(route)
     }
   }
 
