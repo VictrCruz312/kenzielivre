@@ -4,8 +4,7 @@ export const BannerStyled = styled.figure`
     box-sizing: border-box;
 
     width: 100%;
-    height: 450px;
-    min-height: 340px;
+    height: auto;
 
     margin-top: 10px;
 
@@ -14,7 +13,7 @@ export const BannerStyled = styled.figure`
     overflow: hidden;
 
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     
     box-shadow: 0px 0px 9px -1px #000000;
@@ -23,19 +22,47 @@ export const BannerStyled = styled.figure`
         margin-top: 20px;
     }
 
-    @media(min-width:550px){
-        justify-content: center;
-    }
-
     img{
         width: 100%;
         min-width: 750px;
-        max-width: 1250px;
 
-        transform: translateX(-10%);
-
-        @media(min-width:550px){
+        transform: translateX(15%);
+        
+        @media(min-width:350px){
+            transform: translateX(10%);
+        }
+        @media(min-width:505px){
             transform: translateX(0%);
+        }
+    }
+`
+
+export const ProgressBar = styled.div`
+    box-sizing: border-box;
+
+    width: 0%;
+    height: 5px;
+
+    background-color: #1976d2;
+    border-radius: 4px;
+
+    animation: teste 75s ease infinite;
+
+    @keyframes teste {
+        20%{
+            width: 20%;
+        }
+        40%{
+            width: 40%;
+        }
+        60%{
+            width: 60%;
+        }
+        80%{
+            width: 80%;
+        }
+        to{
+            width: 100%;
         }
     }
 `
