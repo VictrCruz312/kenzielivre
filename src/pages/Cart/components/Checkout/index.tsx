@@ -20,7 +20,6 @@ const Checkout = () => {
             width="98"
             height="16"
             className="arrowOne"
-            viewBox="0 0 98 16"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -30,12 +29,11 @@ const Checkout = () => {
               fill="white"
             />
           </svg>
-          <MdCheckCircleOutline className="checked" />
+          <MdRadioButtonUnchecked className="notChecked" />
           <svg
             width="98"
             className="arrowTwo"
             height="16"
-            viewBox="0 0 98 16"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -45,7 +43,7 @@ const Checkout = () => {
               fill="white"
             />
           </svg>
-          <MdCheckCircleOutline className="notChecked" />
+          <MdRadioButtonUnchecked className="notChecked" />
         </div>
         <h1 className="title">checkout</h1>
         <h2 className="subtitle">Métodos de pagamento</h2>

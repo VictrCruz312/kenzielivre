@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CheckoutStyled = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding-top: 16px;
 
@@ -17,6 +18,7 @@ export const CheckoutStyled = styled.div`
 
   .containerCheck {
     display: flex;
+    justify-content: center;
     align-items: center;
 
     .checked {

@@ -18,6 +18,7 @@ export const Sumarystyled = styled.div`
 
   .containerCheck {
     display: flex;
+    justify-content: center;
     align-items: center;
 
     .checked {

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const ProductCartStyled = styled.ul`
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +13,8 @@ export const ProductCartStyled = styled.ul`
   width: 100%;
   min-width: 300px;
   height: 100%;
-  
+
+  min-height: calc(100vh - 110px);
   max-height: calc(100vh - 110px);
 
   overflow: hidden scroll;
