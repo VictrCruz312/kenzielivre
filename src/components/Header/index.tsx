@@ -11,27 +11,80 @@ import { AiOutlineCloseSquare } from "react-icons/ai";
 
 import Modal from "../Modal";
 import { useModal } from "../../Context/Modal";
+import { useAuthSearch } from "../../Context/authProductSearch";
 
 interface IPropsHeader {
   onText: (text: string) => void;
   awayLogo?: string;
+  filterDescription?: any;
+  filterBrand?: any;
+  filterModel?: any;
+  filterCategory?: any;
 }
 
-const Header = ({ onText, awayLogo = "/home" }: IPropsHeader) => {
+const Header = ({
+  onText,
+  awayLogo = "/home",
+  filterDescription,
+  filterBrand,
+  filterModel,
+  filterCategory,
+}: IPropsHeader) => {
   const { isModalGlobal, isleaveGlobal, stateModalGlobal } = useModal();
 
-  const [text, setText] = useState("");
+  const {
+    filterStateMaster,
+    setFilterStateMaster,
+    products,
+    filterStateDescription,
+    filterStateBrand,
+    filterStateModel,
+    filterStateCategory,
+    setFilterStateDescription,
+    setFilterStateBrand,
+    setFilterStateModel,
+    setFilterStateCategory,
+  } = useAuthSearch();
+
+  const [filter, setFilter] = useState("");
 
   const navigate = useNavigate();
 
   const goAway = () => navigate(awayLogo);
 
   const takeText = (e: ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
-    onText(text);
+    setFilter(e.target.value.toLowerCase());
   };
 
-  const takeTextButton = () => onText(text);
+  const takeSearch = () => {
+    takeFilter();
+
+    navigate("/home/sectionProduct");
+  };
+
+  const takeFilter = () => {
+    filterDescription = products?.filter((product) =>
+      product.description?.toLowerCase().includes(filter) ? product : undefined
+    );
+    setFilterStateDescription(filterDescription);
+
+    filterBrand = products?.filter((product) =>
+      product.brand?.toLowerCase().includes(filter) ? product : undefined
+    );
+    setFilterStateBrand(filterBrand);
+
+    filterModel = products?.filter((product) =>
+      product.model?.toLowerCase().includes(filter) ? product : undefined
+    );
+    setFilterStateModel(filterModel);
+
+    filterCategory = products?.filter((product) =>
+      product.category?.toLowerCase().includes(filter) ? product : undefined
+    );
+    setFilterStateCategory(filterCategory);
+
+    console.log(filterStateDescription);
+  };
 
   return (
     <>
@@ -47,7 +100,7 @@ const Header = ({ onText, awayLogo = "/home" }: IPropsHeader) => {
             placeholder="Buscar produtos, marcas e muito mais..."
           />
           <button
-            onClick={takeTextButton}
+            onClick={takeSearch}
             className="blockSearch__button global"
             type="button"
           >
