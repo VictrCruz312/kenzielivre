@@ -53,7 +53,9 @@ const ProductCart = () => {
           </li>
         ))
       ) : (
-        <span>carrinho vazio</span>
+        <span className="cartVazio">
+          Vazio... você ainda não tem produtos no carrinho
+        </span>
       )}
     </ProductCartStyled>
   );
