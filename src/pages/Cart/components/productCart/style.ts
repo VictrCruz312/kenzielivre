@@ -10,7 +10,10 @@ export const ProductCartStyled = styled.ul`
   min-width: 300px;
   height: 100%;
   min-height: calc(100vh - 110px);
-  padding-top: 20px;
+  max-height: calc(100vh - 110px);
+  padding: 20px 0 30px 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   @media screen and (min-width: 1024px) {
     padding-top: 77px;
@@ -190,5 +193,18 @@ export const ProductCartStyled = styled.ul`
         }
       }
     }
+  }
+
+  .cartVazio {
+    margin-top: 20%;
+    max-width: 90%;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 26px;
+    color: #ffffff;
+    background-color: rgba(33, 37, 43, 0.29);
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: inset 2px 3px 20px 9px rgb(33 37 43 / 99%);
   }
 `;
