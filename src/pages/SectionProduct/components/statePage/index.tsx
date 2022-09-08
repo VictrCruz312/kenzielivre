@@ -27,22 +27,20 @@ const StatePage = ( { takePage }:IPropsStatePage ) => {
 
     const mais = () => {
 
-        console.log( pageFilter + 1, page + 1 )
-
-        if( productFilter.length != 0 && productFilter.length === 10 ){
+        if( productFilter?.length != 0 && productFilter?.length === 10 ){
             takeFilter(pageFilter + 1)
             setPageFilter(pageFilter + 1)
             // @ts-ignore ou // @ts-expect-error
-        }else if( products.length === 10  ){
+        }
+        if( productFilter?.length == 0 && products?.length === 10  ){
             takePage(page + 1)
             setPage(page + 1)
         }
     }
 
     const menos = () => {
-        console.log( pageFilter - 1, page - 1 )
 
-        if(page > 0 && productFilter.length != 0){
+        if(pageFilter > 1 && productFilter.length != 0 ){
             takeFilter(pageFilter - 1)
             setPageFilter(pageFilter - 1)
         }else if( page > 1 ){
