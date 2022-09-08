@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
 
-export const CheckoutStyled = styled.div`
+export const CreateProductStyled = styled.div`
 
 `

@@ -1,12 +1,29 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 
-    *{
-
+    :root {
+        --font-Roboto: 'Roboto', sans-serif;
+        --font-Inter: 'Inter', sans-serif;
     }
 
-    /* http://meyerweb.com/eric/tools/css/reset/ 
+    * {
+        box-sizing: border-box;
+        font-family: var(--font-Roboto);
+
+        ::-webkit-scrollbar{
+            width:10px;
+            background-color: transparent;
+        }
+        ::-webkit-scrollbar-thumb{
+            width:10px;
+            border-radius: 4px;
+            background-color:rgba(63,61,86, 85%);
+        }
+    
+    }
+
+    /* http://meyerweb.com/eric/tools/css/reset/
         v2.0 | 20110126
         License: none (public domain)
     */
@@ -20,18 +37,17 @@ export default createGlobalStyle`
     dl, dt, dd, ol, ul, li,
     fieldset, form, label, legend,
     table, caption, tbody, tfoot, thead, tr, th, td,
-    article, aside, canvas, details, embed, 
-    figure, figcaption, footer, header, hgroup, 
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header, hgroup,
     menu, nav, output, ruby, section, summary,
     time, mark, audio, video {
         margin: 0;
         padding: 0;
         border: 0;
         font-size: 100%;
-        font: inherit;
         vertical-align: baseline;
     }
-    article, aside, details, figcaption, figure, 
+    article, aside, details, figcaption, figure,
     footer, header, hgroup, menu, nav, section {
         display: block;
     }
@@ -53,4 +69,5 @@ export default createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
-`
+
+`;
