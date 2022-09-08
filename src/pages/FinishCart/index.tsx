@@ -17,6 +17,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaResidence } from "../../validation/residence.validation";
 import { createPurchases } from "../../services/api";
 import { IPurchase } from "../../services/interface/purchase";
+import toast from "react-hot-toast";
 
 export interface IEndereco {
   cep: string;
@@ -52,6 +53,8 @@ const FinishCart = () => {
   });
 
   const enviarEndereco = (data: IEndereco) => {
+    const toastId = toast.loading("finalizando compra");
+
     const novoEndereco = {
       cep: data.cep,
       estado: data.estado,
@@ -71,10 +74,19 @@ const FinishCart = () => {
       userId: user.id,
       payment: Object.keys(cartao).length === 0 ? pix : cartao,
     };
-    createPurchases(finishCart).then(() => {
-      navigation("/home");
-      cartRemove();
-    });
+    createPurchases(finishCart)
+      .then(() => {
+        navigation("/home");
+        cartRemove();
+        toast.success("compra finalizada. Redirecionando...", {
+          id: toastId,
+        });
+      })
+      .catch(() =>
+        toast.error("erro ao finalizar", {
+          id: toastId,
+        })
+      );
   };
 
   return (

@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { ICartaoForm } from "../../pages/Cart/components/Cartao";
 
@@ -46,16 +47,26 @@ export const CartProvider = ({ children }: IPropsCart) => {
   const [pix, setPix] = useState<boolean>(false);
 
   const removeProduct = (idProduct: number) => {
+    const toastId = toast.loading("deletando");
+
     const newList = listCart.filter((product) => product.id !== idProduct);
     setListCart(newList);
     localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(newList));
+
+    toast.success("produto deletado", {
+      id: toastId,
+    });
   };
 
   const navigation = useNavigate();
 
   const cartRemove = () => {
+    const toastId = toast.loading("limpando carrinho");
     localStorage.setItem("@KenzieLivre:Cart", JSON.stringify([]));
     setListCart([]);
+    toast.success("carrinho vazio", {
+      id: toastId,
+    });
   };
 
   const totalCart = () => {
@@ -73,6 +84,8 @@ export const CartProvider = ({ children }: IPropsCart) => {
   };
 
   const plusQuantity = (id: number) => {
+    const toastId = toast.loading("adicionando");
+
     const newList = listCart.map((product) => {
       const quantity = "" + product.quantity;
       if (parseInt(quantity) === product.productQuantity) {
@@ -86,9 +99,13 @@ export const CartProvider = ({ children }: IPropsCart) => {
     });
     setListCart(newList);
     localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(newList));
+    toast.success("+1 produto adicionado", {
+      id: toastId,
+    });
   };
 
   const minusQuantity = (id: number) => {
+    const toastId = toast.loading("removendo");
     const newList = listCart.map((product) => {
       if (product.id === id) {
         if (product.productQuantity < 1) {
@@ -103,6 +120,9 @@ export const CartProvider = ({ children }: IPropsCart) => {
     });
     setListCart(newList);
     localStorage.setItem("@KenzieLivre:Cart", JSON.stringify(newList));
+    toast.success("1 produto removido", {
+      id: toastId,
+    });
   };
 
   return (
