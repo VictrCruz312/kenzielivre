@@ -19,9 +19,6 @@ const Cart = () => {
   const { setListCart, setPix } = useCart();
   useEffect(() => {
     setPix(false);
-    console.log(
-      JSON.parse(localStorage.getItem("@KenzieLivre:Cart") as string)
-    );
     setListCart(
       JSON.parse(localStorage.getItem("@KenzieLivre:Cart") as string)
     );
