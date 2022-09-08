@@ -105,42 +105,42 @@ const ListEdited = () => {
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Tecnologia");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Tecnologia");   navigate("/home/sectionProduct")}}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
             <ListItemText primary="Tecnologia" />
           </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Limpeza");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Limpeza");   navigate("/home/sectionProduct")}}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
             <ListItemText primary="Limpeza" />
           </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Moda");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Moda");   navigate("/home/sectionProduct")}}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
             <ListItemText primary="Moda" />
           </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Moveis");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Moveis");   navigate("/home/sectionProduct")}}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
             <ListItemText primary="Moveis" />
           </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Ferramentas");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Ferramentas");   navigate("/home/sectionProduct")}}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
             <ListItemText primary="Ferramentas" />
           </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Eletromesticos");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Eletromesticos"); navigate("/home/sectionProduct")}}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>

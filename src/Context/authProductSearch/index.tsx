@@ -4,6 +4,7 @@ import {
   ReactNode,
   SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from "react";
 
@@ -69,6 +70,8 @@ export const AuthSearch = ({ children }: IProps) => {
       setProductFilter(removeDuplicate);
     }
   };
+
+  useEffect(()=>{takeFilter( 1 )},[filter])
 
   const takePage = ( page: number ) => {
     TakeProductPerPage(page).then((result) => {
