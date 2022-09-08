@@ -50,6 +50,9 @@ const UpdateProduct = () => {
   const [ quantityImage, setQuantityImage ] = React.useState([1,])
   
   const { checkAuth, checkLevelAuth } = useAuth();
+  checkAuth()
+  checkLevelAuth()
+
   const navigate = useNavigate();
 
   const { id } = useParams()
