@@ -61,6 +61,8 @@ export const ContainerImagem = styled.div<ICardExtra>`
 
 
   img {
+    cursor: pointer;
+
     width: 100%;
     max-width: 250px;
 

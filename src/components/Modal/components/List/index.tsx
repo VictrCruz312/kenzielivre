@@ -16,6 +16,7 @@ import { AiOutlineFileSearch } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../Context/auth";
 import { useModal } from "../../../../Context/Modal";
+import { useAuthSearch } from "../../../../Context/authProductSearch";
 
 const ListEdited = () => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const ListEdited = () => {
   const { leaveModalFunction } = useModal();
 
   const [open, setOpen] = React.useState(false);
+  const { takeFilter, setFilter } = useAuthSearch()
 
   const openCategory = () => {
     setOpen(!open);
@@ -103,42 +105,42 @@ const ListEdited = () => {
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Tecnologia");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
             <ListItemText primary="Tecnologia" />
           </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Limpeza");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
             <ListItemText primary="Limpeza" />
           </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Moda");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
             <ListItemText primary="Moda" />
           </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Moveis");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
             <ListItemText primary="Moveis" />
           </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Ferramentas");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
             <ListItemText primary="Ferramentas" />
           </ListItemButton>
 
-          <ListItemButton sx={{ pl: 4 }} onClick={teste}>
+          <ListItemButton sx={{ pl: 4 }} onClick={()=>{setFilter("Eletromesticos");  takeFilter( 1 ); setTimeout(()=>{navigate("/home/sectionProduct")},500) }}>
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>

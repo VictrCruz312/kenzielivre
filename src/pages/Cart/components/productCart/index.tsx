@@ -39,7 +39,7 @@ const ProductCart = () => {
               <div className="containerPrice">
                 <p>
                   R${" "}
-                  {product.promotion ? product.currentPrice : product.lastPrice}
+                  {product.promotion ? Number(product.currentPrice).toFixed(2) : Number( product.currentPrice ).toFixed(2)}
                 </p>
               </div>
               <button

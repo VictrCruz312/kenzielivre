@@ -73,8 +73,8 @@ export const CartProvider = ({ children }: IPropsCart) => {
     return listCart.reduce((value, product) => {
       let price = "";
       product.promotion
-        ? (price += product.currentPrice)
-        : (price += product.lastPrice);
+        ? (price += Number( product.currentPrice ))
+        : (price += Number( product.currentPrice ));
       return parseInt(price) * product.productQuantity + value;
     }, 0);
   };
