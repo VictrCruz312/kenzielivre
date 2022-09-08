@@ -5,13 +5,15 @@ import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import { useNavigate } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
 
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineConsoleSql, AiOutlineSearch } from "react-icons/ai";
 import { HiShoppingCart } from "react-icons/hi";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
 import Modal from "../Modal";
 import { useModal } from "../../Context/Modal";
 import { useAuthSearch } from "../../Context/authProductSearch";
+import { useRequest } from "../../Context/Request";
+import { IProduct } from "../../services/interface/Product";
 
 interface IPropsHeader {
   onText: (text: string) => void;
@@ -25,28 +27,18 @@ interface IPropsHeader {
 const Header = ({
   onText,
   awayLogo = "/home",
-  filterDescription,
-  filterBrand,
-  filterModel,
-  filterCategory,
 }: IPropsHeader) => {
   const { isModalGlobal, isleaveGlobal, stateModalGlobal } = useModal();
 
-  const {
-    filterStateMaster,
-    setFilterStateMaster,
-    products,
-    filterStateDescription,
-    filterStateBrand,
-    filterStateModel,
-    filterStateCategory,
-    setFilterStateDescription,
-    setFilterStateBrand,
-    setFilterStateModel,
-    setFilterStateCategory,
+  const { 
+    takeFilter, 
+    setFilter, 
+    filter, 
+    takePage, 
+    setProductFilter,
+    setPage,
+    setPageFilter
   } = useAuthSearch();
-
-  const [filter, setFilter] = useState("");
 
   const navigate = useNavigate();
 
@@ -57,33 +49,19 @@ const Header = ({
   };
 
   const takeSearch = () => {
-    takeFilter();
+   
+    if( filter != "" ){
+      takeFilter( 1 );
+
+      setPage(1)
+    }else{
+      takePage(1)
+      
+      setProductFilter([])
+      setPageFilter(0)
+    }
 
     navigate("/home/sectionProduct");
-  };
-
-  const takeFilter = () => {
-    filterDescription = products?.filter((product) =>
-      product.description?.toLowerCase().includes(filter) ? product : undefined
-    );
-    setFilterStateDescription(filterDescription);
-
-    filterBrand = products?.filter((product) =>
-      product.brand?.toLowerCase().includes(filter) ? product : undefined
-    );
-    setFilterStateBrand(filterBrand);
-
-    filterModel = products?.filter((product) =>
-      product.model?.toLowerCase().includes(filter) ? product : undefined
-    );
-    setFilterStateModel(filterModel);
-
-    filterCategory = products?.filter((product) =>
-      product.category?.toLowerCase().includes(filter) ? product : undefined
-    );
-    setFilterStateCategory(filterCategory);
-
-    console.log(filterStateDescription);
   };
 
   return (

@@ -3,25 +3,51 @@ import { StatePageStyled } from "./style"
 import { BsArrowRightSquare } from 'react-icons/bs';
 import { BsArrowLeftSquare } from 'react-icons/bs';
 import { useState } from "react";
+import { useAuthSearch } from "../../../../Context/authProductSearch";
+import { useRequest } from "../../../../Context/Request";
 
 interface IPropsStatePage {
 
     takePage:( page:number ) => void
 }
 
-const StatePage = ( {  takePage }:IPropsStatePage ) => {
+const StatePage = ( { takePage }:IPropsStatePage ) => {
     
-    const [ page, setPage ] = useState<number>(1)
+    const { 
+        productFilter, 
+        products, 
+        filter, 
+        takeFilter, 
+        page, 
+        setPage, 
+        pageFilter, 
+        setPageFilter 
+    } = useAuthSearch()
+
 
     const mais = () => {
-        takePage(page + 1)
-        setPage(page + 1)
+
+        console.log( pageFilter + 1, page + 1 )
+
+        if( productFilter.length != 0 && productFilter.length === 10 ){
+            takeFilter(pageFilter + 1)
+            setPageFilter(pageFilter + 1)
+            // @ts-ignore ou // @ts-expect-error
+        }else if( products.length === 10  ){
+            takePage(page + 1)
+            setPage(page + 1)
+        }
     }
 
     const menos = () => {
-        if(page > 1){
+        console.log( pageFilter - 1, page - 1 )
+
+        if(page > 0 && productFilter.length != 0){
+            takeFilter(pageFilter - 1)
+            setPageFilter(pageFilter - 1)
+        }else if( page > 1 ){
             takePage(page - 1)
-            setPage(page - 1) 
+            setPage(page - 1)
         }
     }
 
