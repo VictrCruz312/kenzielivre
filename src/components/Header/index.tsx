@@ -49,7 +49,7 @@ const Header = ({
   };
 
   const takeSearch = () => {
-   
+
     if( filter != "" ){
       takeFilter( 1 );
 
