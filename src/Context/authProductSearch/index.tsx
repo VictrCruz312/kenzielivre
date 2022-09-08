@@ -8,24 +8,23 @@ import {
 } from "react";
 
 import { IProduct } from "../../services/interface/Product";
+import { useRequest } from "../Request";
 
 const AuthContextSearch = createContext<IProductSearch>({} as IProductSearch);
 
 interface IProductSearch {
   products: IProduct[] | undefined;
-  filterStateDescription: IProduct[] | undefined;
-  filterStateBrand: IProduct[] | undefined;
-  filterStateModel: IProduct[] | undefined;
-  filterStateCategory: IProduct[] | undefined;
-  filterStateMaster: IProduct[] | undefined;
   setProducts: Dispatch<SetStateAction<IProduct[] | undefined>>;
-
-  //filtros-campo de busca-header
-  setFilterStateMaster: Dispatch<SetStateAction<IProduct[]>>;
-  setFilterStateDescription: Dispatch<SetStateAction<IProduct[]>>;
-  setFilterStateBrand: Dispatch<SetStateAction<IProduct[]>>;
-  setFilterStateModel: Dispatch<SetStateAction<IProduct[]>>;
-  setFilterStateCategory: Dispatch<SetStateAction<IProduct[]>>;
+  productFilter:IProduct[],
+  setProductFilter:any,
+  filter:string
+  setFilter:( e:string )=>void
+  takeFilter:( page:number )=> void,
+  takePage:( page:number )=> void,
+  page:number,
+  setPage:( page:number )=> void,
+  pageFilter:number,
+  setPageFilter:( page:number )=> void,
 }
 
 interface IProps {
@@ -33,36 +32,67 @@ interface IProps {
 }
 
 export const AuthSearch = ({ children }: IProps) => {
-  const [products, setProducts] = useState<IProduct[]>();
 
-  const [filterStateMaster, setFilterStateMaster] = useState<IProduct[]>([]);
-  const [filterStateDescription, setFilterStateDescription] = useState<
-    IProduct[]
-  >([]);
+  const [ page, setPage ] = useState<number>(1)
+  const [ pageFilter, setPageFilter ] = useState<number>(1)
 
-  const [filterStateBrand, setFilterStateBrand] = useState<IProduct[]>([]);
+  const [ products, setProducts] = useState<IProduct[]>();
 
-  const [filterStateModel, setFilterStateModel] = useState<IProduct[]>([]);
+  const [ filter, setFilter] = useState("");
 
-  const [filterStateCategory, setFilterStateCategory] = useState<IProduct[]>(
-    []
-  );
+  const [ productFilter, setProductFilter ] = useState<IProduct[]>([])
+  
+  const { takeProductFilterPage, TakeProductPerPage } = useRequest()
+
+  const takeFilter = async ( page:number = 0 ) => {
+
+    let filterArray:any = []
+
+    setProductFilter([])
+
+    await takeProductFilterPage( "description", page, filter )
+      .then( (result:any) => { filterArray = [ ...result, ...filterArray ] } )
+
+    await takeProductFilterPage( "category", page, filter )
+      .then( (result:any) => { filterArray = [ ...result, ...filterArray ] })
+
+    await takeProductFilterPage( "brand", page, filter )
+      .then( (result:any) => { filterArray = [ ...result, ...filterArray ] } )
+
+    await takeProductFilterPage( "model", page, filter )
+      .then( (result:any) => { filterArray = [ ...result, ...filterArray ] } )
+
+    const removeDuplicate = 
+      filterArray.filter( ( product:any, i:any, array:any ) => array.findIndex( ( ele:any ) => ele.id === product.id ) == i )
+
+    if( removeDuplicate.length != 0){
+      setProductFilter(removeDuplicate);
+    }
+  };
+
+  const takePage = ( page: number ) => {
+    TakeProductPerPage(page).then((result) => {
+      if (result.length != 0) {
+        setProducts(result);
+      }
+    });
+  };
 
   return (
     <AuthContextSearch.Provider
       value={{
         products,
-        filterStateMaster,
-        filterStateDescription,
-        filterStateBrand,
-        filterStateModel,
-        filterStateCategory,
-        setFilterStateMaster,
         setProducts,
-        setFilterStateDescription,
-        setFilterStateBrand,
-        setFilterStateModel,
-        setFilterStateCategory,
+        productFilter,
+        setProductFilter,
+        filter,
+        setFilter,
+        takeFilter,
+        takePage,
+        page,
+        setPage,
+        pageFilter,
+        setPageFilter,
       }}
     >
       {children}
