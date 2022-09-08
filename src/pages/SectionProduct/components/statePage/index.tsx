@@ -27,6 +27,8 @@ const StatePage = ( { takePage }:IPropsStatePage ) => {
 
     const mais = () => {
 
+        console.log( pageFilter, page)
+
         if( productFilter?.length != 0 && productFilter?.length === 10 ){
             takeFilter(pageFilter + 1)
             setPageFilter(pageFilter + 1)
@@ -39,6 +41,8 @@ const StatePage = ( { takePage }:IPropsStatePage ) => {
     }
 
     const menos = () => {
+
+        console.log( pageFilter, page)
 
         if(pageFilter > 1 && productFilter.length != 0 ){
             takeFilter(pageFilter - 1)

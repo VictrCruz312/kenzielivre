@@ -16,8 +16,9 @@ const SectionProduct = () => {
 
   const { TakeProductPerPage } = useRequest();
 
-  const { setProducts } = useAuthSearch();
-  
+  const { setProducts, setPage, setPageFilter} = useAuthSearch();
+
+
   const takePage = (page: number) => {
     TakeProductPerPage(page).then((result) => {
       if (result.length != 0) {
@@ -25,9 +26,11 @@ const SectionProduct = () => {
       }
     });
   };
-
+  
   useEffect(() => {
     takePage(1);
+    setPage(1)
+    setPageFilter(1)
     leaveModalFunction();
   }, []);
 

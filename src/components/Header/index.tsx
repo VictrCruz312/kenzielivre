@@ -55,10 +55,10 @@ const Header = ({
 
       setPage(1)
     }else{
-      takePage(1)
-      
       setProductFilter([])
       setPageFilter(0)
+
+      takePage(1)
     }
 
     navigate("/home/sectionProduct");
