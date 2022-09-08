@@ -59,8 +59,12 @@ export const ContainerImagem = styled.div<ICardExtra>`
     (props.type === "cardLogoEmpresa" && `${80}px`) ||
     (props.type === "imgExtraProduct" && "95%")};
 
+
   img {
-    height: 100%;
-    max-height: 130px;
+    width: 100%;
+    max-width: 250px;
+
+    height: auto;
+    max-height: 100%;
   }
 `;

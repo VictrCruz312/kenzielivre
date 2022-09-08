@@ -47,7 +47,11 @@ export const CardProductStyled = styled(Link)`
 
         overflow: hidden;
         .block__image{
-            height: 100%;
+            width: auto;
+            max-width: 250px;
+
+            height: auto;
+            max-height: 100%;
         }
     }
 `
