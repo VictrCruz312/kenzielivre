@@ -3,17 +3,24 @@ import { CheckboxStyled } from "./style";
 import * as React from "react";
 import Checkbox from "@mui/material/Checkbox";
 
-const CheckboxEdited = () => {
-  const [checked, setChecked] = React.useState(true);
+interface IPropsCheckbox {
+  nameDescription?:string,
+  onChange:( check:boolean ) => void,
+  name?:string,
+  register?:any,
+  message?:string,
+}
+
+const CheckboxEdited = ( { onChange, nameDescription, register, name }:IPropsCheckbox ) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-    console.log(event.target.checked);
+    onChange(event.target.checked);
   };
   return (
     <CheckboxStyled
-      control={<Checkbox onChange={handleChange} defaultChecked />}
-      label="Concorda com os termos de uso"
+      {...register(name)}
+      control={<Checkbox onChange={handleChange} />}
+      label={nameDescription ? nameDescription : "Concorda com os termos de uso" }
     />
   );
 };

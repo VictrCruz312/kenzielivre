@@ -2,8 +2,11 @@ export interface IUserCliente {
     name?: string,
     lastname?: string,
     email?:string,
+    imageLogo?: string,
     password?:string,
     auth?:string,
+    profileImage?:string
+    checkAuth?:boolean
 }
 
 export interface IUserVendedor {
@@ -13,6 +16,8 @@ export interface IUserVendedor {
     password?: string,
     imageLogo?: string,
     auth?: string,
+    profileImage?:string
+    checkAuth?:boolean
 }
 
 export type IcreateUser = IUserVendedor | IUserCliente
@@ -30,7 +35,7 @@ export interface IUserVendedorReturn extends IUserVendedor {
     id:number
 }
 
-export type IUserReturn = IUserClienteReturn | IUserVendedorReturn
+export type IUserReturn = IUserVendedorReturn | IUserClienteReturn
 
 export interface IReturnData {
     accessToken: string,

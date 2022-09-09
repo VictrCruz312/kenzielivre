@@ -1,31 +1,67 @@
-import CardProduct from "../../../components/CardProduct"
-import { ShowcaseStyled } from "./style"
+import CardProduct from "../../../components/CardProduct";
+import { ShowcaseStyled } from "./style";
 
-import { v4 as uuid } from "uuid"
+import { useAuthSearch } from "../../../../Context/authProductSearch";
 
-interface IPropsShowcase {
-    arrayProduct:any
-}
+import { v4 as uuid } from "uuid";
 
-const Showcase = ( { arrayProduct }:IPropsShowcase ) => {
+const Showcase = () => {
+  const {
+    products,
+    productFilter
+  } = useAuthSearch();
 
-    return(
-        <ShowcaseStyled>
-            {
-                arrayProduct?.map(({ id, images, description, lastValue, currentValue }:any) => 
+  return (
+    <ShowcaseStyled>
 
-                <CardProduct 
-                    key={uuid()} 
-                    id={id} 
-                    src={images[0]} 
-                    alt={description} 
-                    lastValue={lastValue} 
-                    currentValue={currentValue} 
-                    description={description} 
-                />)
-            }
-        </ShowcaseStyled>
-    )
-}
+    {
+      productFilter.length != 0 ? productFilter.map(
+        ({
+          id,
+          images,
+          description,
+          lastPrice,
+          currentPrice,
+          promotion,
+        }: any) => (
+          <CardProduct
+            key={uuid()}
+            id={id}
+            src={images[0]}
+            alt={description}
+            lastValue={lastPrice}
+            currentValue={currentPrice}
+            description={description}
+            promotion={promotion}
+          />
+        )
+      )
+      :
+      
+      products?.map(
+        ({
+          id,
+          images,
+          description,
+          lastPrice,
+          currentPrice,
+          promotion,
+        }: any) => (
+          <CardProduct
+            key={uuid()}
+            id={id}
+            src={images[0]}
+            alt={description}
+            lastValue={lastPrice}
+            currentValue={currentPrice}
+            description={description}
+            promotion={promotion}
+          />
+        )
+      )
+      }
+    </ShowcaseStyled>
+  );
+};
 
-export default Showcase
+export default Showcase;

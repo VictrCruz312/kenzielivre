@@ -1,22 +1,21 @@
-import { motion } from "framer-motion"
-import { ReactNode } from "react"
+import { TrasitionStyled } from "./style";
+import { ReactNode } from "react";
 
 interface IPropsTransitionPage {
-    children:ReactNode
+  children: ReactNode;
 }
 
-const TransitionPage = ( { children }:IPropsTransitionPage ) => {
+const TransitionPage = ({ children }: IPropsTransitionPage) => {
+  return (
+    <TrasitionStyled
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 1 }}
+      transition={{ delay: 0.7 }}
+    >
+      {children}
+    </TrasitionStyled>
+  );
+};
 
-    return(
-        <motion.div
-            initial={{opacity:0}}
-            animate={{opacity:1}}
-            exit={{opacity:0}}
-            transition={{delay:0.3}}
-        >
-            { children }
-        </motion.div>
-    )
-}
-
-export default TransitionPage
+export default TransitionPage;

@@ -14,17 +14,14 @@ export const CardProductStyled = styled(Link)`
     padding: none;
     margin: 10px 20px 10px 0px;
 
-    border-radius: 4px;
+    border-radius: 8px;
 
-    background-color: #3F3D56;
+    background-color: #FFF;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
-    opacity: 0%;
-    transform: translateY(-100%);
 
     text-decoration: none;
 
@@ -32,28 +29,17 @@ export const CardProductStyled = styled(Link)`
         box-shadow: 0px 0px 7px -2px rgba(63, 61, 86, 0.5);
     }
 
-    animation: carAnimation 1s forwards;
-
-    @keyframes carAnimation {
-        70%{
-            opacity: 100%;
-            transform: translateY(20%);
-        }
-        to{
-            opacity: 100%;
-            transform: translateY(0%);
-        }
-    }
-
     .block{
         box-sizing: border-box;
         
-        border-radius: 4px 4px 0px 0px;
+        border-radius: 8px 8px 0px 0px;
 
         width: 250px;
         max-width: 250px;
         height: 230px;
         max-height: 230px;
+
+        padding: 15px;
 
         display: flex;
         justify-content: center;
@@ -61,10 +47,16 @@ export const CardProductStyled = styled(Link)`
 
         overflow: hidden;
         .block__image{
-            height: 100%;
+            width: auto;
+            max-width: 250px;
+
+            height: auto;
+            max-height: 100%;
         }
     }
 `
+
+
 
 export const Information = styled.div`
     
@@ -103,6 +95,18 @@ export const Information = styled.div`
     }
 
     .information__product{
+        box-sizing: border-box;
+
+        width: 100%;
+        max-width: 230px;
+        height: 45px;
+        max-height: 45px;
+
+        white-space: pre-line;
+        overflow: hidden;            
+
+        text-overflow: ellipsis;  
+
         font-size: 15px;
         font-weight: 300;
 

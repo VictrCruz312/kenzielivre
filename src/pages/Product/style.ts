@@ -27,7 +27,7 @@ export const ContainerProduct = styled.div`
 
   display: flex;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1133px) {
     flex-direction: column;
     align-items: center;
     gap: 20px;
@@ -36,20 +36,21 @@ export const ContainerProduct = styled.div`
 `;
 
 export const DivImageProduct = styled.div`
-  max-width: 877px;
   width: 100%;
-  max-height: 636px;
+  max-width: 827px;
   height: 100%;
+  max-height: 636px;
 
-  background-color: #3f3d56;
+  background-color: #fff;
   border-radius: 4px;
 
   @media screen and (max-width: 768px) {
-    width: 90%;
+    width: 100%;
   }
 
   .miniImage {
     width: 100%;
+    overflow-x: scroll;
 
     background-color: #1c1b23;
     padding-left: 10px;
@@ -79,40 +80,31 @@ export const DivImageProduct = styled.div`
   }
 
   .mainImage {
+    box-sizing: border-box;
+
+    overflow: hidden;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
     width: 100%;
-    min-height: 502px;
     height: 100%;
 
     @media screen and (max-width: 768px) {
-      padding: 10px;
-      background-color: none;
-
-      min-height: 442px;
       height: 100%;
     }
 
     img {
-      max-width: 389px;
-      width: 100%;
-
-      max-height: 371px;
       height: 100%;
+      max-height: 420px;
+
+      padding: 10px;
 
       border-radius: 4px;
-      padding: 29px 29px;
 
       @media screen and (max-width: 768px) {
-        max-width: 286px;
-        width: 100%;
-
-        max-height: 259px;
         height: 100%;
-
-        padding: 0px;
       }
     }
   }

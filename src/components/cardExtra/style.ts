@@ -2,11 +2,15 @@ import styled from "styled-components";
 import { ICardExtra } from "./index";
 
 export const ContainerCard = styled.div<ICardExtra>`
+  box-sizing: border-box;
+
+  overflow: hidden;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background-color: #3f3d56;
+  background-color: #FFF;
   border-radius: 4px;
 
   margin: 10px 20px 10px 0px;
@@ -55,8 +59,14 @@ export const ContainerImagem = styled.div<ICardExtra>`
     (props.type === "cardLogoEmpresa" && `${80}px`) ||
     (props.type === "imgExtraProduct" && "95%")};
 
+
   img {
+    cursor: pointer;
+
     width: 100%;
-    height: 100%;
+    max-width: 250px;
+
+    height: auto;
+    max-height: 100%;
   }
 `;

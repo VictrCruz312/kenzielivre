@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useModal } from "../../Context/Modal"
 import List from "./components/List"
 import Profile from "./components/Profile"

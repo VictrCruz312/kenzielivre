@@ -1,16 +1,46 @@
+import { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import TransitionPage from "../../components/TransitionPage";
+import { useRequest } from "../../Context/Request";
+import { IProduct } from "./components/CarouselProduct";
+import { IUserReturn } from "../../services/interface/User";
 import Banner from "./components/Banner";
 import Block from "./components/Block";
 import CarouselProduct from "./components/CarouselProduct";
 import Category from "./components/Category";
-import { arrayLogo } from "./logo";
-import { products } from "./products";
 
 import { HomeStyled } from "./style";
+import { useAuth } from "../../Context/auth";
+import { useModal } from "../../Context/Modal";
 
 const Home = () => {
+  
+  if( !JSON.parse(localStorage.getItem("@KenzieLivre:Cart") as string) ){
+    localStorage.setItem( "@KenzieLivre:Cart", JSON.stringify( [] ) )
+  }
+
+  const { checkAuth, checkLevelAuth } = useAuth()
+  const { leaveModalFunction } = useModal()
+
+  useEffect(()=>{ checkAuth(); checkLevelAuth(); leaveModalFunction() },[])
+
+  const { TakePromotionProduct, takeUsers } = useRequest()
+
+  const [ promotionProduct, setPromotionProduct ] = useState<IProduct[]>()
+  const [ imagelogo, setImageLogo ] = useState<IUserReturn[]>()
+
+  useEffect(()=>{
+
+    TakePromotionProduct()
+      .then( products => setPromotionProduct( products ) )
+      .catch( error => console.log( error ) )
+
+      takeUsers()
+      .then( users => setImageLogo( users.filter( user => user.imageLogo ) ) )
+      .catch( error => console.log( error ) )
+
+  },[])
 
   return (
     <TransitionPage>
@@ -21,19 +51,22 @@ const Home = () => {
         <Block>
           <Banner
             arrayImage={[
-              "https://img.freepik.com/psd-premium/banner-de-midia-social-do-instagram-black-friday-para-produtos-eletronicos-em-ofertas_220664-1933.jpg?w=2000",
-              "https://img.freepik.com/psd-premium/faixa-de-midia-social-negra-sexta-feira-de-produtos-eletronicos-em-ofertas_220664-1867.jpg?w=2000"
+              "https://http2.mlstatic.com/D_NQ_613450-MLA51443136055_092022-OO.webp",
+              "https://http2.mlstatic.com/D_NQ_670369-MLA51444529319_092022-OO.webp",
+              "https://http2.mlstatic.com/D_NQ_790935-MLA51428930314_092022-OO.webp",
+              "https://http2.mlstatic.com/D_NQ_636640-MLA51442935581_092022-OO.webp",
+              "https://http2.mlstatic.com/D_NQ_717370-MLA51442498686_092022-OO.webp"
           ]}
-            delay={10000}
+            delay={15000}
           />
           <Category name="Ofertas da semana"/>
           <CarouselProduct 
-            arrayDados={products}
+            arrayDados={promotionProduct}
             type="Product"  
           />
           <Category name="Lojas cadastradas"/>
           <CarouselProduct 
-            arrayDados={arrayLogo}
+            arrayDados={imagelogo}
             type="Logo"  
           />
         </Block>
